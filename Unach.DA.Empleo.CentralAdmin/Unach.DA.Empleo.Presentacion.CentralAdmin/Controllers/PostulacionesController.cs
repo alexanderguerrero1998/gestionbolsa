@@ -154,7 +154,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 }
 
 
-        /*
+        
                 [HttpPost]
                 public IActionResult PostulacionesDelete(Postulacion item)
                 {
@@ -172,9 +172,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                         logger.LogError(ex, "Error");
                         TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
                     }
-                    return RedirectToAction(nameof(Index), new { expediente = item.ServidorId });
+                    return RedirectToAction(nameof(Index), new { expediente = 1 });
                 }
-                */
+                
 
     }
 }
