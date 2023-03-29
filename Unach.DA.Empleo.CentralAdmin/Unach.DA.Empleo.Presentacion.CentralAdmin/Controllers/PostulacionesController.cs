@@ -138,7 +138,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
         */
 
-                public IActionResult _PostulacionesDelete(int id)
+                public IActionResult PostulacionesDelete(int id)
                 {
                     try
                     {

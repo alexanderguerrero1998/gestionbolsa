@@ -1,8 +1,8 @@
-﻿@model PostulacionesViewModel
+﻿@model Postulacion
 
 <form role="form" id="form" method="post" asp-action="_PostulacionesDelete" asp-controller="Postulaciones">
 
-    <partial name="_ModalHeader" model="@(new { Heading = "Eliminar Postulacion" })" />
+    <partial name="_ModalHeader" model="@(new  ModalHeader{ Heading = "Eliminar Postulacion" })" />
 
 
     <div class="modal-body form-horizontal">    
