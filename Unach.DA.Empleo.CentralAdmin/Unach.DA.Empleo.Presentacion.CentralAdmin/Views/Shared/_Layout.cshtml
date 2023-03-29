@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gestión del Talento Humano</title>
+    <environment names="Development, Staging,Production">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/lib/animate.css/animate.css" />
+        <link rel="stylesheet" href="~/lib/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+        <link rel="stylesheet" href="~/lib/metisMenu/dist/metisMenu.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+        <link rel="stylesheet" href="~/lib/sweetalert/lib/sweet-alert.css" />
+        <link rel="stylesheet" href="~/lib/toastr/build/toastr.min.css" />
+    </environment>
+    @RenderSection("Styles", required: false)
+</head>
+
+<body>
+    <div id="header">
+        <partial name="_Header" />
+    </div>
+    <aside id="menu" >
+        <partial name="_Navigation" />
+    </aside>
+    <div id="wrapper">
+        @RenderBody()
+        <partial name="_Footer" />
+    </div>
+
+    <environment names="Development, Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/metisMenu/dist/metisMenu.js"></script>
+        <script src="~/js/homer.js"></script>
+        <script src="~/lib/toastr/build/toastr.min.js"></script>
+        @*<script src="~/lib/toastr/toastr.min.js"></script>*@
+    </environment>
+    @RenderSection("Scripts", required: false)
+    <partial name="_NotificationPanel" />
+</body>
+
+</html>

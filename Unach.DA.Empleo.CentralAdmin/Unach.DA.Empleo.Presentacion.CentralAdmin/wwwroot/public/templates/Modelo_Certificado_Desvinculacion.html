@@ -1,0 +1,85 @@
+
+<br />
+<br />
+<br />
+<br />
+<p style="text-align: right;"><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">Certificado No. UNACH-CODESI-PAZYSALVO-001</span></span></p>
+
+<p style="text-align: center;">
+    <br />
+    <strong><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">CERTIFICADO DE DESVINCULACI&Oacute;N LABORAL</span></span></strong>
+</p>
+
+<p style="text-align: center;"><strong><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">@Model.ServidorCertificador.Dependencia</span></span></strong></p>
+
+<p style="text-align: justify;">
+    <br />
+    <span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">@Model.ServidorCertificador.Dependencia de la Universidad Nacional de Chimborazo, ante la solicitud de desvinculaci&oacute;n laboral presentada por el /la servidor/a @Model.ServidorDesvincularse.Nombres, con c&eacute;dula de ciudadan&iacute;a No. @Model.ServidorDesvincularse.Identificacion, quien labor&oacute; en calidad de @Model.ServidorDesvincularse.Cargo, CERTIFICA QUE: </span></span>
+</p>
+<div style="text-align:center;">
+    <br />
+
+    <table style="text-align:center; border-collapse: collapse; margin: 0 auto;" border="1" class="table table-bordered" width="90%">
+        <thead>
+            <tr>
+                <th style="width: 33.3333%;">
+                    Actividad
+                </th>
+                <th style="width: 33.3333%;">Acci&oacute;n</th>
+                <th style="width: 33.3333%;">Observaci&oacute;n</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+            foreach (var actividad in @Model.ActividadesCertificadas)
+            {
+            <tr>
+                <td style="width: 33.3333%;">@actividad.Nombre</td>
+                <td style="width: 33.3333%;">@actividad.TipoAccion</td>
+                <td style="width: 33.3333%;">@actividad.Observacion</td>
+            </tr>
+            }
+            }
+
+        </tbody>
+    </table>
+    <br />
+</div>
+<p><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">Es todo cuanto puedo certificar, facultando a la parte interesada hacer uso del presente documento, para su proceso de desvinculaci&oacute;n laboral.</span></span></p>
+
+<p style="text-align: right;"><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">Riobamba, @Model.FechaCertificado.Day de @Model.FechaCertificado.ToString("MMMM") del @Model.FechaCertificado.Year </span></span></p>
+
+<p>&nbsp;</p>
+
+
+
+
+<p style="text-align: center;"><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;">Atentamente,</span></span></p>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;">
+    <span style="font-size:11px;">
+        <span style="font-family:verdana,geneva,sans-serif;">
+            ______________________________<br />
+            Firma Electr&oacute;nica<br />
+            @Model.ServidorCertificador.Nombres<br />
+            @Model.ServidorCertificador.Cargo
+        </span>
+    </span>
+</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-size:11px;"><span style="font-family:verdana,geneva,sans-serif;"><strong>Nota:</strong> <em>El certificado ser&aacute; remitido al <strong>correo personal</strong> registrado por el servidor a desvincularse.</em></span></span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+

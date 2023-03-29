@@ -1,0 +1,72 @@
+﻿@using Newtonsoft.Json
+
+    <script>
+    $(function () {
+        //Command: toastr["info"]("Clear itself?<br /><br /><button type='button' class='btn clear'>Yes</button>");
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-center",
+            "onclick": null,
+            "progressBar": true,
+            "showDuration": "1000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        function ShowSucess(mensaje) {
+            toastr.success(mensaje);
+        }
+        function ShowError(mensaje) {
+            toastr.error(mensaje);
+        }
+        function ShowInformation(mensaje) {
+            toastr.info(mensaje);
+        }
+        function ShowWarning(mensaje) {
+            toastr.warning(mensaje);
+        }
+        @{
+            if (TempData["notification"] != null)
+            {
+                var alerta = JsonConvert.DeserializeObject<AlertaViewModel>(TempData["notification"].ToString());
+                if (alerta != null)
+                {
+                    switch (alerta.TipoAlerta)
+                    {
+                        case TipoAlerta.Error:
+                            @: ShowError("@alerta.Mensaje");
+                            break;
+                        case TipoAlerta.Informacion:
+                            @: ShowInformation("@alerta.Mensaje");
+                            break;
+                        case TipoAlerta.Exitosa:
+                            @: ShowSucess("@alerta.Mensaje");
+                            break;
+                        case TipoAlerta.Advertencia:
+                            @: ShowWarning("@alerta.Mensaje");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                //@Html.Raw(TempData["notification"])TempData["notification"].ToString()
+            }
+            else
+            {
+                @Html.Raw(" ")
+            }
+        }
+
+    });
+    </script>
+@{
+    TempData["notification"] = null;
+}
+
+@*@Html.Raw(TempData["javascript"])*@

@@ -1,0 +1,145 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "SicoaContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Unach.DA.Empleo.Persistencia.Core",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[Auth].[Modulo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Auth].[Rol]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Auth].[RolTransaccion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Auth].[RolUsuario]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Auth].[Sistema]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Auth].[Transaccion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Capacitacion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Empresa]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EstadoPostulacion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EstadoVacante]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Estudiante]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EstudianteIdioma]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ExperienciaLaboral]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FormacionAcademica]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Idioma]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Logro]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Postulacion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ResponsableEmpresa]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoCapacitacion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoEstadoPostulacion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoEstadoVacante]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoExperiencialaboral]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoFormacionAcademica]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoLogro]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoUsuario]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoVacante]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Vacante]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "MSI.bolsadb",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Unach.DA.Empleo.Presentacion.CentralAdmin.props" />
+</Project>

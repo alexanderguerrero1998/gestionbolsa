@@ -1,0 +1,55 @@
+﻿@model ServidorReaderViewModel
+
+
+
+<div class="hpanel hgreen">
+    <div class="panel-body">
+        <div class="pull-right text-right">
+            <div class="btn-group">
+                <i class="fa fa-facebook btn btn-default btn-xs"></i>
+                <i class="fa fa-twitter btn btn-default btn-xs"></i>
+                <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+            </div>
+        </div>
+@*        <img alt="logo" class="img-circle m-b m-t-md" src="@Url.Action("ShowImage", "Servidores", new { foto = Model.FotoRuta })" style="height:75px;width:75px;">
+        <h4>
+            At*Model.Tratamiento&nbsp;
+            At*Model.NombresCompletos.ToCapitalize()
+        </h4>
+        <p>
+            At*Model.Cargo
+        </p>
+        <p>
+            At*Model.Dependencia
+        </p>
+
+        <hr class="line" />
+*@
+
+        <p style="line-height: 1em; height: 1em; overflow: hidden;">
+            <span>
+              @*  @if (Model.TipoDocumento == "CEDULA")
+                {
+                    <i class="fa fa-credit-card"></i>
+                }
+                else
+                {
+                    <i class="fa fa-flag text-info"></i>
+                }*@
+
+
+                @*&nbsp;&nbsp;At*Model.NumeroDocumento*@
+            </span>
+        </p>
+
+@*        <p style="line-height: 1em; height: 1em; overflow: hidden;">
+            <span><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;At*Model.Email</span>
+        </p>
+        <p style="line-height: 1em; height: 1em; overflow: hidden;">
+            <span><i class="fa fa-phone"></i>&nbsp;&nbsp;At*Model.TelefonoTrabajo Ext. At*Model.TelefonoExtension</span>
+        </p>*@
+
+        <hr class="line" />
+
+    </div>
+</div>

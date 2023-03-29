@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Unach.DA.Empleo.Presentacion.CentralAdmin.props" />
+</Project>

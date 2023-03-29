@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Unach.DA.Empleo.Persistencia.Core</id>
+    <version>1.0.0</version>
+    <authors>Unach.DA.Empleo.Persistencia.Core</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.EntityFrameworkCore" version="7.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="7.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.dll" target="lib\net6.0\Unach.DA.Empleo.Persistencia.Core.dll" />
+  </files>
+</package>

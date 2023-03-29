@@ -1,0 +1,12 @@
+﻿@*@model System.Collections.Generic.IEnumerable<Unach.Dath.Gestion.Presentacion.AdministracionCentral.Models.MenuViewModel>*@
+@model List<MenuItemViewModel>
+
+@{
+    Layout = null;
+}
+
+
+@*<% Html.RenderPartial("TaskList", Model.Tasks, new ViewDataDictionary()); %>*@
+
+<partial name="_MenuPartial" model="Model" />
+

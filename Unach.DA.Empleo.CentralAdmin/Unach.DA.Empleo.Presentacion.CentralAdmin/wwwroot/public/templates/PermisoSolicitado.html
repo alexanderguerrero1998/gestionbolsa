@@ -1,0 +1,59 @@
+ <div dir='ltr' style='color: rgb(0, 0, 0); font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);'>
+        <div>
+            <span style='color: rgb(0, 120, 215); font-family: segoe ui light,segoe wp light, segoe ui,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 42px;'>Solicitud N&deg;  @Model.Numero</span><br/><br/>
+        </div>
+    </div>
+    <div style='color: rgb(0, 0, 0); font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);'>
+        <div style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); direction: ltr; line-height: 20px; margin: 0px;'>
+            <div style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; margin: 0px 0px 20px;'> 
+                <strong> @Model.NombresServidor, </strong> <br/> 
+             Su solicitud de permiso para ausentarse de sus labores en la instituci&oacute;n ha sido recibido y ser&aacute; procesado. Se ha notificado a @Model.Jefe. Por favor revise los detalles del motivo en la secci&oacute;n observaciones.
+             <br/><br/>La informaci&oacute;n registrada de su permiso es:
+            </div> 
+
+            <div style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; margin: 0px 0px 20px;'> 
+                <table border='0' cellpadding='0' cellspacing='0' style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; margin: 0px; border-style: solid; border-color: rgb(0, 120, 215); border-width: 1px; padding-top: 0px;'> 
+                    <tr>
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'>Dependencia</td> 
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); text-align: left; vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'> @Model.Dependencia  </td> 
+                    </tr>
+                    <tr>
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'>Fecha</td> 
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); text-align: left; vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'> @Model.FechaString  </td> 
+                    </tr>
+                    <tr>
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'>Tiempo Solicitado</td> 
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); text-align: left; vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'> @Model.TiempoSolicitado  </td> 
+                    </tr>
+                    <tr>
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'>Tiempo Calculado</td> 
+                        <td style='font-family:  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); text-align: left; vertical-align: top; white-space: nowrap; line-height: normal; margin: 0px; padding: 5px 10px;'> @Model.TiempoCalculado  </td> 
+                    </tr>                    
+
+                </table>
+            </div>
+            <div style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; margin: 0px 0px 10px;'>
+                Observaciones: @Model.Detalle
+            </div>
+            
+            <br />
+            <br />
+            <div style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; margin: 0px 0px 20px;'> 
+                <table  border='0' cellpadding='0' cellspacing='0' style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; margin: 0px 20px 20px 0px; table-layout: fixed;'> 
+                    <tr> 
+                        <td style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(255, 255, 255); text-align: center; vertical-align: middle; white-space: nowrap; line-height: 20px; height: 30px; margin: 0px; background-color: rgb(0, 120, 215); border-style: solid; border-color: rgb(0, 120, 215); border-width: 1px; padding-left: 20px; padding-right: 20px;'><a href='{URL_CERTIFICADO_PERMISO}' style='color: rgb(255, 255, 255); text-decoration: none;'>Adjuntar certificado</a></td> 
+                        <td style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; line-height: 30px; height: 30px; width: 30px; margin: 0px;'>&nbsp;</td> 
+                        <td style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 14px; color: rgb(51, 51, 51); text-align: center; vertical-align: middle; white-space: nowrap; line-height: 20px; height: 30px; margin: 0px; background-color: rgb(244, 244, 244); border-style: solid; border-color: rgb(244, 244, 244); border-width: 1px; padding-left: 20px; padding-right: 20px;'><a href='{URL_AYUDA}' style='color: rgb(51, 51, 51); text-decoration: none;'>Leer m&aacute;s</a></td> 
+                    </tr> 
+                </table> 
+            </div> 
+            <div style='font-family:  segoe ui semibold ,  segoe wp semibold ,  segoe ui ,  segoe wp , segoe, tahoma,  microsoft sans serif , verdana, sans-serif; font-size: 10px; color: rgb(102, 102, 102); line-height: normal; margin: 0px; background-color: rgb(244, 244, 244);'>
+                <br /><br />
+                Este e-mail fue enviado desde una cuenta no administrada, por favor no responda este mensaje.<br />
+                Desarrollado por la Coordinaci&oacute;n de Gesti&oacute;n de Desarrollo de Sistemas Inform&aacuteticos.
+            </div>
+        </div>
+    </div>
+
+
+ 

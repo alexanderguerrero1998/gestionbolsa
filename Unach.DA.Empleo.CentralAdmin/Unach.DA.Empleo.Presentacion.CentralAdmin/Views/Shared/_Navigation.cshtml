@@ -1,0 +1,67 @@
+﻿@using Unach.DA.Empleo.Presentacion.CentralAdmin.Helpers;
+
+<div id="navigation">
+    <div class="profile-picture">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action("Index", "Home")">
+                <img src="@Url.Action("ShowImage", "Servidores", new { foto = @User.Claims.Where(x => x.Type == "Foto")?.FirstOrDefault()?.Value })" class="img-circle m-b" alt="@User.Claims.Where(x => x.Type == "NombresApellidos")?.FirstOrDefault()?.Value" style="height:76px;width:76px;" />
+            </a>
+
+            <div class="stats-label text-color">
+                <span class="font-extra-bold">
+                    @User.Claims.Where(x => x.Type == "Nombres")?.FirstOrDefault()?.Value
+                </span>
+
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <small class="text-muted">Funcionario<b class="caret"></b></small>
+                    </a>
+                    <ul class="dropdown-menu animated flipInX m-t-xs">
+                        @*<li><a href="contacts.html">Contacts</a></li>*@
+                        @*<li><a asp-action="CurriculumVitae" asp-controller="Servidores" asp-route-wtf="@User.Claims.Where(x => x.Type == "IdServidor")?.FirstOrDefault()?.Value">Perfil</a></li>*@
+
+                        
+
+                        <li class="divider"></li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="AzureAD" asp-controller="Account" asp-action="SignOut">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+        else
+        {
+
+            <a href="@Url.Action("Index", "Home")">
+
+                <img src="https://i.pinimg.com/originals/2a/2e/8d/2a2e8d24f1f1ec6d8b0d1d3a8b0fc2e5.jpg"
+                     class="img-circle m-b"
+                     alt="Usuario sin autenticar"
+                     style="height:76px;width:76px;" />
+            </a>
+            <div class="stats-label text-color">
+                <span class="font-extra-bold">
+                    <text>Sin Autenticar</text>
+                </span>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <small class="text-muted">Sin Roles<b class="caret"></b></small>
+                    </a>
+                    <ul class="dropdown-menu animated flipInX m-t-xs">
+                        <li>
+                            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Iniciar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+
+    <ul class="nav metismenu" id="side-menu">
+        @await Component.InvokeAsync("Menu")
+    </ul>
+
+
+</div>

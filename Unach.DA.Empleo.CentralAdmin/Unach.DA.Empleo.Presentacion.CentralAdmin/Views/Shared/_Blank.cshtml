@@ -1,0 +1,8 @@
+﻿@model (string titulo,String contenidoHtml)
+<partial name="_ModalHeader" model="@(new ModalHeader { Heading = Model.titulo })" />
+
+
+    <div class="modal-body">     
+          @Html.Raw(@Model.contenidoHtml)  
+    </div>
+ 

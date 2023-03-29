@@ -1,0 +1,60 @@
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.deps.json
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.pdb
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfo.cs
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CopyComplete
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\refint\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Users\alexa\OneDrive - Universidad Nacional de Chimborazo\Respaldo\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\ref\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.deps.json
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.pdb
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.AssemblyReference.cache
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfoInputs.cache
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfo.cs
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CoreCompileInputs.cache
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CopyComplete
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\refint\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Users\alexa\Downloads\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\ref\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.deps.json
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.pdb
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfo.cs
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CopyComplete
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\refint\Unach.DA.Empleo.Dominio.Core.dll
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Users\alexa\OneDrive\Escritorio\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\ref\Unach.DA.Empleo.Dominio.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.deps.json
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\bin\Debug\net6.0\Unach.DA.Empleo.Persistencia.Core.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.AssemblyReference.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfoInputs.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.AssemblyInfo.cs
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CoreCompileInputs.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.csproj.CopyComplete
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\refint\Unach.DA.Empleo.Dominio.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\Unach.DA.Empleo.Dominio.Core.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Dominio.Core\obj\Debug\net6.0\ref\Unach.DA.Empleo.Dominio.Core.dll

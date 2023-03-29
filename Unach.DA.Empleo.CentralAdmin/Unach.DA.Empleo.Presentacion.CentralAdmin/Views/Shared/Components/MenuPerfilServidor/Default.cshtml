@@ -1,0 +1,147 @@
+﻿@model PerfilServidorEditadoViewModel
+<style type="text/css">
+
+
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #headerNavegador {
+        margin: auto;
+        /*        width: 500px;
+        font-family: Arial, Helvetica, sans-serif;*/
+    }
+
+    ul, ol {
+        list-style: none;
+    }
+
+    .submenu-servidor {
+        /*position: absolute;*/
+        /*top: 100%;*/
+        /*left: 0;*/
+        z-index: 1000;
+        /*display: none;*/
+        /*float: left;*/
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 1px 0 0;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, .15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }
+
+    .navegador > li {
+        float: left;
+    }
+
+    .navegador li a {
+        background-color: #FFF;
+        text-decoration: none;
+        padding: 10px 12px;
+        display: block;
+        z-index: 999999;
+    }
+
+        .navegador li a:hover {
+            /*background-color: #9de2f8;*/
+            border-bottom: 1px solid rgba(0, 0, 0, .175);
+        }
+
+    .navegador li ul {
+        display: none;
+        position: absolute;
+        min-width: 140px;
+    }
+
+    .navegador li:hover > ul {
+        display: block;
+        z-index: 999999;
+    }
+
+    .navegador li ul li {
+        position: relative;
+    }
+
+        .navegador li ul li ul {
+            right: -140px;
+            top: 0px;
+        }
+</style>
+
+@if (ViewBag.EsFuncionario == 0)
+{
+    <div class="col-lg-12">
+        <div id="headerNavegador">
+
+            <div class="panel-bodytituloMenu text-right">
+                @*style="border-left:15px; border-bottom:15px; padding-left:15px; padding-bottom:15px; background-color:white;"*@
+
+                <ul class="navegador" style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; text-align:right;">
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Personal" asp-controller="Servidores"><i class="fa fa-user text-success">&nbsp;&nbsp;</i>Perfil</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Capacitacion"><i class="fa fa-book text-warning">&nbsp;&nbsp;</i>Capacitación</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Idiomas"><i class="fa fa-language text-primary-2">&nbsp;&nbsp;</i>Idiomas</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Investigacion"><i class="fa fa-flask text-success">&nbsp;&nbsp;</i>Investigación</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Estudios"><i class="fa fa-mortar-board text-primary">&nbsp;&nbsp;</i>Estudios</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Experiencia"><i class="fa fa-folder-open-o text-warning">&nbsp;&nbsp;</i>Experiencia</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Salud"><i class="fa fa-heartbeat text-danger">&nbsp;&nbsp;</i>Salud</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Igualdad"><i class="fa fa-child text-primary">&nbsp;&nbsp;</i>Igualdad</a></li>
+                    <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="Index" asp-controller="Contraloria"><i class="fa fa-institution text-primary">&nbsp;&nbsp;</i>Contraloría</a></li>
+                    @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Where(x => x.Controlador == "ControlPersonal").Count() > 0)
+                    {
+                        <li style="float: left;">
+                            <a href="" style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;">
+                                <i class="fa fa-calendar-check-o text-info">&nbsp;&nbsp;</i>Asistencia
+                            </a>
+                            <ul class="submenu-servidor">
+                                @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Where(x => x.Accion == "AsignarHorarioServidor" && x.Controlador == "ControlPersonal").Count() > 0)
+                                {
+                                    <li><a asp-controller="ControlPersonal" asp-action="AsignarHorarioServidor" style="text-align:left">Horarios</a></li>
+                                }
+                                @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Where(x => x.Accion == "ProgramarCambioHorario" && x.Controlador == "ControlPersonal").Count() > 0)
+                                {
+                                    <li><a asp-controller="ControlPersonal" asp-action="ProgramarCambioHorario" style="text-align:left">Programar Horarios</a></li>
+                                }
+                                @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Where(x => x.Accion == "AdministrarAsistencias" && x.Controlador == "ControlPersonal").Count() > 0)
+                                {
+                                    <li><a asp-controller="ControlPersonal" asp-action="AdministrarAsistencias" style="text-align:left">Administrar Asistencias</a></li>
+                                }
+                                @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Where(x => x.Accion == "JustificarRegistro" && x.Controlador == "ControlPersonal").Count() > 0)
+                                {
+                                    <li><a asp-controller="ControlPersonal" asp-action="JustificarRegistro" style="text-align:left">Registrar Justificación</a></li>
+                                }
+                                @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Where(x => x.Accion == "AdministrarAsistencias" && x.Controlador == "ControlPersonal").Count() > 0)
+                                {
+                                    <li><a asp-controller="ControlPersonal" asp-action="RegistroAsistenciaExterna" style="text-align:left">Habilitar Redes Externas</a></li>
+                                }
+                                @if (((List<TransaccioMenuViewModel>)ViewBag.TransaccionesHabilitadas).Any(x => x.Accion == "SaldoVacaciones" && x.Controlador == "ControlPersonal"))
+                                {
+                                    <li><a asp-controller="ControlPersonal" asp-action="SaldoVacaciones" style="text-align:left">Administrar Saldo Vacaciones</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+
+                        <li style="float: left;"><a style="color:#6a6c6f; display: block; text-align: center; padding: 00px 10px 00px 10px; text-decoration: none;" asp-action="CurriculumVitae" asp-controller="Servidores"><i class="fa fa-file-pdf-o text-danger">&nbsp;&nbsp;</i>CV</a></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
