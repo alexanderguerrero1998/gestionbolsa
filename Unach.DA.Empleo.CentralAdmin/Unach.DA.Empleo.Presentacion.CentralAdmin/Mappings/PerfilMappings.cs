@@ -23,14 +23,21 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<AuditoriaViewModel, Modulo>();
             CreateMap<AuditoriaViewModel, Transaccion>();
             CreateMap<AuditoriaViewModel, Rol>();
+
             CreateMap<AuditoriaViewModel, RolTransaccion>();
+            CreateMap<AuditoriaViewModel, Postulacion>();
+
+
+
 
 
             //Tablas del proyecto
             CreateMap<Postulacion, PostulacionesViewModel>();
             CreateMap<PostulacionesViewModel, Postulacion>();
+            CreateMap<Idioma, IdiomaViewModel>();
+            CreateMap<IdiomaViewModel, Idioma>();   
 
-
+            
 
             /*
 

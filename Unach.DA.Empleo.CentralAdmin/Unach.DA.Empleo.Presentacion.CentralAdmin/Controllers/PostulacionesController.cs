@@ -45,7 +45,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
                 },
                 x => x.Id > expediente,
-                a => a.OrderBy(y => y.IdEstudiante));
+                a => a.OrderBy(y => y.IdEstudiante)); ;
             return View(postulacion.ToList());
         }
         
@@ -148,7 +148,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     catch (Exception ex)
                     {
                         logger.LogError(ex, "Error");
-                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
+                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error!" + ex.Message);
                     }
                     return View();
                 }
