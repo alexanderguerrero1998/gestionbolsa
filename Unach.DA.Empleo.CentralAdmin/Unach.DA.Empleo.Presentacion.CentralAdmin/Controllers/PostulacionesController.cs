@@ -49,7 +49,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return View(postulacion.ToList());
         }
         
-        /*
+        
         public IActionResult PostulacionesEdit(int id, int expediente)
         {
             try
@@ -94,7 +94,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             {
                 logger.LogError(ex, "Error");
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
-                return PartialView("~/Views/Idiomas/_IdiomasEdit.cshtml", new PostulacionesViewModel());
+                return PartialView("~/Views/Postulaciones/_PostulacionesEdit.cshtml", new PostulacionesViewModel());
             }
         }
 
@@ -105,13 +105,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 {
                     try
                     {
-                        if (ModelState.IsValid)
-                        {
+                        //if (ModelState.IsValid)
+                       // {
                             // item.Id = item.Id == -1 ? null : item.Id;
 
                             if (item.Id == 0)
                             {
-                                var postulacion = _mapper.Map<PostulacionesViewModel>(item);
+                                var postulacion = _mapper.Map<Postulacion>(item);
                                 _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
                                 entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
                                 entitiesDomain.GuardarTransacciones();
@@ -120,23 +120,23 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             }
                             else
                             {
-                                var dependencia = _mapper.Map<PostulacionesViewModel>(item);
+                                var dependencia = _mapper.Map<Postulacion>(item);
                                 _mapper.AgregarDatosAuditoria(dependencia, HttpContext);
-                                entitiesDomain.ServidorIdiomaRepositorio.Actualizar(dependencia);
+                                entitiesDomain.PostulacionRepositorio.Actualizar(dependencia);
                                 entitiesDomain.GuardarTransacciones();
                                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
                             }
-                        }
+                        //}
                     }
                     catch (Exception ex)
                     {
                         logger.LogError(ex, "Error");
                         TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
                     }
-                    return RedirectToAction(nameof(Index), new { expediente = item.ServidorId });
+                    return RedirectToAction(nameof(Index), new { expediente = 1 });
                 }
 
-        */
+     
 
                 public IActionResult PostulacionesDelete(int id)
                 {

@@ -1,6 +1,6 @@
 ﻿@model PostulacionesViewModel
 
-<form role="form" id="form" method="post" asp-action="_PostulacionesEdit" asp-controller="Postulaciones">
+<form role="form" id="form" method="post" asp-action="PostulacionesEdit" asp-controller="Postulaciones">
 
     <partial name="_ModalHeader" model="@(new ModalHeader { Heading = "Editar Idioma" })" />
 
@@ -25,25 +25,25 @@
                         <label></label>
                         <div class="slidecontainer">
                             <input asp-for="IdVacante" type="range" min="1" max="100" value="@Model.IdVacante" class="sliderRange"   id="hablaInput">
-                            <p>Habla: <span id="hablaValue"></span>%</p>
+                            <p>IdVacante: <span id="hablaValue"></span>%</p>
                         </div>
                     </div>
 
                     <div class="form-group col-lg-4">
                         <label></label>
-                        <div class="slidecontainer">
+                        <div>
                             <input asp-for="IdEmpresa" type="range" min="1" max="100" value="@Model.IdEmpresa" class="sliderRange"  id="escribeInput">
-                            <p>Escribe: <span id="escribeValue"></span>%</p>
+                            <p>IdEmpresa: <span id="escribeValue"></span>%</p>
                         </div>
                     </div>
 
-                    <div class="form-group col-lg-4">
+                  @*  <div class="form-group col-lg-4">
                         <label></label>
+                        <p>FechaTransaccion: <span id=""></span></p>
+                        <input asp-for="Fecha" type="datetime-local" value="@Model.Fecha" id="comprendeInput">
+                        
 
-                        <input asp-for="IdEstudiante" type="range" min="1" max="100" value="@Model.IdEstudiante" class="sliderRange" id="comprendeInput">
-                        <p>Comprende: <span id="comprendeValue"></span>%</p>
-
-                    </div>
+                    </div>*@
 
                 </div>
             </div>
