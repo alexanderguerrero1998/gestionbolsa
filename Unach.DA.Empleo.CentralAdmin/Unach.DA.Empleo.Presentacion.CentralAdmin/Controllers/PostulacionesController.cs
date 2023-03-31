@@ -45,7 +45,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
                 },
                 x => x.Id > expediente,
-                a => a.OrderBy(y => y.IdEstudiante)); ;
+                a => a.OrderBy(y => y.IdEstudiante)); 
             return View(postulacion.ToList());
         }
         

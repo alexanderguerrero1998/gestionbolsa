@@ -137,6 +137,18 @@ namespace Unach.DA.Empleo.Dominio.Core
         }
 
 
+        private Repositorio<Estudiante> estudianteRepositorio;
+        public Repositorio<Estudiante> EstudianteRepositorio
+        {
+            get
+            {
+                if (postulacionRepositorio == null)
+                {
+                    estudianteRepositorio = new Repositorio<Estudiante>(contexto);
+                }
+                return estudianteRepositorio;
+            }
+        }
 
     }
 }
