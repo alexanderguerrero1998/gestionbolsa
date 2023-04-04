@@ -33,6 +33,11 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
+        public int? Plaza { get; set; }
+        [StringLength(250)]
+        public string Descripcion { get; set; }
+        [StringLength(250)]
+        public string Cargo { get; set; }
 
         [ForeignKey("IdEmpresa")]
         [InverseProperty("Vacante")]

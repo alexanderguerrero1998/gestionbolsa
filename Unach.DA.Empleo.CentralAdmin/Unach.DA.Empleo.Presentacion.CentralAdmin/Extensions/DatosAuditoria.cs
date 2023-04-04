@@ -19,7 +19,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
             {
                 IdUsuarioAudd = "context.ServidorAutenticado().IdServidor.ToString()",
                 RolAudd = string.Join(",", "context.ServidorAutenticado().Roles.Select(x => x.Nombre)"),
-                DireccionIpAudd = "context.Connection.RemoteIpAddress.ToString()",
+                DireccionIpAudd = context.Connection.RemoteIpAddress.ToString(),
                 SistemaAudd = "DA-CentralAdmin",
                 FechaTransaccion = DateTime.Now
             },

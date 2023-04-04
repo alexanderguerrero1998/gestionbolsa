@@ -25,5 +25,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
+
+
     }
 }

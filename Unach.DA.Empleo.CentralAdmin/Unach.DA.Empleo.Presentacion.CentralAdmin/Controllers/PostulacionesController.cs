@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using Unach.DA.Empleo.Dominio.Core;
 using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
@@ -41,11 +42,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     IdEstudiante = m.IdEstudiante,
                     IdEmpresa = m.IdEmpresa,
                     IdVacante = m.IdVacante,
-                    Fecha = m.Fecha
-
+                   
+                   
                 },
                 x => x.Id > expediente,
-                a => a.OrderBy(y => y.IdEstudiante)); 
+                a => a.OrderBy(y => y.IdEstudiante));
+
+    
             return View(postulacion.ToList());
         }
         
@@ -125,6 +128,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                                 entitiesDomain.PostulacionRepositorio.Actualizar(dependencia);
                                 entitiesDomain.GuardarTransacciones();
                                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
+
+
                             }
                         //}
                     }
@@ -134,6 +139,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                         TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
                     }
                     return RedirectToAction(nameof(Index), new { expediente = 1 });
+                    
+
+
+
                 }
 
      

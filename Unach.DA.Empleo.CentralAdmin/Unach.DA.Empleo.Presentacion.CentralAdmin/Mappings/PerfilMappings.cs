@@ -40,6 +40,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
 
             CreateMap<EstudianteViewModel, Estudiante>();
             CreateMap<Estudiante, EstudianteViewModel>();
+
             
 
             /*
