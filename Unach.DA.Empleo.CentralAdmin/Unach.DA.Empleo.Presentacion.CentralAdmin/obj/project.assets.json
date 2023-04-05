@@ -3849,7 +3849,7 @@
       },
       "Unach.DA.Empleo.Dominio.Core/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.0",
           "Unach.DA.Empleo.Persistencia.Core": "1.0.0"
@@ -3863,7 +3863,7 @@
       },
       "Unach.DA.Empleo.Persistencia.Core/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0"

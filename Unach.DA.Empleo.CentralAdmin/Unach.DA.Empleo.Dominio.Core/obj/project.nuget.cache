@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SIidXK7xHzWr3N6PdkHzLeEN0vfnyeanyR4uNGvQarKvXviK4bynbiLcKUP9JFsgi+RKxk3CCseX/VtuNFmGVA==",
+  "dgSpecHash": "qrYPKT+A0zwUv/7thPpLleKQjj5/RwzZXa/3/CStZckvCBhlsV0ti0g1rRw+u7S0FM0taD1klb7CBt4q4P7PLQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Dominio.Core\\Unach.DA.Empleo.Dominio.Core.csproj",
   "expectedPackageFiles": [
@@ -53,7 +53,6 @@
     "C:\\Users\\alexa\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\system.runtime.caching\\5.0.0\\system.runtime.caching.5.0.0.nupkg.sha512",
-    "C:\\Users\\alexa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\system.security.cryptography.cng\\5.0.0\\system.security.cryptography.cng.5.0.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",

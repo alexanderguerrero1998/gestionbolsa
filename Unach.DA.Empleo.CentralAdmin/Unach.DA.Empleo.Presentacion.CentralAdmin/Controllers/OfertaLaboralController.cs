@@ -24,12 +24,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
         public IActionResult Index()
         {
-
             List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
             return View(oferta);
         }
-
-        
 
     }
 }

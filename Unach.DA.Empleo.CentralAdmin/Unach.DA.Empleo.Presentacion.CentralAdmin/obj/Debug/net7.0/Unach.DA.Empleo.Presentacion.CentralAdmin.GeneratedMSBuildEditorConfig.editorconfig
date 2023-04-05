@@ -20,6 +20,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Empresa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Empresa/_EmpresaDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxfRW1wcmVzYURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Empresa/_EmpresaEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxfRW1wcmVzYUVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Estudiante/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,6 +74,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Postulaciones/_PostulacionesEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHVsYWNpb25lc1xfUG9zdHVsYWNpb25lc0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ResponsableEmpresa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVFbXByZXNhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ResponsableEmpresa/_ResponsableEmpresaDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVFbXByZXNhXF9SZXNwb25zYWJsZUVtcHJlc2FEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ResponsableEmpresa/_ResponsableEmpresaEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVFbXByZXNhXF9SZXNwb25zYWJsZUVtcHJlc2FFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Shared/Components/MenuPerfilServidor/Default.cshtml]

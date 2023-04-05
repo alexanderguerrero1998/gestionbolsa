@@ -1,0 +1,12 @@
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\bin\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.deps.json
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\bin\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\bin\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.csproj.AssemblyReference.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.AssemblyInfoInputs.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.AssemblyInfo.cs
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.csproj.CoreCompileInputs.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\refint\Unach.DA.Empleo.Persistencia.Core.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\Unach.DA.Empleo.Persistencia.Core.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Persistencia.Core\obj\Debug\net7.0\ref\Unach.DA.Empleo.Persistencia.Core.dll

@@ -150,5 +150,19 @@ namespace Unach.DA.Empleo.Dominio.Core
             }
         }
 
+        private Repositorio<Empresa> empresaRepositorio;
+        public Repositorio<Empresa> EmpresaRepositorio
+        {
+            get
+            {
+                if (empresaRepositorio == null)
+                {
+                    empresaRepositorio = new Repositorio<Empresa>(contexto);
+                }
+                return empresaRepositorio;
+            }
+        }
+
+
     }
 }
