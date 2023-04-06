@@ -17,9 +17,9 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         }
 
         [Key]
-        public int IdV { get; set; }
+        public int Id { get; set; }
         public int IdEmpresa { get; set; }
-        public int IdVacante { get; set; }
+        public int IdTipoVacante { get; set; }
         [Required]
         [StringLength(100)]
         public string IdUsuarioAudd { get; set; }
@@ -42,9 +42,9 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [ForeignKey("IdEmpresa")]
         [InverseProperty("Vacante")]
         public virtual Empresa IdEmpresaNavigation { get; set; }
-        [ForeignKey("IdVacante")]
+        [ForeignKey("IdTipoVacante")]
         [InverseProperty("Vacante")]
-        public virtual TipoVacante IdVacanteNavigation { get; set; }
+        public virtual TipoVacante IdTipoVacanteNavigation { get; set; }
         [InverseProperty("IdVacanteNavigation")]
         public virtual ICollection<EstadoVacante> EstadoVacante { get; set; }
         [InverseProperty("IdVacanteNavigation")]

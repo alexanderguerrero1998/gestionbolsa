@@ -70,7 +70,6 @@
                                                         <tr>
                                                             <th class="text-center">Id</th>
                                                             <th>IdEstudiante</th>
-                                                            <th>IdEmpresa</th>
                                                             <th>IdVacante</th>
                                                             <th>Fecha</th>
                                                             <th width="10%" class="text-center">Acciones</th>
@@ -84,7 +83,6 @@
                                                                 <tr>
                                                                     <td>@item.Id</td>
                                                                     <td>@item.IdEstudiante</td>
-                                                                    <td>@item.IdEmpresa</td>
                                                                     <td>@item.IdVacante</td>
                                                                     <td>@item.Fecha</td>
 
@@ -93,9 +91,8 @@
                                                                         <div class="btn-group">
                                                                             <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
                                                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                                                <li><a asp-action="PostulacionesEdit" asp-controller="Postulaciones" asp-route-id="@item.Id" asp-route-idServidor="1" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
-                                                                                <li class="divider"></li>
-                                                                                <li><a asp-action="PostulacionesDelete" asp-controller="Postulaciones" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-trash-o text-danger  icon-space"></i>Eliminar</a></li>
+                                                                                <li><a asp-action="PostulacionSet" asp-controller="Postulaciones" asp-route-id="@item.Id" asp-route-idEstudiante="@ViewBag.IdPostulante" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
+                                  
                                                                             </ul>
                                                                         </div>
                                                                     </td>

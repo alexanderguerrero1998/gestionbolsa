@@ -40,19 +40,18 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 {
                     Id = m.Id,
                     IdEstudiante = m.IdEstudiante,
-                    IdEmpresa = m.IdEmpresa,
                     IdVacante = m.IdVacante,
-                   
-                   
+
+
                 },
                 x => x.Id > expediente,
                 a => a.OrderBy(y => y.IdEstudiante));
 
-    
+
             return View(postulacion.ToList());
         }
-        
-        
+        /*
+
         public IActionResult PostulacionesEdit(int id, int expediente)
         {
             try
@@ -61,7 +60,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 {
                     PostulacionesViewModel postulacion = new PostulacionesViewModel();
                     postulacion.Id = expediente;
-                   // postulacion.IdEstudiante = entitiesDomain.PostulacionRepositorio.ObtenerTodos().OrderBy(x => x.Nombre).ToList();
+                    // postulacion.IdEstudiante = entitiesDomain.PostulacionRepositorio.ObtenerTodos().OrderBy(x => x.Nombre).ToList();
                     postulacion.IdEstudiante = entitiesDomain.PostulacionRepositorio.ObtenerTodos().Count();
                     return PartialView("~/Views/Postulaciones/PostulacionesEdit.cshtml", postulacion);
                 }
@@ -73,7 +72,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                         {
                             Id = m.Id,
                             IdEstudiante = m.IdEstudiante,
-                            IdEmpresa = m.IdEmpresa,
                             IdVacante = m.IdVacante,
                             Fecha = m.Fecha
                         }
@@ -103,87 +101,100 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
         
 
-                [HttpPost]
-                public IActionResult PostulacionesEdit(PostulacionesViewModel item)
+        [HttpPost]
+        public IActionResult PostulacionesEdit(PostulacionesViewModel item)
+        {
+            try
+            {
+                //if (ModelState.IsValid)
+                // {
+                // item.Id = item.Id == -1 ? null : item.Id;
+
+                if (item.Id == 0)
                 {
-                    try
-                    {
-                        //if (ModelState.IsValid)
-                       // {
-                            // item.Id = item.Id == -1 ? null : item.Id;
+                    var postulacion = _mapper.Map<Postulacion>(item);
+                    _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
+                    entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
+                    entitiesDomain.GuardarTransacciones();
 
-                            if (item.Id == 0)
-                            {
-                                var postulacion = _mapper.Map<Postulacion>(item);
-                                _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
-                                entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
-                                entitiesDomain.GuardarTransacciones();
-
-                                TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
-                            }
-                            else
-                            {
-                                var dependencia = _mapper.Map<Postulacion>(item);
-                                _mapper.AgregarDatosAuditoria(dependencia, HttpContext);
-                                entitiesDomain.PostulacionRepositorio.Actualizar(dependencia);
-                                entitiesDomain.GuardarTransacciones();
-                                TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
-
-
-                            }
-                        //}
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.LogError(ex, "Error");
-                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
-                    }
-                    return RedirectToAction(nameof(Index), new { expediente = 1 });
-                    
-
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
+                }
+                else
+                {
+                    var dependencia = _mapper.Map<Postulacion>(item);
+                    _mapper.AgregarDatosAuditoria(dependencia, HttpContext);
+                    entitiesDomain.PostulacionRepositorio.Actualizar(dependencia);
+                    entitiesDomain.GuardarTransacciones();
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
 
 
                 }
+                //}
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
+            }
+            return RedirectToAction(nameof(Index), new { expediente = 1 });
 
-     
 
-                public IActionResult PostulacionesDelete(int id)
+        }
+      
+        public IActionResult PostulacionesDelete(int id)
+        {
+            try
+            {
+                Postulacion item = entitiesDomain.PostulacionRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
+                return PartialView("~/Views/Postulaciones/_PostulacionesDelete.cshtml", item);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error!" + ex.Message);
+            }
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult PostulacionesDelete(Postulacion item)
+        {
+            try
+            {
+                if (item != null)
                 {
-                    try
-                    {
-                        Postulacion item = entitiesDomain.PostulacionRepositorio.BuscarPor(x => x.Id == id ).FirstOrDefault();
-                        return PartialView("~/Views/Postulaciones/_PostulacionesDelete.cshtml", item);
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.LogError(ex, "Error");
-                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error!" + ex.Message);
-                    }
-                    return View();
+                    entitiesDomain.PostulacionRepositorio.Eliminar(item);
+                    entitiesDomain.GuardarTransacciones();
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información eliminada.");
                 }
-
-
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
+            }
+            return RedirectToAction(nameof(Index), new { expediente = 1 });
+        }
+        */
         
-                [HttpPost]
-                public IActionResult PostulacionesDelete(Postulacion item)
-                {
-                    try
-                    {
-                        if (item != null)
-                        {
-                            entitiesDomain.PostulacionRepositorio.Eliminar(item);
-                            entitiesDomain.GuardarTransacciones();
-                            TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información eliminada.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.LogError(ex, "Error");
-                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
-                    }
-                    return RedirectToAction(nameof(Index), new { expediente = 1 });
-                }
-                
+        public void RegistrarPostulacion(int idVacante, int idEstudiante)
+        {
+            var postulacion = new Postulacion();
+            postulacion.IdEstudiante = idEstudiante;
+            postulacion.IdVacante = idVacante;
+            postulacion.Fecha = DateTime.Now;
+            _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
+            entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
+            entitiesDomain.GuardarTransacciones();
+            TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Postulacion Realizada");
+        }
+
+
+
+
+
 
     }
 }

@@ -21,7 +21,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [StringLength(50)]
         public string Nombre { get; set; }
 
-        [InverseProperty("IdVacanteNavigation")]
+        [InverseProperty("IdTipoVacanteNavigation")]
         public virtual ICollection<Vacante> Vacante { get; set; }
     }
 }

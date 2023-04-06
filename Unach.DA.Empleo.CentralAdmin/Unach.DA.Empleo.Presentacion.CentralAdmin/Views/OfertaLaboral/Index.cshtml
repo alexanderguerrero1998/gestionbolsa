@@ -97,9 +97,8 @@
                                                                         <div class="btn-group">
                                                                             <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
                                                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                                                <li><a asp-action="_OfertaLaboralEdit" asp-controller="OfertaLaboral" asp-route-id="@item.IdVacante" asp-route-idServidor="1" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
-                                                                                <li class="divider"></li>
-                                                                                <li><a asp-action="_OfertaLaboralDelete" asp-controller="OfertaLaboral" asp-route-id="@item.IdVacante" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-trash-o text-danger  icon-space"></i>Eliminar</a></li>
+                                                                                <li><a asp-action="RegistrarPostulacion" asp-controller="Postulaciones" asp-route-idVacante="@item.IdVacante" asp-route-idEmpresa="@item.IdEmpresa" asp-route-idTipoVacante="@item.IdTipoVacante" asp-route-idEstudiante=11 data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
+                                                                               
                                                                             </ul>
                                                                         </div>
                                                                     </td>

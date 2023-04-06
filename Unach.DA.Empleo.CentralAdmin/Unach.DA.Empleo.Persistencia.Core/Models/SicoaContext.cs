@@ -245,18 +245,15 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
             modelBuilder.Entity<Vacante>(entity =>
             {
-                entity.HasKey(e => e.IdV)
-                    .HasName("PK__Vacante__C4960010AC11FB0A");
-
                 entity.HasOne(d => d.IdEmpresaNavigation)
                     .WithMany(p => p.Vacante)
                     .HasForeignKey(d => d.IdEmpresa)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Vacante__IdEmpre__7F2BE32F");
 
-                entity.HasOne(d => d.IdVacanteNavigation)
+                entity.HasOne(d => d.IdTipoVacanteNavigation)
                     .WithMany(p => p.Vacante)
-                    .HasForeignKey(d => d.IdVacante)
+                    .HasForeignKey(d => d.IdTipoVacante)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Vacante__IdVacan__00200768");
             });
