@@ -163,6 +163,35 @@ namespace Unach.DA.Empleo.Dominio.Core
             }
         }
 
+        private Repositorio<Vacante> vacanteRepositorio;
+        public Repositorio<Vacante> VacanteRepositorio
+        {
+            get
+            {
+                if (vacanteRepositorio == null)
+                {
+                    vacanteRepositorio = new Repositorio<Vacante>(contexto);
+                }
+                return vacanteRepositorio;
+            }
+        }
+
+        private Repositorio<TipoVacante> tipoVacanteRepositorio;
+        public Repositorio<TipoVacante> TipoVacanteRepositorio
+        {
+            get
+            {
+                if (tipoVacanteRepositorio == null)
+                {
+                    tipoVacanteRepositorio = new Repositorio<TipoVacante>(contexto);
+                }
+                return tipoVacanteRepositorio;
+            }
+        }
+
+
+
+
 
     }
 }

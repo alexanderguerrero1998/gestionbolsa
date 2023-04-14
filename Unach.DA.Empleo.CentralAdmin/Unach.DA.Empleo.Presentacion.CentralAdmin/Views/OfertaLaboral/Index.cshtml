@@ -70,6 +70,7 @@
                                                         <tr>
                                                             <th class="text-center">Empresa</th>
                                                             <th>Cargo</th>
+                                                            <th>Postulaciones</th>
                                                             <th>Plaza</th>
                                                             <th>Modalidad</th>
                                                             <th>Ubicacion</th>
@@ -87,6 +88,7 @@
                                                                 <tr>
                                                                     <td>@item.Empresa</td>
                                                                     <td>@item.Cargo</td>
+                                                                    <td>@item.Postulaciones</td>
                                                                     <td>@item.Plaza</td>
                                                                     <td>@item.Modalidad</td>
                                                                     <td>@item.Ubicacion</td>
@@ -96,10 +98,17 @@
                                                                     <td class="text-center" width="5%" valign="top">
                                                                         <div class="btn-group">
                                                                             <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
-                                                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                                                <li><a asp-action="RegistrarPostulacion" asp-controller="Postulaciones" asp-route-idVacante="@item.IdVacante" asp-route-idEmpresa="@item.IdEmpresa" asp-route-idTipoVacante="@item.IdTipoVacante" asp-route-idEstudiante=11 data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
-                                                                               
-                                                                            </ul>
+                                                                            @if (item.Plaza > 0)
+                                                                            {
+                                                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                                                    <li><a asp-action="RegistrarPostulacion" asp-controller="Postulaciones" asp-route-idVacante="@item.IdVacante"  asp-route-idEstudiante=11 data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
+                                                                                </ul>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                          
+                                                                                
+                                                                            }
                                                                         </div>
                                                                     </td>
                                                                 </tr>

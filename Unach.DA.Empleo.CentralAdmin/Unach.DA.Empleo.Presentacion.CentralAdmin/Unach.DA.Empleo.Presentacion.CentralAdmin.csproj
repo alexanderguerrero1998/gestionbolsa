@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="DevExpress.Reporting.Core" Version="21.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.4" />
@@ -21,6 +22,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Unach.DA.Empleo.Dominio.Core\Unach.DA.Empleo.Dominio.Core.csproj" />
     <ProjectReference Include="..\Unach.DA.Empleo.Persistencia.Core\Unach.DA.Empleo.Persistencia.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Reportes\" />
   </ItemGroup>
 
 </Project>

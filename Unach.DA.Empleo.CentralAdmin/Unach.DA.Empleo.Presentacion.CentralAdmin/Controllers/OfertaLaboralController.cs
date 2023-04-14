@@ -18,7 +18,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         {
             _mapper = mapper;
             entitiesDomain = new EntitiesDomain(options);
-            logger = log.CreateLogger(typeof(EstudianteController));
+            logger = log.CreateLogger(typeof(OfertaLaboralController));
         }
 
 
@@ -26,7 +26,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         {
             List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
             return View(oferta);
+
+
         }
+
 
     }
 }

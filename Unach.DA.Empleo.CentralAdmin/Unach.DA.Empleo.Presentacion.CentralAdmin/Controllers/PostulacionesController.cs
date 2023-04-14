@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Packaging.Signing;
 using System.Collections.Generic;
 using Unach.DA.Empleo.Dominio.Core;
 using Unach.DA.Empleo.Persistencia.Core.Models;
@@ -178,17 +179,23 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
         */
-        
+
         public void RegistrarPostulacion(int idVacante, int idEstudiante)
         {
-            var postulacion = new Postulacion();
-            postulacion.IdEstudiante = idEstudiante;
-            postulacion.IdVacante = idVacante;
-            postulacion.Fecha = DateTime.Now;
-            _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
-            entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
-            entitiesDomain.GuardarTransacciones();
-            TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Postulacion Realizada");
+            var vacante = entitiesDomain.VacanteRepositorio.Buscar(idVacante);
+
+            if (vacante != null && vacante.Plaza > 0)
+            { 
+                    var postulacion = new Postulacion();
+                    postulacion.IdEstudiante = idEstudiante;
+                    postulacion.IdVacante = idVacante;
+                    postulacion.Fecha = DateTime.Now;
+                    _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
+                    entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
+                    entitiesDomain.GuardarTransacciones();
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Postulacion Realizada");
+            }
+            TempData.MostrarAlerta(ViewModel.TipoAlerta.Informacion, "No hay postulaciones! " );
         }
 
 
