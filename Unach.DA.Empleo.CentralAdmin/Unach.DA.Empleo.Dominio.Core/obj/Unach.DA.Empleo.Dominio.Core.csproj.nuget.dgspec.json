@@ -14,11 +14,13 @@
         "outputPath": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Dominio.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages"
         ],
         "configFilePaths": [
           "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,6 +29,7 @@
         "sources": {
           "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 22.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -84,11 +87,13 @@
         "outputPath": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Persistencia.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages"
         ],
         "configFilePaths": [
           "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,6 +102,7 @@
         "sources": {
           "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 22.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

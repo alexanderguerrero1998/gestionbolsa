@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@devexpress/analytics-core": "^22.2.5",
+    "devexpress-reporting": "^22.2.5",
+    "devextreme": "^22.2.5"
+  }
+}
