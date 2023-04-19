@@ -1,0 +1,13 @@
+﻿
+<form role="form" id="form" method="post" asp-action="Mostrar" asp-controller="Reporte">
+    <div class="form-group col-lg-6">
+        <label ></label>
+        <span class="text-danger"></span>
+        <select class="form-control select2">
+            <option value="Id">- Seleccionar una opción -</option>
+            <option value="Id"> Ofertas Laborales</option>
+        </select>
+
+        <partial name="_ModalFooter" model="@(new ModalFooter { SubmitButtonText = "Actualizar", OnlyCancelButton = false, CancelButtonText = "Cancelar" })" />
+    </div>
+</form>

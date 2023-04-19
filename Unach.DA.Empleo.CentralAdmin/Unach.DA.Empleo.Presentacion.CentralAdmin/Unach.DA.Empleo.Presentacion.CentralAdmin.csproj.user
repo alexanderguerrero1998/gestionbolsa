@@ -12,7 +12,10 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Reportes\XtraReport1.cs">
+    <Compile Update="Reportes\ReportOfertas.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reportes\XtraReport2.cs">
       <SubType>XtraReport</SubType>
     </Compile>
   </ItemGroup>
