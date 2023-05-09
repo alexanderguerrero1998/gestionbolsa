@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Unach.DA.Empleo.Dominio.Core;
@@ -21,6 +22,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             entitiesDomain = new EntitiesDomain(options);
             logger = log.CreateLogger(typeof(EstudianteController));
         }
+        [Authorize(Policy = "RequireUserRole")]
         public IActionResult Index()
         {
             int expediente = 0;

@@ -26,41 +26,58 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             builder.Services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
-                options.Password.RequiredLength = 5;
+                /*options.Password.RequiredLength = 5;
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireDigit = false;
+                options.Password.RequireDigit = false;*/
                 options.SignIn.RequireConfirmedAccount = false;
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<IdentityDbContext>();
 
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
 
-            //builder.Services.Configure<IdentityOptions>(options =>
-            //{
-            //    options.SignIn.RequireConfirmedAccount = true;
-            //});
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
 
+                // User settings.
+                options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
 
-            // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount).AddEntityFrameworkStores<SicoaContext>();
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-            // Add services to the container.
-            // var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            // builder.Services.AddDbContext<SicoaContext>(options => options.UseSqlServer(connectionString));
-            //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-            //builder.Services.AddDefauIdentity.ApplicationltIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SicoaContext>();
-            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SicoaContext>();//<-
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
 
-            //  builder.Services.AddControllersWithViews();
-            //  builder.Services.AddRazorPages(); //<-
-            //  builder.Services.Configure<IISServerOptions>(options =>
-            //  {
-            //      options.AllowSynchronousIO = true;
-            //  });
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole",
+                     policy => policy.RequireRole("Administrator"));
 
-            //  builder.Services.AddDevExpressControls();
+                options.AddPolicy("RequireUserRole",
+                     policy => policy.RequireRole("Usuario"));
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -80,7 +97,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
 
             app.UseRouting();
 
-            app.UseAuthentication(); ///<-
+            app.UseAuthentication(); 
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -89,6 +106,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             app.MapRazorPages();
 
             app.Run();
+
 
         }
     }
