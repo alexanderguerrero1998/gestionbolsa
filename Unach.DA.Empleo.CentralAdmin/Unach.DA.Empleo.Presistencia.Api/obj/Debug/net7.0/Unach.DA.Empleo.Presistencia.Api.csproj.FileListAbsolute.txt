@@ -1,0 +1,12 @@
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\bin\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.deps.json
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\bin\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\bin\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.csproj.AssemblyReference.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.AssemblyInfoInputs.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.AssemblyInfo.cs
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.csproj.CoreCompileInputs.cache
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\refint\Unach.DA.Empleo.Presistencia.Api.dll
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\Unach.DA.Empleo.Presistencia.Api.pdb
+C:\Projects\Unach.DA.Empleo.CentralAdmin\Unach.DA.Empleo.Presistencia.Api\obj\Debug\net7.0\ref\Unach.DA.Empleo.Presistencia.Api.dll

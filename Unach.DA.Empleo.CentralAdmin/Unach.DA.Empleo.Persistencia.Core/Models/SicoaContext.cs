@@ -220,10 +220,8 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
             modelBuilder.Entity<RolUsuario>(entity =>
             {
-                entity.HasKey(e => new { e.IdRol, e.IdUsuario });
-
                 entity.HasOne(d => d.IdRolNavigation)
-                    .WithMany(p => p.RolUsuario)
+                    .WithMany()
                     .HasForeignKey(d => d.IdRol)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_RolUsuario_Rol");

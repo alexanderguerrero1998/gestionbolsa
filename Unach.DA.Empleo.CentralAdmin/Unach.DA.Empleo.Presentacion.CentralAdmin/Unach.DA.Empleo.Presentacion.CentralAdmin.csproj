@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Unach.DA.Empleo.Dominio.Core\Unach.DA.Empleo.Dominio.Core.csproj" />
     <ProjectReference Include="..\Unach.DA.Empleo.Persistencia.Core\Unach.DA.Empleo.Persistencia.Core.csproj" />
+    <ProjectReference Include="..\Unach.DA.Empleo.Presistencia.Api\Unach.DA.Empleo.Presistencia.Api.csproj" />
   </ItemGroup>
 
 </Project>

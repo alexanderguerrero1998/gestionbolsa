@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using DevExpress.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Unach.DA.Empleo.Dominio.Core;
+using Unach.DA.Empleo.Persistencia.Core;
 using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
@@ -40,10 +42,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 },
                 x => x.Id > expediente,
                 a => a.OrderBy(y => y.Id));
-            return View(estudiante.ToList());
-        }
 
-        public IActionResult EstudianteEdit(int id, int expediente)
+            return View(estudiante.ToList());
+
+            
+        }
+  
+            public IActionResult EstudianteEdit(int id, int expediente)
         {
             try
             {
@@ -68,11 +73,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             Telefono = m.Telefono,
                             Contrasenia = m.Contrasenia,    
                         }
-
                         ,
                         x => x.Id == id).FirstOrDefault();
-
-
 
                     if (query != null)
                     {

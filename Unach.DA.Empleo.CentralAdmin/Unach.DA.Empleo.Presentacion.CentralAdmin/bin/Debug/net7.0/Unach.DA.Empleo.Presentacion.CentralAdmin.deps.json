@@ -18,7 +18,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.5",
           "Newtonsoft.Json": "13.0.3",
           "Unach.DA.Empleo.Dominio.Core": "1.0.0",
-          "Unach.DA.Empleo.Persistencia.Core": "1.0.0"
+          "Unach.DA.Empleo.Persistencia.Core": "1.0.0",
+          "Unach.DA.Empleo.Presistencia.Api": "1.0.0"
         },
         "runtime": {
           "Unach.DA.Empleo.Presentacion.CentralAdmin.dll": {}
@@ -2678,6 +2679,7 @@
       "Unach.DA.Empleo.Dominio.Core/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.4",
+          "Newtonsoft.Json": "13.0.3",
           "Unach.DA.Empleo.Persistencia.Core": "1.0.0"
         },
         "runtime": {
@@ -2691,6 +2693,14 @@
         },
         "runtime": {
           "Unach.DA.Empleo.Persistencia.Core.dll": {}
+        }
+      },
+      "Unach.DA.Empleo.Presistencia.Api/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "Unach.DA.Empleo.Presistencia.Api.dll": {}
         }
       }
     }
@@ -4156,6 +4166,11 @@
       "sha512": ""
     },
     "Unach.DA.Empleo.Persistencia.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unach.DA.Empleo.Presistencia.Api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

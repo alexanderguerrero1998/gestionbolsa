@@ -24,7 +24,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             logger = log.CreateLogger(typeof(EmpresaController));
         }
 
-        [Authorize(Policy = "RequireAdministratorRole")]
+      //  [Authorize(Policy = "RequireAdministratorRole")]
         public IActionResult Index()
         {
             int expediente = 0;

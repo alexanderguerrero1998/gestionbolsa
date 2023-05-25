@@ -14,7 +14,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public Rol()
         {
             RolTransaccion = new HashSet<RolTransaccion>();
-            RolUsuario = new HashSet<RolUsuario>();
         }
 
         [Key]
@@ -44,7 +43,5 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public virtual Sistema IdSistemaNavigation { get; set; }
         [InverseProperty("IdRolNavigation")]
         public virtual ICollection<RolTransaccion> RolTransaccion { get; set; }
-        [InverseProperty("IdRolNavigation")]
-        public virtual ICollection<RolUsuario> RolUsuario { get; set; }
     }
 }
