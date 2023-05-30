@@ -24,7 +24,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             entitiesDomain = new EntitiesDomain(options);
             logger = log.CreateLogger(typeof(EstudianteController));
         }
-        [Authorize(Policy = "RequireUserRole")]
+        //[Authorize(Policy = "RequireUserRole")]
         public IActionResult Index()
         {
             int expediente = 0;
@@ -47,7 +47,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
             
         }
-  
             public IActionResult EstudianteEdit(int id, int expediente)
         {
             try
@@ -93,8 +92,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 return PartialView("~/Views/Estudiante/EstudianteEdit.cshtml", new EstudianteViewModel());
             }
         }
-
-
 
         [HttpPost]
         public IActionResult EstudianteEdit(EstudianteViewModel item)

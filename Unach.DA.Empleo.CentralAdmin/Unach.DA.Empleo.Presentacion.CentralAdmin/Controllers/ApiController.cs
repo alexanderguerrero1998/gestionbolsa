@@ -16,7 +16,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
              using (HttpClient client = new HttpClient())
             {
                 ClienteApi clienteapi = new ClienteApi("");
-                var response = clienteapi.Get<Api>("https://dev-bb4zah0ivws1wedd.us.auth0.com/api/v2/client-grants?per_page=2&page=1&include_totals=true");
+                var email = "edisson.guerrero@unach.edu.ec";
+                var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasica/"+email);
 
                 var viewModel = new ApiViewModel
                 {

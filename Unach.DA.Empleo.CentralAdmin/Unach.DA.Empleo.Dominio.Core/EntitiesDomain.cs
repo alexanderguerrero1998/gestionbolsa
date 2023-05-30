@@ -190,6 +190,94 @@ namespace Unach.DA.Empleo.Dominio.Core
         }
 
 
+        private Repositorio<Capacitacion> capacitacionRepositorio;
+        public Repositorio<Capacitacion> CapacitacionRepositorio
+        {
+            get
+            {
+                if (capacitacionRepositorio == null)
+                {
+                    capacitacionRepositorio = new Repositorio<Capacitacion>(contexto);
+                }
+                return capacitacionRepositorio;
+            }
+        }
+
+        private Repositorio<TipoCapacitacion> tipoCapacitacionRepositorio;
+        public Repositorio<TipoCapacitacion> TipoCapacitacionRepositorio
+        {
+            get
+            {
+                if (tipoCapacitacionRepositorio == null)
+                {
+                    tipoCapacitacionRepositorio = new Repositorio<TipoCapacitacion>(contexto);
+                }
+                return tipoCapacitacionRepositorio;
+            }
+        }
+
+
+        private Repositorio<TipoLogro> tipoLogroRepositorio;
+        public Repositorio<TipoLogro> TipoLogroRepositorio
+        {
+            get
+            {
+                if (tipoLogroRepositorio == null)
+                {
+                    tipoLogroRepositorio = new Repositorio<TipoLogro>(contexto);
+                }
+                return tipoLogroRepositorio;
+            }
+        }
+
+
+        private Repositorio<Logro> logroRepositorio;
+        public Repositorio<Logro> LogroRepositorio
+        {
+            get
+            {
+                if (tipoLogroRepositorio == null)
+                {
+                    logroRepositorio = new Repositorio<Logro>(contexto);
+                }
+                return logroRepositorio;
+            }
+        }
+
+
+
+        private Repositorio<FormacionAcademica> formacionAcademicaRepositorio;
+        public Repositorio<FormacionAcademica> FormacionAcademicaRepositorio
+        {
+            get
+            {
+                if (formacionAcademicaRepositorio == null)
+                {
+                    formacionAcademicaRepositorio = new Repositorio<FormacionAcademica>(contexto);
+                }
+                return formacionAcademicaRepositorio;
+            }
+        }
+
+
+        private Repositorio<TipoFormacionAcademica> tipoFormacionAcademicaRepositorio;
+        public Repositorio<TipoFormacionAcademica> TipoFormacionAcademicaRepositorio
+        {
+            get
+            {
+                if (tipoFormacionAcademicaRepositorio == null)
+                {
+                    tipoFormacionAcademicaRepositorio = new Repositorio<TipoFormacionAcademica>(contexto);
+                }
+                return tipoFormacionAcademicaRepositorio;
+            }
+        }
+
+
+
+
+
+
 
 
 

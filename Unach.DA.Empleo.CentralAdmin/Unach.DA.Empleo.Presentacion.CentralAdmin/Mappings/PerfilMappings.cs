@@ -30,6 +30,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<AuditoriaViewModel, Empresa>();
             CreateMap<AuditoriaViewModel, ResponsableEmpresa>();
             CreateMap<AuditoriaViewModel, Vacante>();
+            CreateMap<AuditoriaViewModel, Logro>();
+            CreateMap<AuditoriaViewModel, FormacionAcademica>();
+            CreateMap<AuditoriaViewModel, Capacitacion>();
 
             //Tablas del proyecto
             CreateMap<Postulacion, PostulacionesViewModel>();
@@ -44,6 +47,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<ResponsableEmpresaViewModel, ResponsableEmpresa>();
             CreateMap<Vacante, VacanteViewModel>();
             CreateMap<VacanteViewModel,Vacante>();
+            CreateMap<Capacitacion, CapacitacionViewModel>();
+            CreateMap<CapacitacionViewModel, Capacitacion>();
+            CreateMap<Logro, LogroViewModel>();
+            CreateMap<LogroViewModel, Logro>();
+            CreateMap<FormacionAcademica, FormacionAcademicaViewModel>();
+            CreateMap<FormacionAcademicaViewModel, FormacionAcademica>();
 
             /*
 
