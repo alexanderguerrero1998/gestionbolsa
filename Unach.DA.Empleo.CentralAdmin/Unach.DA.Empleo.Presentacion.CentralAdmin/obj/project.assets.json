@@ -4096,7 +4096,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.0",
           "Newtonsoft.Json": "13.0.3",
           "Unach.DA.Empleo.Persistencia.Core": "1.0.0"
         },
@@ -4119,19 +4118,6 @@
         },
         "runtime": {
           "bin/placeholder/Unach.DA.Empleo.Persistencia.Core.dll": {}
-        }
-      },
-      "Unach.DA.Empleo.Presistencia.Api/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3"
-        },
-        "compile": {
-          "bin/placeholder/Unach.DA.Empleo.Presistencia.Api.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Unach.DA.Empleo.Presistencia.Api.dll": {}
         }
       }
     }
@@ -11208,18 +11194,13 @@
     },
     "Unach.DA.Empleo.Dominio.Core/1.0.0": {
       "type": "project",
-      "path": "../Unach.DA.Empleo.Dominio.Core/Unach.DA.Empleo.Dominio.Core.csproj",
-      "msbuildProject": "../Unach.DA.Empleo.Dominio.Core/Unach.DA.Empleo.Dominio.Core.csproj"
+      "path": "../Unach.DA.Empleo.Presistencia.Api/Unach.DA.Empleo.Presistencia.Api.csproj",
+      "msbuildProject": "../Unach.DA.Empleo.Presistencia.Api/Unach.DA.Empleo.Presistencia.Api.csproj"
     },
     "Unach.DA.Empleo.Persistencia.Core/1.0.0": {
       "type": "project",
       "path": "../Unach.DA.Empleo.Persistencia.Core/Unach.DA.Empleo.Persistencia.Core.csproj",
       "msbuildProject": "../Unach.DA.Empleo.Persistencia.Core/Unach.DA.Empleo.Persistencia.Core.csproj"
-    },
-    "Unach.DA.Empleo.Presistencia.Api/1.0.0": {
-      "type": "project",
-      "path": "../Unach.DA.Empleo.Presistencia.Api/Unach.DA.Empleo.Presistencia.Api.csproj",
-      "msbuildProject": "../Unach.DA.Empleo.Presistencia.Api/Unach.DA.Empleo.Presistencia.Api.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11234,8 +11215,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.6",
       "Newtonsoft.Json >= 13.0.3",
       "Unach.DA.Empleo.Dominio.Core >= 1.0.0",
-      "Unach.DA.Empleo.Persistencia.Core >= 1.0.0",
-      "Unach.DA.Empleo.Presistencia.Api >= 1.0.0"
+      "Unach.DA.Empleo.Persistencia.Core >= 1.0.0"
     ]
   },
   "packageFolders": {

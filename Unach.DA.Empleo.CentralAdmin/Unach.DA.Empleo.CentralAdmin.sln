@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unach.DA.Empleo.Dominio.Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unach.DA.Empleo.Presentacion.CentralAdmin", "Unach.DA.Empleo.Presentacion.CentralAdmin\Unach.DA.Empleo.Presentacion.CentralAdmin.csproj", "{6734EA52-BB27-4E9E-AF9F-C30438FB6AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unach.DA.Empleo.Presistencia.Api", "Unach.DA.Empleo.Presistencia.Api\Unach.DA.Empleo.Presistencia.Api.csproj", "{E99EFAFA-D72F-40EB-8DD5-86ADAAF3ECBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unach.DA.Empleo.Presistencia.Api", "Unach.DA.Empleo.Presistencia.Api\Unach.DA.Empleo.Presistencia.Api.csproj", "{E99EFAFA-D72F-40EB-8DD5-86ADAAF3ECBC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25BA1BB7-34EB-4929-9E46-98C9D1FF8EB2} = {25BA1BB7-34EB-4929-9E46-98C9D1FF8EB2}
+		{4A9C1969-A5BF-42BB-B85F-F901FD753630} = {4A9C1969-A5BF-42BB-B85F-F901FD753630}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
