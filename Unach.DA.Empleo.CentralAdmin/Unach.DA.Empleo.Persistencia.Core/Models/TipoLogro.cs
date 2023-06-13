@@ -10,18 +10,10 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 {
     public partial class TipoLogro
     {
-        public TipoLogro()
-        {
-            Logro = new HashSet<Logro>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
         public string Nombre { get; set; }
-
-        [InverseProperty("IdLogroNavigation")]
-        public virtual ICollection<Logro> Logro { get; set; }
     }
 }

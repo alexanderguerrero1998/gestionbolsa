@@ -10,18 +10,10 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 {
     public partial class TipoExperiencialaboral
     {
-        public TipoExperiencialaboral()
-        {
-            ExperienciaLaboral = new HashSet<ExperienciaLaboral>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
         public string Nombre { get; set; }
-
-        [InverseProperty("IdExperienciaLaboralNavigation")]
-        public virtual ICollection<ExperienciaLaboral> ExperienciaLaboral { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using DevExpress.XtraCharts;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -13,30 +14,53 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Unach.DA.Empleo.Dominio.Core;
+using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
+using Unach.DA.Empleo.Presistencia.Api;
+using AutoMapper;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+       
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        
+        // Yo inserte esto
+        EntitiesDomain entitiesDomain;
+        private ILogger logger;
+        private readonly IMapper _mapper;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+           
+            // Yo inserte esto
+            DbContextOptions<SicoaContext> options, IMapper mapper, ILoggerFactory log
+
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            // Yo inserte esto
+            _mapper = mapper;
+            entitiesDomain = new EntitiesDomain(options);
         }
 
         [BindProperty]
@@ -52,6 +76,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [Display(Name = "Cedula")]
+            public string  CI { get; set; }
+
+            [Required]
+            [Display(Name = "LinKedin")]
+            public string Linkedin { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -77,20 +109,37 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var email = Input.Email;
+                var ci = Input.CI;
 
                 // Verificar si el usuario ya existe en la API
-                bool userExists = await UserExistsInApi(email);
+                bool userExists = await UserExistsInApi(ci);
 
                 if (userExists)
                 {
+
                     // Crear el nuevo usuario
-                    var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                    var user = new IdentityUser { UserName = Input.CI, Email = Input.Email };
                     var result = await _userManager.CreateAsync(user, Input.Password);
+                    
                     if (result.Succeeded)
                     {
-                        _logger.LogInformation("User created a new account with password.");
+                        // Llamamos a la API para obtener  los valores y asignalos en tabla ESTUDIANTE
+                        ClienteApi clienteapi = new ClienteApi("");
+                        var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/"+ci);
+                        Estudiante estudianteNuevo = new Estudiante();
+                        estudianteNuevo.Id = user.Id;
+                        estudianteNuevo.IdEstudiante = response.EstudianteID;
+                        estudianteNuevo.LinkLinkeding = Input.Linkedin;
 
+                        // Agregamos datos de adutoria
+                        var estudiante = _mapper.Map<Estudiante>(estudianteNuevo);
+                        _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
+                        entitiesDomain.EstudianteRepositorio.Insertar(estudiante);
+                        entitiesDomain.GuardarTransacciones();
+
+                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
+
+                                           _logger.LogInformation("User created a new account with password.");
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                         var callbackUrl = Url.Page(
@@ -124,15 +173,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private async Task<bool> UserExistsInApi(string email)
+        private async Task<bool> UserExistsInApi(string ci)
         {
             ApiController apiController = new ApiController();
-            var a = apiController.Verificar(email);
-            if (a)
-                 return true;
-            else
-                return false;
+            var a = apiController.Verificar(ci);
+            if (a) { return true; }
+            else { return false; }
 
         }
+
     }
 }

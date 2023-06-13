@@ -26,12 +26,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             builder.Services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
-                /*options.Password.RequiredLength = 5;
+                options.Password.RequiredLength = 5;
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireDigit = false;*/
+                options.Password.RequireDigit = false;
                 options.SignIn.RequireConfirmedAccount = false;
             })
             .AddRoles<IdentityRole>()
@@ -99,6 +99,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
 
             app.UseAuthentication(); 
             app.UseAuthorization();
+
+            app.MapRazorPages();    
 
             app.MapControllerRoute(
                 name: "default",

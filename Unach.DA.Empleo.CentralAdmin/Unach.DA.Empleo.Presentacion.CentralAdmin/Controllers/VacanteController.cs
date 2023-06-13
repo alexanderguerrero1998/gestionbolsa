@@ -122,7 +122,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
 
-        /*
+        
         public IActionResult VacanteDelete(int id)
         {
             try
@@ -157,7 +157,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
 
-        */
+        
 
 
 

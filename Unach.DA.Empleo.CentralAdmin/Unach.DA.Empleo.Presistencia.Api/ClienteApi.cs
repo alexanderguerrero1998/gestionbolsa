@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Unach.DA.Empleo.Presistencia.Api
 {
@@ -72,7 +73,10 @@ namespace Unach.DA.Empleo.Presistencia.Api
                         case HttpStatusCode.OK:
                             {
                                 var data = response.Content.ReadAsStringAsync().Result;
-                                result = deserializar(data);
+                                
+                                // Convertimos un vector de objetos JSON a un objeto JSON 
+                                var otra = ConvertArrayToObject(data);
+                                result = deserializar(otra);
                             }
                             break;
                         case HttpStatusCode.Unauthorized:
@@ -94,6 +98,30 @@ namespace Unach.DA.Empleo.Presistencia.Api
                     }
                 }
             }
+            return result;
+        }
+
+        public string ConvertArrayToObject(string jsonArray)
+        {
+            // Deserializar el vector de objetos JSON en una lista de objetos
+            List<object> objectList = JsonConvert.DeserializeObject<List<object>>(jsonArray);
+
+            // Crear un nuevo objeto JObject para combinar los objetos
+            JObject combinedObject = new JObject();
+
+            // Combinar los objetos en un solo objeto
+            foreach (var obj in objectList)
+            {
+                var properties = JObject.FromObject(obj);
+                combinedObject.Merge(properties, new JsonMergeSettings
+                {
+                    MergeArrayHandling = MergeArrayHandling.Concat
+                });
+            }
+
+            // Serializar el objeto combinado en formato JSON
+            string result = combinedObject.ToString(); 
+
             return result;
         }
 

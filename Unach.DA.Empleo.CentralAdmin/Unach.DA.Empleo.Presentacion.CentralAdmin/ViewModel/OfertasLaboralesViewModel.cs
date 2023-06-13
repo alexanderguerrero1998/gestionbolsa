@@ -11,5 +11,6 @@
 
         public string Modalidad { get; set; }
         public int IdVacante { get; set; }
+
     }
 }

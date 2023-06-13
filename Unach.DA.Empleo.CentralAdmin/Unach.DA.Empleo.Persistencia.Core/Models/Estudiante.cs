@@ -10,33 +10,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 {
     public partial class Estudiante
     {
-        public Estudiante()
-        {
-            Capacitacion = new HashSet<Capacitacion>();
-            EstudianteIdioma = new HashSet<EstudianteIdioma>();
-            ExperienciaLaboral = new HashSet<ExperienciaLaboral>();
-            FormacionAcademica = new HashSet<FormacionAcademica>();
-            Logro = new HashSet<Logro>();
-            Postulacion = new HashSet<Postulacion>();
-        }
-
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Nombre { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Apellidos { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Email { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Telefono { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Contrasenia { get; set; }
+        public int IdEstudiante { get; set; }
         [Required]
         [StringLength(100)]
         public string IdUsuarioAudd { get; set; }
@@ -50,18 +24,8 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
-
-        [InverseProperty("IdEstudianteNavigation")]
-        public virtual ICollection<Capacitacion> Capacitacion { get; set; }
-        [InverseProperty("IdEstudianteNavigation")]
-        public virtual ICollection<EstudianteIdioma> EstudianteIdioma { get; set; }
-        [InverseProperty("IdEstudianteNavigation")]
-        public virtual ICollection<ExperienciaLaboral> ExperienciaLaboral { get; set; }
-        [InverseProperty("IdEstudianteNavigation")]
-        public virtual ICollection<FormacionAcademica> FormacionAcademica { get; set; }
-        [InverseProperty("IdEstudianteNavigation")]
-        public virtual ICollection<Logro> Logro { get; set; }
-        [InverseProperty("IdEstudianteNavigation")]
-        public virtual ICollection<Postulacion> Postulacion { get; set; }
+        [Key]
+        public string Id { get; set; }
+        public string LinkLinkeding { get; set; }
     }
 }

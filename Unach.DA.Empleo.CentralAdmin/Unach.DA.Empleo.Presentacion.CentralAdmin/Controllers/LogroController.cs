@@ -30,7 +30,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 m => new LogroViewModel
                 {
                     Id = m.Id,
-                    NombreLogro = m.IdLogroNavigation.Nombre,
+                    
                     Descripcion = m.Descripcion,
                 
                     Institucion = m.Institucion,    

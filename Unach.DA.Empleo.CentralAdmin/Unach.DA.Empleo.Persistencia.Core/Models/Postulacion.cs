@@ -35,12 +35,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
 
-        [ForeignKey("IdEstudiante")]
-        [InverseProperty("Postulacion")]
-        public virtual Estudiante IdEstudianteNavigation { get; set; }
-        [ForeignKey("IdVacante")]
-        [InverseProperty("Postulacion")]
-        public virtual Vacante IdVacanteNavigation { get; set; }
         [InverseProperty("IdPostulacionNavigation")]
         public virtual ICollection<EstadoPostulacion> EstadoPostulacion { get; set; }
     }

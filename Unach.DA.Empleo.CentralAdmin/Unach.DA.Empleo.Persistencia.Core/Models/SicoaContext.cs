@@ -48,21 +48,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Capacitacion>(entity =>
-            {
-                entity.HasOne(d => d.IdCapacitacionNavigation)
-                    .WithMany(p => p.Capacitacion)
-                    .HasForeignKey(d => d.IdCapacitacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Capacitac__IdCap__160F4887");
-
-                entity.HasOne(d => d.IdEstudianteNavigation)
-                    .WithMany(p => p.Capacitacion)
-                    .HasForeignKey(d => d.IdEstudiante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Capacitac__IdEst__17036CC0");
-            });
-
             modelBuilder.Entity<EstadoPostulacion>(entity =>
             {
                 entity.HasOne(d => d.IdEstadoPostulacionNavigation)
@@ -93,66 +78,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasConstraintName("FK__EstadoVac__IdVac__2180FB33");
             });
 
-            modelBuilder.Entity<EstudianteIdioma>(entity =>
-            {
-                entity.HasOne(d => d.IdEstudianteNavigation)
-                    .WithMany(p => p.EstudianteIdioma)
-                    .HasForeignKey(d => d.IdEstudiante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Estudiant__IdEst__06CD04F7");
-
-                entity.HasOne(d => d.IdIdiomaNavigation)
-                    .WithMany(p => p.EstudianteIdioma)
-                    .HasForeignKey(d => d.IdIdioma)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Estudiant__IdIdi__07C12930");
-            });
-
-            modelBuilder.Entity<ExperienciaLaboral>(entity =>
-            {
-                entity.HasOne(d => d.IdEstudianteNavigation)
-                    .WithMany(p => p.ExperienciaLaboral)
-                    .HasForeignKey(d => d.IdEstudiante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Experienc__IdEst__1332DBDC");
-
-                entity.HasOne(d => d.IdExperienciaLaboralNavigation)
-                    .WithMany(p => p.ExperienciaLaboral)
-                    .HasForeignKey(d => d.IdExperienciaLaboral)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Experienc__IdExp__123EB7A3");
-            });
-
-            modelBuilder.Entity<FormacionAcademica>(entity =>
-            {
-                entity.HasOne(d => d.IdEstudianteNavigation)
-                    .WithMany(p => p.FormacionAcademica)
-                    .HasForeignKey(d => d.IdEstudiante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Formacion__IdEst__0F624AF8");
-
-                entity.HasOne(d => d.IdFormacionAcademicaNavigation)
-                    .WithMany(p => p.FormacionAcademica)
-                    .HasForeignKey(d => d.IdFormacionAcademica)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Formacion__Certi__0E6E26BF");
-            });
-
-            modelBuilder.Entity<Logro>(entity =>
-            {
-                entity.HasOne(d => d.IdEstudianteNavigation)
-                    .WithMany(p => p.Logro)
-                    .HasForeignKey(d => d.IdEstudiante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Logro__IdEstudia__0B91BA14");
-
-                entity.HasOne(d => d.IdLogroNavigation)
-                    .WithMany(p => p.Logro)
-                    .HasForeignKey(d => d.IdLogro)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Logro__IdLogro__0A9D95DB");
-            });
-
             modelBuilder.Entity<Modulo>(entity =>
             {
                 entity.HasOne(d => d.IdSistemaNavigation)
@@ -160,21 +85,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasForeignKey(d => d.IdSistema)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Modulo_Sistema");
-            });
-
-            modelBuilder.Entity<Postulacion>(entity =>
-            {
-                entity.HasOne(d => d.IdEstudianteNavigation)
-                    .WithMany(p => p.Postulacion)
-                    .HasForeignKey(d => d.IdEstudiante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Postulaci__IdEst__02FC7413");
-
-                entity.HasOne(d => d.IdVacanteNavigation)
-                    .WithMany(p => p.Postulacion)
-                    .HasForeignKey(d => d.IdVacante)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Postulaci__IdVac__03F0984C");
             });
 
             modelBuilder.Entity<ResponsableEmpresa>(entity =>
@@ -216,15 +126,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasForeignKey(d => d.IdTransaccion)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_RolTransaccion_Transaccion");
-            });
-
-            modelBuilder.Entity<RolUsuario>(entity =>
-            {
-                entity.HasOne(d => d.IdRolNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdRol)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_RolUsuario_Rol");
             });
 
             modelBuilder.Entity<Transaccion>(entity =>

@@ -31,8 +31,5 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [Required]
         [StringLength(250)]
         public string SistemaAudd { get; set; }
-
-        [ForeignKey("IdRol")]
-        public virtual Rol IdRolNavigation { get; set; }
     }
 }

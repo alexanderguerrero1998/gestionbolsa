@@ -88,9 +88,9 @@
                                                                         <div class="btn-group">
                                                                             <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
                                                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                                                <li><a asp-action="EstudianteEdit" asp-controller="Estudiante" asp-route-id="@item.Id" asp-route-idServidor="1" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
+                                                                                <li><a asp-action="EstudianteEdit" asp-controller="Estudiante" asp-route-id="@item.IdEstudiante" asp-route-idServidor="1" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
                                                                                 <li class="divider"></li>
-                                                                                <li><a asp-action="EstudianteDelete" asp-controller="Estudiante" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-trash-o text-danger  icon-space"></i>Eliminar</a></li>
+                                                                                <li><a asp-action="EstudianteDelete" asp-controller="Estudiante" asp-route-id="@item.IdEstudiante" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-trash-o text-danger  icon-space"></i>Eliminar</a></li>
                                                                             </ul>
                                                                         </div>
                                                                     </td>

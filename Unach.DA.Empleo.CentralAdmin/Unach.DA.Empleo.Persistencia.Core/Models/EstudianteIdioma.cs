@@ -32,12 +32,5 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
-
-        [ForeignKey("IdEstudiante")]
-        [InverseProperty("EstudianteIdioma")]
-        public virtual Estudiante IdEstudianteNavigation { get; set; }
-        [ForeignKey("IdIdioma")]
-        [InverseProperty("EstudianteIdioma")]
-        public virtual Idioma IdIdiomaNavigation { get; set; }
     }
 }

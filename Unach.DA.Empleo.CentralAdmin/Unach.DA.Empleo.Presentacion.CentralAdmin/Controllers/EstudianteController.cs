@@ -33,30 +33,27 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             List<EstudianteViewModel> estudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodosEnOtraVista(
                 m => new EstudianteViewModel
                 {
-                    Id = m.Id,
-                    Nombre = m.Nombre,
-                    Apellidos = m.Apellidos,
-                    Email = m.Email,
-                    Telefono = m.Telefono,
+                    IdEstudiante = m.IdEstudiante,
+    
 
                 },
-                x => x.Id > expediente,
+                x => x.IdEstudiante > expediente,
                 a => a.OrderBy(y => y.Id));
 
             return View(estudiante.ToList());
 
             
         }
-            public IActionResult EstudianteEdit(int id, int expediente)
+        public IActionResult EstudianteEdit(int id, int expediente)
         {
             try
             {
                 if (id == 0)
                 {
                     EstudianteViewModel estudiante = new EstudianteViewModel();
-                    estudiante.Id = expediente;
+                    estudiante.IdEstudiante = expediente;
                     // postulacion.IdEstudiante = entitiesDomain.PostulacionRepositorio.ObtenerTodos().OrderBy(x => x.Nombre).ToList();
-                    estudiante.Id = entitiesDomain.EstudianteRepositorio.ObtenerTodos().Count();
+                    estudiante.IdEstudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodos().Count();
                     return PartialView("~/Views/Estudiante/_EstudianteEdit.cshtml", estudiante);
                 }
                 else
@@ -65,15 +62,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
                         m => new EstudianteViewModel
                         {
-                            Id = m.Id,
-                            Nombre = m.Nombre,
-                            Apellidos= m.Apellidos, 
-                            Email = m.Email,    
-                            Telefono = m.Telefono,
-                            Contrasenia = m.Contrasenia,    
+                            IdEstudiante = m.IdEstudiante,
+                     
                         }
                         ,
-                        x => x.Id == id).FirstOrDefault();
+                        x => x.IdEstudiante == id).FirstOrDefault();
 
                     if (query != null)
                     {
@@ -102,7 +95,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 {
                     // item.Id = item.Id == -1 ? null : item.Id;
 
-                    if (item.Id == 0)
+                    if (item.IdEstudiante == 0)
                 {
                     var estudiante = _mapper.Map<Estudiante>(item);
                     _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
@@ -134,7 +127,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         {
             try
             {
-                Estudiante item = entitiesDomain.EstudianteRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
+                Estudiante item = entitiesDomain.EstudianteRepositorio.BuscarPor(x => x.IdEstudiante == id).FirstOrDefault();
                 return PartialView("~/Views/Estudiante/_EstudianteDelete.cshtml", item);
             }
             catch (Exception ex)
@@ -166,10 +159,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             }
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
-
-
-
-
 
     }
 }
