@@ -1,10 +1,15 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Data;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
+using Microsoft.Extensions.DependencyInjection;
+
+
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin
 {
@@ -77,6 +82,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
                 options.AddPolicy("RequireUserRole",
                      policy => policy.RequireRole("Usuario"));
             });
+
+            // Estos son para el Email
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
             var app = builder.Build();
 

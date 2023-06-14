@@ -11,6 +11,12 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using DevExpress.XtraPrinting.Export;
+// Importa el espacio de nombres necesario
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 {
@@ -20,14 +26,23 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IEmailSender _emailSender;
+        private readonly EmailSettings _emailSettings;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, 
+        public LoginModel(
+            SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            IEmailSender emailSender, 
+            IOptions<EmailSettings> emailSettingsOptions
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _emailSender = emailSender;
+            _emailSettings = emailSettingsOptions.Value;
+            
         }
 
         [BindProperty]
@@ -43,9 +58,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-           // [EmailAddress]
             public string CI { get; set; }
-
+        
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
@@ -85,6 +99,29 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    // Enviar correo electrónico de verificación de cuenta
+                    var user = await _userManager.FindByNameAsync(Input.CI);
+                    if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
+                    {
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var callbackUrl = Url.Page(
+                            "/Account/ConfirmEmail",
+                            pageHandler: null,
+                            values: new { userId = user.Id, code = code },
+                            protocol: Request.Scheme);
+
+                        await _emailSender.SendEmailAsync(
+                            user.Email,
+                            "Verifique su dirección de correo electrónico",
+                            $"Por favor, confirme su cuenta haciendo clic <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>aquí</a>."
+                        
+                            );
+
+                        // Mostrar mensaje de éxito o instrucciones al usuario
+                        // (por ejemplo, "Se ha enviado un correo electrónico de verificación a su dirección de correo electrónico.")
+                    }
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
