@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Net.Mail;
 using Unach.DA.Empleo.Dominio.Core;
 using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
@@ -64,8 +67,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             Nombre = m.Nombre
                         },
                         x => x.Id == id).FirstOrDefault();
-
-
 
                     if (query != null)
                     {

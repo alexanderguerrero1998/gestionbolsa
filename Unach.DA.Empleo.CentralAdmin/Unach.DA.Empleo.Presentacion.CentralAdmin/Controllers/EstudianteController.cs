@@ -3,11 +3,16 @@ using DevExpress.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
 using Unach.DA.Empleo.Dominio.Core;
 using Unach.DA.Empleo.Persistencia.Core;
 using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
+using DevExpress.Data.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 {
@@ -18,11 +23,17 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         private ILogger logger;
         private readonly IMapper _mapper;
 
-        public EstudianteController(DbContextOptions<SicoaContext> options, IMapper mapper, ILoggerFactory log)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IConfiguration _configuration;
+
+        public EstudianteController(DbContextOptions<SicoaContext> options, IMapper mapper, ILoggerFactory log, UserManager<IdentityUser> userManager, IConfiguration configuration)
         {
             _mapper = mapper;
             entitiesDomain = new EntitiesDomain(options);
             logger = log.CreateLogger(typeof(EstudianteController));
+
+            _userManager = userManager;
+            _configuration = configuration;
         }
         //[Authorize(Policy = "RequireUserRole")]
         public IActionResult Index()
@@ -34,7 +45,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 m => new EstudianteViewModel
                 {
                     IdEstudiante = m.IdEstudiante,
-    
+
 
                 },
                 x => x.IdEstudiante > expediente,
@@ -42,7 +53,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
             return View(estudiante.ToList());
 
-            
+
         }
         public IActionResult EstudianteEdit(int id, int expediente)
         {
@@ -63,7 +74,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                         m => new EstudianteViewModel
                         {
                             IdEstudiante = m.IdEstudiante,
-                     
+
                         }
                         ,
                         x => x.IdEstudiante == id).FirstOrDefault();
@@ -85,7 +96,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 return PartialView("~/Views/Estudiante/EstudianteEdit.cshtml", new EstudianteViewModel());
             }
         }
-
         [HttpPost]
         public IActionResult EstudianteEdit(EstudianteViewModel item)
         {
@@ -96,22 +106,22 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     // item.Id = item.Id == -1 ? null : item.Id;
 
                     if (item.IdEstudiante == 0)
-                {
-                    var estudiante = _mapper.Map<Estudiante>(item);
-                    _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
-                    entitiesDomain.EstudianteRepositorio.Insertar(estudiante);
-                    entitiesDomain.GuardarTransacciones();
+                    {
+                        var estudiante = _mapper.Map<Estudiante>(item);
+                        _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
+                        entitiesDomain.EstudianteRepositorio.Insertar(estudiante);
+                        entitiesDomain.GuardarTransacciones();
 
-                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
-                }
-                else
-                {
-                    var estudiante = _mapper.Map<Estudiante>(item);
-                    _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
-                    entitiesDomain.EstudianteRepositorio.Actualizar(estudiante);
-                    entitiesDomain.GuardarTransacciones();
-                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
-                }
+                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
+                    }
+                    else
+                    {
+                        var estudiante = _mapper.Map<Estudiante>(item);
+                        _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
+                        entitiesDomain.EstudianteRepositorio.Actualizar(estudiante);
+                        entitiesDomain.GuardarTransacciones();
+                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
+                    }
                 }
             }
             catch (Exception ex)
@@ -121,8 +131,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             }
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
-
-
         public IActionResult EstudianteDelete(int id)
         {
             try
@@ -137,9 +145,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             }
             return View();
         }
-
-
-
         [HttpPost]
         public IActionResult EstudianteDelete(Estudiante item)
         {
@@ -160,5 +165,73 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
 
+        public void Enviar()
+        {
+
+            //EmailSettings _emailSettings =  new EmailSettings();
+            //// Crear mensaje de correo electrónico
+            //MailMessage mensaje = new MailMessage();
+            //mensaje.Subject = "Asunto del correo";
+            //mensaje.Body = "Contenido del correo";
+            //mensaje.From = new MailAddress("edisson.guerrero@unach.edu.ec");
+
+            //try { 
+            //// Configurar detalles del servidor SMTP
+            //SmtpClient clienteSmtp = new SmtpClient();
+            //clienteSmtp.Host = _emailSettings.SmtpServer;
+            //clienteSmtp.Port = _emailSettings.SmtpPort;
+            //clienteSmtp.EnableSsl = _emailSettings.UseSsl;
+            //clienteSmtp.Credentials = new NetworkCredential(_emailSettings.Username, _emailSettings.Password);
+            //// Enviar correo electrónico a cada dirección de correo
+            ////foreach (string direccionCorreo in direccionesCorreo)
+            ////{
+            //    mensaje.To.Clear(); // Asegurarse de que los destinatarios anteriores se borren
+            //    mensaje.To.Add("edisson.guerrero@unach.edu.ec");
+
+            //    clienteSmtp.Send(mensaje);
+            //    //}
+            //}
+            //catch (Exception e)
+            //{
+            //    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "No se pudo enviar el mensaje:"+e.GetType());
+            //}
+
+
+            var smtpServer = _configuration["EmailSettings:SmtpServer"];
+            var smtpPort = int.Parse(_configuration["EmailSettings:SmtpPort"]);
+            var useSsl = bool.Parse(_configuration["EmailSettings:UseSsl"]);
+            var username = _configuration["EmailSettings:Username"];
+            var password = _configuration["EmailSettings:Password"];
+
+            // Obtén los usuarios seleccionados y las direcciones de correo electrónico como se mostró anteriormente
+
+            // Obtén los usuarios seleccionados
+            var usuariosSeleccionados = _userManager.Users.ToList();
+            // Obtén las direcciones de correo electrónico de los usuarios seleccionados
+            var direccionesCorreo = usuariosSeleccionados.Select(u => u.Email).ToList();
+
+            // Configura el cliente SMTP para el envío de correos electrónicos
+            var smtpClient = new SmtpClient(smtpServer, smtpPort)
+            {
+                UseDefaultCredentials = false,
+                EnableSsl = useSsl,
+                Credentials = new System.Net.NetworkCredential(username, password)
+            };
+
+            // Envía los correos electrónicos a cada dirección de correo electrónico
+            foreach (var direccionCorreo in direccionesCorreo)
+            {
+                var mail = new MailMessage(username, direccionCorreo)
+                {
+                    Subject = "Bolsa de Empleo UNACH",
+                    Body = "Usted ha sido acreditado para una oferta laboral en HARVAD!"
+                };
+
+                smtpClient.Send(mail);
+            }
+
+
+
+        }
     }
 }
