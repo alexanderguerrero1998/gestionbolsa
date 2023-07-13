@@ -27,5 +27,8 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [Key]
         public string Id { get; set; }
         public string LinkLinkeding { get; set; }
+
+        [InverseProperty("IdNavigation")]
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

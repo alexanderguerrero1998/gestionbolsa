@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DevExpress.Web;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
+using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 {
@@ -18,10 +23,30 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            List<EnviarCorreo> usuarios = new List<EnviarCorreo>();
+
+            // Obtener el contexto de la base de datos
+            using (var dbContext = new SicoaContext())
+            {
+                // Obtener todos los usuarios de la tabla AspNetUsers
+                var users = _userManager.Users.ToList();
+
+                // Mapear los usuarios a UserModel y agregarlos a la lista
+                foreach (var user in users)
+                {
+                    usuarios.Add(new EnviarCorreo
+                    {
+                    
+                        CorreoElectronico = user.Email
+                        // Puedes mapear otras propiedades si las necesitas
+                    });
+                }
+            }
+
+            return View(usuarios);
         }
 
-        public void Enviar()
+        public IActionResult Enviar(string[] destinatarios)
         {
 
             var smtpServer = _configuration["EmailSettings:SmtpServer"];
@@ -48,7 +73,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 };
 
                 // Envía los correos electrónicos a cada dirección de correo electrónico
-                foreach (var direccionCorreo in direccionesCorreo)
+                foreach (var direccionCorreo in destinatarios)
                 {
                     var mail = new MailMessage(username, direccionCorreo)
                     {
@@ -57,17 +82,18 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     };
 
                     smtpClient.Send(mail);
+
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información Enviada");
                 }
+               
             } catch (Exception e)
             {
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "No se pudo enviar el mensaje:" + e.GetType());
             }
-     
+
+            return RedirectToAction("Index");
+
         }
-
-
-
-
 
     }
 }

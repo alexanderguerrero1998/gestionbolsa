@@ -11,7 +11,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
             MenuItems = new List<MenuItemViewModel>();
             Roles = new List<RolViewModel>();
         }
-        public int IdServidor { get; set; }
+        public string IdServidor { get; set; }
         public string NombresCompletos { get; set; }
         public string Nombres { get; set; }
         public string Dependencia { get; set; }

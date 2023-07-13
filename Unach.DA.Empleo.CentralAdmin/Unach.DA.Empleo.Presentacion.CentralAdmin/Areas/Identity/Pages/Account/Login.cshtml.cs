@@ -17,6 +17,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
+using Newtonsoft.Json;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+using Unach.DA.Empleo.Persistencia.Core.Models;
+using Unach.DA.Empleo.Dominio.Core;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers;
+using Unach.DA.Empleo.Presistencia.Api;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 {
@@ -28,13 +37,18 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
         private readonly ILogger<LoginModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly EmailSettings _emailSettings;
+        private readonly IConfiguration _configuration;
+        EntitiesDomain entitiesDomain;
 
         public LoginModel(
             SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
             UserManager<IdentityUser> userManager,
             IEmailSender emailSender, 
-            IOptions<EmailSettings> emailSettingsOptions
+            IOptions<EmailSettings> emailSettingsOptions,
+             IConfiguration configuration,
+             DbContextOptions<SicoaContext> options
+
             )
         {
             _userManager = userManager;
@@ -42,7 +56,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _emailSettings = emailSettingsOptions.Value;
-            
+            _configuration = configuration;
+            entitiesDomain = new EntitiesDomain(options);
+
         }
 
         [BindProperty]
@@ -100,6 +116,120 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
 
+                    // Obtener el usuario autenticado
+                    var userAuth = await _userManager.FindByNameAsync(Input.CI);
+
+                    //Obtener solo CI/UserName
+                    var ci = userAuth.UserName;
+
+                    // llamamos a la api para obtener los datos en lo Claims
+                    ClienteApi clienteapi = new ClienteApi("");
+
+                    //Obtenemos los datos del usuario
+                    var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
+
+                    if (userAuth != null)
+                    {
+
+                        var usuario = entitiesDomain.AspNetUsersRepositorio.ObtenerTodosEnOtraVista<UsuarioAutenticadoViewModel>(
+                        m => new UsuarioAutenticadoViewModel
+                        {
+                           IdServidor = userAuth.UserName,
+                           Nombres = response.Nombres,
+                           NombresCompletos = response.NombresCompletos,
+                           Identificacion = response.DocumentoIdentidad,
+                           //Dependencia=m.
+                           //Cargo=m.c
+                           Foto = response.FotoRuta,
+                           Email = response.CorreoInstitucional
+                        }, x => x.Id == ci).FirstOrDefault();
+
+
+
+                        if (usuario != null)
+                        {
+                            usuario.Roles = entitiesDomain.RolUsuarioRepositorio.ObtenerTodosEnOtraVista<RolViewModel>(
+                               m => new RolViewModel
+                               {
+                                   Id = m.IdRol,
+                                   Nombre = m.IdRolNavigation.Nombre,
+                                   Descripcion = m.IdRolNavigation.Descripcion,
+                               },
+                               x => x.IdUsuario == usuario.IdServidor &&
+                                    DateTime.Now >= x.Desde && DateTime.Now <= x.Hasta
+                           );
+
+
+                            if (usuario.Roles.Count == 1 && usuario.Roles.Where(x => x.Nombre.ToUpper() == "FUNCIONARIO") != null)
+                            {
+                                usuario.EsSoloFuncionario = 1;
+                            }
+
+
+                            if (usuario.Roles.Count > 1)
+                            {
+                                usuario.EsSoloFuncionario = 0;
+                            }
+
+                            var claims = new List<Claim>
+                                    {
+                                        new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
+                                        new Claim("IdServidor", usuario.IdServidor.ToString()),
+                                        new Claim("Nombres", usuario.Nombres),
+                                        new Claim("NombresApellidos", string.Format("{0}", usuario.Nombres)),
+                                        new Claim("Foto", usuario.Foto??string.Empty),
+                                    };
+
+
+
+                            if (usuario.Roles != null && usuario.Roles.Count() > 0)
+                            {
+                                foreach (var item in usuario.Roles)
+                                    claims.Add(new Claim(ClaimTypes.Role, item.Nombre));
+                            }
+
+
+
+                           
+                        }
+                        ////// Configurar los claims
+                        //var claims = new List<Claim>
+                        //{
+                        //    new Claim("AuthenticatedUser", JsonConvert.SerializeObject(userAuth)),
+                        //    new Claim("IdServidor", userAuth.Id),
+
+                        //    new Claim("Nombres", response.Nombres),
+                        //    new Claim("Foto", response.FotoRuta),
+                        //    new Claim("Email", response.CorreoInstitucional),
+                        //    // Agregar más claims si es necesario
+                        //};
+
+                        //// Obtener los roles del usuario y agregarlos como claims
+                        //var roles = await _userManager.GetRolesAsync(userAuth);
+
+
+                        //foreach (var role in roles)
+                        //{
+                        //    claims.Add(new Claim(ClaimTypes.Role, role));
+                        //}
+
+                        //// Crear la identidad con los claims
+                        //var identity = new ClaimsIdentity(claims, IdentityConstants.ApplicationScheme);
+
+                        //// Crear el principal con la identidad
+                        //var principal = new ClaimsPrincipal(identity);
+
+                        //// Sign in con el principIdServidoral actualizado
+                        //await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme, principal);
+
+                        //return LocalRedirect(returnUrl);
+
+
+                    }
+
+
+
+
                     // Enviar correo electrónico de verificación de cuenta
                     var user = await _userManager.FindByNameAsync(Input.CI);
                     if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
@@ -143,5 +273,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+
+
     }
 }

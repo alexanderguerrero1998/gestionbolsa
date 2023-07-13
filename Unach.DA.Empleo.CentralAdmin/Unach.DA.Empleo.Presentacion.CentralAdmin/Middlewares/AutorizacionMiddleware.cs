@@ -56,7 +56,7 @@ namespace Unach.Codesi.Cgrni.Cooperacion.Presentation.CentralAdmin.Middlewares
             else
             {
                 var servidor = httpContext.ServidorAutenticado();
-               /* if (servidor != null && servidor.IdServidor != 0)
+               if (servidor != null && servidor.IdServidor != "0")
                 {
                     var hoy = DateTime.Now;
                     bool tienePermiso = dominioEntidades.RolUsuarioRepositorio.Contar(
@@ -132,7 +132,7 @@ namespace Unach.Codesi.Cgrni.Cooperacion.Presentation.CentralAdmin.Middlewares
                 {
                     logger.LogError("ERROR AUTENTICACIÓN: No se ha seteado los valores de servidor, posible causa, token ApiDath caducado");
                 }
-                */
+                
                
                 
                 httpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;

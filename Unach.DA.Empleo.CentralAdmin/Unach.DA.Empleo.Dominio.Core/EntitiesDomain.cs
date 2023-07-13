@@ -273,11 +273,99 @@ namespace Unach.DA.Empleo.Dominio.Core
             }
         }
 
+        private Repositorio<RolUsuario> rolUsuarioRepositorio;
 
+        public Repositorio<RolUsuario> RolUsuarioRepositorio
+        {
+            get
+            {
+                if (rolUsuarioRepositorio == null)
+                {
+                    rolUsuarioRepositorio = new Repositorio<RolUsuario>(contexto);
+                }
+                return rolUsuarioRepositorio;
+            }
+        }
 
+        private Repositorio<Rol> rolRepositorio;
 
+        public Repositorio<Rol> RolRepositorio
+        {
+            get
+            {
+                if (rolRepositorio == null)
+                {
+                    rolRepositorio = new Repositorio<Rol>(contexto);
+                }
+                return rolRepositorio;
+            }
+        }
 
+        private Repositorio<Transaccion> trasaccionRepositorio;
 
+        public Repositorio<Transaccion> TrasaccionRepositorio
+        {
+            get
+            {
+                if (trasaccionRepositorio == null)
+                {
+                    trasaccionRepositorio = new Repositorio<Transaccion>(contexto);
+                }
+                return trasaccionRepositorio;
+            }
+        }
+
+        private Repositorio<RolTransaccion> rolTransaccionRepositorio;
+        public Repositorio<RolTransaccion> RolTransaccionRepositorio
+        {
+            get
+            {
+                if (rolTransaccionRepositorio == null)
+                {
+                    rolTransaccionRepositorio = new Repositorio<RolTransaccion>(contexto);
+                }
+                return rolTransaccionRepositorio;
+            }
+        }
+
+        private Repositorio<Modulo> moduloRepositorio;
+        public Repositorio<Modulo> ModuloRepositorio
+        {
+            get
+            {
+                if (moduloRepositorio == null)
+                {
+                    moduloRepositorio = new Repositorio<Modulo>(contexto);
+                }
+                return moduloRepositorio;
+            }
+        }
+
+        private Repositorio<Sistema> sistemaRepositorio;
+        public Repositorio<Sistema> SistemaRepositorio
+        {
+            get
+            {
+                if (sistemaRepositorio == null)
+                {
+                    sistemaRepositorio = new Repositorio<Sistema>(contexto);
+                }
+                return sistemaRepositorio;
+            }
+        }
+
+        private Repositorio<AspNetUsers> aspNetUsersRepositorio;
+        public Repositorio<AspNetUsers> AspNetUsersRepositorio
+        {
+            get
+            {
+                if (sistemaRepositorio == null)
+                {
+                    aspNetUsersRepositorio = new Repositorio<AspNetUsers>(contexto);
+                }
+                return aspNetUsersRepositorio;
+            }
+        }
 
 
 

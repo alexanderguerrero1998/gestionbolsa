@@ -1,8 +1,10 @@
-﻿@model List<MenuItemViewModel>
+﻿
+@using Unach.DA.Empleo.Presentacion.CentralAdmin.Helpers;
+@model List<MenuItemViewModel>
 
 @foreach (var menu in Model)
 {
-    /*
+    
     if (menu.InverseIdPadreNavigation.Any())
     {
         <li class="@Html.IsSelected(controller: menu.Controlador)">
@@ -22,6 +24,6 @@
         </li>
         
     }
-    */
+    
 }
 

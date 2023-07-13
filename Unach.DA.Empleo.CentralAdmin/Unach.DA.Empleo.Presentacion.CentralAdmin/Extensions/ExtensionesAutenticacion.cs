@@ -32,14 +32,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
         }
 
 
-        //public static string RolServidorInformacionPersonal(this HttpContext httpContext)
-        //{
-        //    if (httpContext.User.Claims.Count() > 0)
-        //        return httpContext.User.Claims.Where(c => c.Type == ClaimTypes.Role)?.FirstOrDefault()?.Value;
-        //    else
-        //        return "";
+        public static string RolServidorInformacionPersonal(this HttpContext httpContext)
+        {
+            if (httpContext.User.Claims.Count() > 0)
+                return httpContext.User.Claims.Where(c => c.Type == ClaimTypes.Role)?.FirstOrDefault()?.Value;
+            else
+                return "";
 
-        //}
+        }
 
         public static List<RolUsuario> RolesServidorInformacionPersonal(this HttpContext httpContext)
         {
@@ -79,10 +79,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
             var servidor = JsonConvert.DeserializeObject<ServidorInformacionPersonal>(servidorJson);
 
 
-          
+         
 
             return servidor;
         }
+
+
 
 
     }

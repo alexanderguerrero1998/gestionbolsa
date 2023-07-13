@@ -18,6 +18,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         {
         }
 
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Capacitacion> Capacitacion { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<EstadoPostulacion> EstadoPostulacion { get; set; }
@@ -48,6 +49,19 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AspNetUsers>(entity =>
+            {
+                entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
+                    .IsUnique()
+                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.AspNetUsers)
+                    .HasForeignKey<AspNetUsers>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AspNetUsers_Estudiante");
+            });
+
             modelBuilder.Entity<EstadoPostulacion>(entity =>
             {
                 entity.HasOne(d => d.IdEstadoPostulacionNavigation)
@@ -126,6 +140,21 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasForeignKey(d => d.IdTransaccion)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_RolTransaccion_Transaccion");
+            });
+
+            modelBuilder.Entity<RolUsuario>(entity =>
+            {
+                entity.HasOne(d => d.IdRolNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdRol)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RolUsuario_Rol");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RolUsuario_AspNetUsers");
             });
 
             modelBuilder.Entity<Transaccion>(entity =>

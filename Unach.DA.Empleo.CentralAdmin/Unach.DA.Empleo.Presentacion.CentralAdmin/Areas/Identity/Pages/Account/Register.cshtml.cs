@@ -32,12 +32,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-       
+
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        
+
         // Yo inserte esto
         EntitiesDomain entitiesDomain;
         private ILogger logger;
@@ -48,7 +48,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-           
+
             // Yo inserte esto
             DbContextOptions<SicoaContext> options, IMapper mapper, ILoggerFactory log
 
@@ -79,7 +79,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Cedula")]
-            public string  CI { get; set; }
+            public string CI { get; set; }
 
             [Required]
             [Display(Name = "LinKedin")]
@@ -120,12 +120,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                     // Crear el nuevo usuario
                     var user = new IdentityUser { UserName = Input.CI, Email = Input.Email };
                     var result = await _userManager.CreateAsync(user, Input.Password);
-                    
+
                     if (result.Succeeded)
                     {
                         // Llamamos a la API para obtener  los valores y asignalos en tabla ESTUDIANTE
                         ClienteApi clienteapi = new ClienteApi("");
-                        var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/"+ci);
+                        var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
                         Estudiante estudianteNuevo = new Estudiante();
                         estudianteNuevo.Id = user.Id;
                         estudianteNuevo.IdEstudiante = response.EstudianteID;
@@ -139,7 +139,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 
                         TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
 
-                                           _logger.LogInformation("User created a new account with password.");
+                        _logger.LogInformation("User created a new account with password.");
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                         var callbackUrl = Url.Page(
@@ -181,6 +181,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             else { return false; }
 
         }
+
+
+
+
 
     }
 }

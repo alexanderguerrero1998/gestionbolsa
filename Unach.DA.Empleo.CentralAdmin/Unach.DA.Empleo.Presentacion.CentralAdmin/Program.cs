@@ -1,4 +1,6 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -61,6 +63,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
+
+
+
+
+
             });
 
             builder.Services.ConfigureApplicationCookie(options =>
@@ -86,6 +93,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             // Estos son para el Email
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
+
+
 
             var app = builder.Build();
 
@@ -117,7 +127,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             app.MapRazorPages();
 
             app.Run();
-
 
         }
     }

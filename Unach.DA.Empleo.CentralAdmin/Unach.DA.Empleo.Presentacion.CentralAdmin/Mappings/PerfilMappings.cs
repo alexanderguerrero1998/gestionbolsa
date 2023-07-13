@@ -53,6 +53,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<LogroViewModel, Logro>();
             CreateMap<FormacionAcademica, FormacionAcademicaViewModel>();
             CreateMap<FormacionAcademicaViewModel, FormacionAcademica>();
+            CreateMap<UsuarioAutenticadoViewModel, AspNetUsers>();
+            CreateMap<AspNetUsers, UsuarioAutenticadoViewModel>();
 
             /*
 

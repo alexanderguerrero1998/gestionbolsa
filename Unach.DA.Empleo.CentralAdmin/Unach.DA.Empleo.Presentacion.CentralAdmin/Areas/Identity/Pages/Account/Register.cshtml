@@ -1,10 +1,13 @@
 ﻿@page
 @model RegisterModel
+
+
 @{
     ViewData["Title"] = "Register";
 }
 
 <h2>@ViewData["Title"]</h2>
+
 
 <div class="row">
     <div class="col-md-4">
@@ -44,7 +47,7 @@
             <button type="submit" class="btn btn-default">Register</button>
         </form>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+@*    <div class="col-md-6 col-md-offset-2">
         <section>
             <h4>Use another service to register.</h4>
             <hr />
@@ -74,8 +77,68 @@
             }
         </section>
     </div>
+</div>*@
+
+@*
+<div class="row">
+<div class="col-lg-4">
+    <div class="hpanel">
+        <div class="panel-heading">
+            <div class="panel-tools">
+               @* <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    <a class="closebox"><i class="fa fa-times"></i></a>*@
+            </div>
+@*
+      </div>
+        <div class="panel-body">
+            <form  asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <h4>Nueva Cuenta.</h4>
+                        <hr />
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Input.CI">CI</label> 
+                    <input asp-for="Input.CI" class="form-control"  type="number"  class="form-control error" required="" aria-required="true" aria-invalid="true">
+                    
+                    <span asp-validation-for="Input.CI" class="text-danger"></span>
+                
+                </div>
+                
+                    <div class="form-group">
+                        <label asp-for="Input.Email">Email</label> 
+                        <input asp-for="Input.Email" class="form-control" class="form-control" type="email" class="form-control" name="email">
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Linkedin">Linkein</label>
+                    <input asp-for="Input.Linkedin" class="form-control"  type="text"  class="form-control" name="url">
+                            <span asp-validation-for="Input.Linkedin" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.Password">Password</label> 
+                    <input asp-for="Input.Password" class="form-control" type="password"  class="form-control" name="number">
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword">ConfirmPassword</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" type="password"  class="form-control" name="max">
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-primary m-t-n-xs" type="submit"><strong>Submit</strong></button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 </div>
 
+*@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

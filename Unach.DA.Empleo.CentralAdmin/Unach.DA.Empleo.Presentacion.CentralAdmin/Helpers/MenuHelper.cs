@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Unach.DA.Empleo.Dominio.Core;
 using Unach.DA.Empleo.Persistencia.Core.Models;
@@ -19,11 +21,11 @@ namespace  Unach.DA.Empleo.Presentacion.CentralAdmin.Helpers
 
 
         
-        public List<MenuItemViewModel> GetAllMenuItems(int idServidor)//, List<RolViewModel> roles)
+        public List<MenuItemViewModel> GetAllMenuItems(string idServidor, List<RolViewModel> roles)
         {
             //string rolesIds = roles.Select(x => x.Id.ToString()).ToList().ToUnSplit();
             List<TransaccioMenuViewModel> transaccions = new List<TransaccioMenuViewModel>();
-            transaccions = context.ExecuteStoredProcedure<TransaccioMenuViewModel>("Auth.GetTransaccionesBySistemaUsuario", ("idSistema", 7),   ("idUsuario", idServidor)).ToList();
+            transaccions = context.ExecuteStoredProcedure<TransaccioMenuViewModel>("Auth.GetTransaccionesBySistemaUsuario", ("idSistema", 1),   ("idUsuario", idServidor)).ToList();
             List<MenuItemViewModel> items = new List<MenuItemViewModel>();
 
             foreach (var item in transaccions.Where(x=>x.Visible && x.Activo).ToList())

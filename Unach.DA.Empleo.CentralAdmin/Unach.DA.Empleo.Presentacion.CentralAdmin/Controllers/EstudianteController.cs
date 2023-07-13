@@ -45,8 +45,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 m => new EstudianteViewModel
                 {
                     IdEstudiante = m.IdEstudiante,
-
-
+                    LinkLinkeding = m.LinkLinkeding
                 },
                 x => x.IdEstudiante > expediente,
                 a => a.OrderBy(y => y.Id));
