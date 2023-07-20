@@ -66,7 +66,11 @@
                                                 <table id="plantillasTable" class="table table-stripped " width="100%">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center">Linkedin</th>
+                                                            <th class="text-center">ID</th>
+                                                            <th class="text-center">Nombres</th>
+                                                            <th class="text-center">Facultad</th>
+                                                            <th class="text-center">Periodo</th>
+                                                        
                                                        
                                                       
                                                             <th width="10%" class="text-center">Acciones</th>
@@ -78,8 +82,11 @@
                                                             @foreach (var item in Model)
                                                             {
                                                                 <tr>
+                                                                    <td>@item.EstudianteID</td>
+                                                                    <td>@item.Nombres</td>
+                                                                    <td>@item.Facultad</td>
+                                                                    <td>@item.Periodo</td>
                                                                    
-                                                                    <td>@item.LinkLinkeding</td>
 
                                                                 
                                                                     <td class="text-center" width="5%" valign="top">

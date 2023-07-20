@@ -39,7 +39,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
         private readonly EmailSettings _emailSettings;
         private readonly IConfiguration _configuration;
         EntitiesDomain entitiesDomain;
-
+        HttpContext hcontext;
         public LoginModel(
             SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
@@ -47,8 +47,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             IEmailSender emailSender, 
             IOptions<EmailSettings> emailSettingsOptions,
              IConfiguration configuration,
-             DbContextOptions<SicoaContext> options
-
+             DbContextOptions<SicoaContext> options,
+            IHttpContextAccessor haccess
             )
         {
             _userManager = userManager;
@@ -58,7 +58,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             _emailSettings = emailSettingsOptions.Value;
             _configuration = configuration;
             entitiesDomain = new EntitiesDomain(options);
-
+            hcontext = haccess.HttpContext;
         }
 
         [BindProperty]
@@ -134,15 +134,15 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                         var usuario = entitiesDomain.AspNetUsersRepositorio.ObtenerTodosEnOtraVista<UsuarioAutenticadoViewModel>(
                         m => new UsuarioAutenticadoViewModel
                         {
-                           IdServidor = userAuth.UserName,
+                           IdServidor = userAuth.Id,
                            Nombres = response.Nombres,
-                           NombresCompletos = response.NombresCompletos,
+                           //NombresCompletos = response.NombresCompletos,
                            Identificacion = response.DocumentoIdentidad,
                            //Dependencia=m.
                            //Cargo=m.c
                            Foto = response.FotoRuta,
                            Email = response.CorreoInstitucional
-                        }, x => x.Id == ci).FirstOrDefault();
+                        }, x => x.UserName == ci).FirstOrDefault();
 
 
 
@@ -171,64 +171,56 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                                 usuario.EsSoloFuncionario = 0;
                             }
 
-                            var claims = new List<Claim>
-                                    {
-                                        new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
-                                        new Claim("IdServidor", usuario.IdServidor.ToString()),
-                                        new Claim("Nombres", usuario.Nombres),
-                                        new Claim("NombresApellidos", string.Format("{0}", usuario.Nombres)),
-                                        new Claim("Foto", usuario.Foto??string.Empty),
-                                    };
 
+
+                            HttpContext.Session.SetString("AuthenticatedUser", JsonConvert.SerializeObject(usuario));
+                            HttpContext.Session.SetString("IdServidor", usuario.IdServidor.ToString());
+                            HttpContext.Session.SetString("Nombres", usuario.Nombres);
+                            HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres));
+                            HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
+
+
+                            //var claims = new List<Claim>
+                            //{
+                            //           // new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
+                            //            new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
+                            //            new Claim("IdServidor", usuario.IdServidor.ToString()),
+                            //            new Claim("Nombres", usuario.Nombres),
+                            //            new Claim("NombresApellidos", string.Format("{0}", usuario.Nombres)),
+                            //            new Claim("Foto", usuario.Foto??string.Empty),
+                            // };
 
 
                             if (usuario.Roles != null && usuario.Roles.Count() > 0)
                             {
-                                foreach (var item in usuario.Roles)
-                                    claims.Add(new Claim(ClaimTypes.Role, item.Nombre));
+                                //foreach (var item in usuario.Roles)
+                                //    claims.Add(new Claim(ClaimTypes.Role, item.Nombre));
+
+                                // Create a list to store the roles temporarily
+                                var userRoles = usuario.Roles.Select(role => role.Nombre).ToList();
+
+                                // Store the user roles in the session
+                                HttpContext.Session.SetString("Roles", JsonConvert.SerializeObject(userRoles));
+
                             }
 
+                            //var appIdentity=new ClaimsIdentity(claims);
+
+                            //ClaimsPrincipal principal = HttpContext.User;
+
+                            //if (principal.Identity is ClaimsIdentity identity)
+
+                            //{
+                            //   hcontext.User.AddIdentity(appIdentity);
+                            //    //identity.AddClaims(claims);
+
+                            //}
 
 
-                           
                         }
-                        ////// Configurar los claims
-                        //var claims = new List<Claim>
-                        //{
-                        //    new Claim("AuthenticatedUser", JsonConvert.SerializeObject(userAuth)),
-                        //    new Claim("IdServidor", userAuth.Id),
-
-                        //    new Claim("Nombres", response.Nombres),
-                        //    new Claim("Foto", response.FotoRuta),
-                        //    new Claim("Email", response.CorreoInstitucional),
-                        //    // Agregar más claims si es necesario
-                        //};
-
-                        //// Obtener los roles del usuario y agregarlos como claims
-                        //var roles = await _userManager.GetRolesAsync(userAuth);
-
-
-                        //foreach (var role in roles)
-                        //{
-                        //    claims.Add(new Claim(ClaimTypes.Role, role));
-                        //}
-
-                        //// Crear la identidad con los claims
-                        //var identity = new ClaimsIdentity(claims, IdentityConstants.ApplicationScheme);
-
-                        //// Crear el principal con la identidad
-                        //var principal = new ClaimsPrincipal(identity);
-
-                        //// Sign in con el principIdServidoral actualizado
-                        //await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme, principal);
-
-                        //return LocalRedirect(returnUrl);
-
+                       
 
                     }
-
-
-
 
                     // Enviar correo electrónico de verificación de cuenta
                     var user = await _userManager.FindByNameAsync(Input.CI);

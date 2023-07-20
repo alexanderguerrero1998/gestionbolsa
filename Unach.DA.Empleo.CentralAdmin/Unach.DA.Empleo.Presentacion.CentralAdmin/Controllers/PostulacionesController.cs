@@ -180,7 +180,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         }
         */
 
-        public void RegistrarPostulacion(int idVacante, int idEstudiante)
+        public void RegistrarPostulacion(int idVacante, string idEstudiante)
         {
             var vacante = entitiesDomain.VacanteRepositorio.Buscar(idVacante);
 
@@ -195,7 +195,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     entitiesDomain.GuardarTransacciones();
                     TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Postulacion Realizada");
             }
-            TempData.MostrarAlerta(ViewModel.TipoAlerta.Informacion, "No hay postulaciones! " );
+           // TempData.MostrarAlerta(ViewModel.TipoAlerta.Informacion, "No hay postulaciones! " );
         }
 
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WSz5WKM6H0nsaSd5cdZvfQSsPf6aTL0XMfj6I60JzGmb3KFQnQzesHaZ7ukHuwTq6OK4eHdk2SgMrFPny/WXvQ==",
+  "dgSpecHash": "vb1l+j/HMsEBz0UAt2gPs4WOjRJ1QvF7yWmVqvvD2V472bfVIPqmCw0tw24KRHBAoDZ9F+2XRoaDhMEGJJez6g==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,8 @@
     "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.5\\microsoft.aspnetcore.cryptography.internal.7.0.5.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.5\\microsoft.aspnetcore.cryptography.keyderivation.7.0.5.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\7.0.4\\microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.4.nupkg.sha512",
+    "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.5\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\microsoft.aspnetcore.identity.ui.7.0.5.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.11\\microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",

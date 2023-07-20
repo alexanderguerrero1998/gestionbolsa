@@ -24,10 +24,16 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
         /// <returns></returns>
         public static UsuarioAutenticadoViewModel ServidorAutenticado(this HttpContext httpContext)
         {
-            if (httpContext.User.Claims.Count() > 0 && httpContext.User.Claims.Where(c => c.Type == "AuthenticatedUser") != null && httpContext.User.Claims.Where(c => c.Type == "AuthenticatedUser").Count() > 0)
-                return JsonConvert.DeserializeObject<UsuarioAutenticadoViewModel>(httpContext.User.Claims.Where(c => c.Type == "AuthenticatedUser")?.FirstOrDefault()?.Value);
+            // if (httpContext.User.Claims.Count() > 0 && httpContext.User.Claims.Where(c => c.Type == "AuthenticatedUser") != null && httpContext.User.Claims.Where(c => c.Type == "AuthenticatedUser").Count() > 0)
+            //   return JsonConvert.DeserializeObject<UsuarioAutenticadoViewModel>(httpContext.User.Claims.Where(c => c.Type == "AuthenticatedUser")?.FirstOrDefault()?.Value);
+            if (httpContext.Session.GetString("AuthenticatedUser") != null)
+            {
+                return JsonConvert.DeserializeObject<UsuarioAutenticadoViewModel>(httpContext.Session.GetString("AuthenticatedUser"));
+            }
+
+
             else
-                 return new UsuarioAutenticadoViewModel();
+                return new UsuarioAutenticadoViewModel();
                 //return null;
         }
 
@@ -35,7 +41,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
         public static string RolServidorInformacionPersonal(this HttpContext httpContext)
         {
             if (httpContext.User.Claims.Count() > 0)
-                return httpContext.User.Claims.Where(c => c.Type == ClaimTypes.Role)?.FirstOrDefault()?.Value;
+               // return httpContext.User.Claims.Where(c => c.Type == ClaimTypes.Role)?.FirstOrDefault()?.Value;
+            return httpContext.Session.GetString("Rol");
             else
                 return "";
 
@@ -43,7 +50,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
 
         public static List<RolUsuario> RolesServidorInformacionPersonal(this HttpContext httpContext)
         {
-            string rolJson = httpContext.Session.GetString("VariablesSesion.ROLES_SERVIDOR");
+           // string rolJson = httpContext.Session.GetString("VariablesSesion.ROLES_SERVIDOR");
+            string rolJson = httpContext.Session.GetString("Rol");
             if (!string.IsNullOrEmpty(rolJson))
                 return JsonConvert.DeserializeObject<List<RolUsuario>>(rolJson);
             else

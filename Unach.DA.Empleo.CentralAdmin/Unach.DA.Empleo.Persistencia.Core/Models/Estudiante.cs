@@ -10,6 +10,11 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 {
     public partial class Estudiante
     {
+        public Estudiante()
+        {
+            Postulacion = new HashSet<Postulacion>();
+        }
+
         public int IdEstudiante { get; set; }
         [Required]
         [StringLength(100)]
@@ -28,7 +33,10 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string Id { get; set; }
         public string LinkLinkeding { get; set; }
 
-        [InverseProperty("IdNavigation")]
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        [ForeignKey("Id")]
+        [InverseProperty("Estudiante")]
+        public virtual AspNetUsers IdNavigation { get; set; }
+        [InverseProperty("IdEstudianteNavigation")]
+        public virtual ICollection<Postulacion> Postulacion { get; set; }
     }
 }

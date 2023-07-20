@@ -13,6 +13,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public Vacante()
         {
             EstadoVacante = new HashSet<EstadoVacante>();
+            Postulacion = new HashSet<Postulacion>();
         }
 
         [Key]
@@ -46,5 +47,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public virtual TipoVacante IdTipoVacanteNavigation { get; set; }
         [InverseProperty("IdVacanteNavigation")]
         public virtual ICollection<EstadoVacante> EstadoVacante { get; set; }
+        [InverseProperty("IdVacanteNavigation")]
+        public virtual ICollection<Postulacion> Postulacion { get; set; }
     }
 }

@@ -13,6 +13,9 @@ using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
 using DevExpress.Data.Helpers;
 using Microsoft.AspNetCore.Identity;
+using Unach.DA.Empleo.Presistencia.Api;
+using System.Text.Json;
+using System.Net.Http.Json;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 {
@@ -41,17 +44,67 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             int expediente = 0;
             ViewBag.Expediente = expediente;
 
-            List<EstudianteViewModel> estudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodosEnOtraVista(
-                m => new EstudianteViewModel
+            // Lista para almacenar los datos de los usuarios obtenidos de la API
+            var estudiantesViewModel = new List<EstudianteViewModel>();
+
+            //Obtenemos los usuarios
+            var dataestudiante  = entitiesDomain.EstudianteRepositorio.ObtenerTodos().ToList();
+
+            //Obtenemos los Id's de los usuarios
+            var userIds = dataestudiante.Select(dataestudiante => dataestudiante.IdEstudiante);
+
+            //llamamos a la api 'ApiInfoAcademico'
+            ApiInfoAcademico clienteapi = new ApiInfoAcademico("");
+
+         
+      
+            //Pasamos los id's  a la 'ApiInformacionAcademica'
+            foreach (var id in userIds) {
+                // Se deserializa en el modelo de 'ApiInformacionAcademica'
+                var apiUrl = "https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionAcademica/" + id;
+                var estudianteApi = clienteapi.Get<ApiInformacionAcademica>(apiUrl);
+
+            
+                // Convertir ApiInformacionAcademica a EstudianteViewModel
+                var estudianteViewModel = new EstudianteViewModel
                 {
-                    IdEstudiante = m.IdEstudiante,
-                    LinkLinkeding = m.LinkLinkeding
-                },
-                x => x.IdEstudiante > expediente,
-                a => a.OrderBy(y => y.Id));
 
-            return View(estudiante.ToList());
+                    EstudianteID = estudianteApi.EstudianteID,
+                    DocumentoIdentidad = estudianteApi.DocumentoIdentidad,
+                    Nombres = estudianteApi.Nombres,
+                    ApellidoPaterno = estudianteApi.ApellidoPaterno,
+                    ApellidoMaterno = estudianteApi.ApellidoMaterno,
+                    Genero = estudianteApi.Genero,
+                    CorreoInstitucional = estudianteApi.CorreoInstitucional,
+                    TelefonoCelular = estudianteApi.TelefonoCelular,
+                    TelefonoDomicilio = estudianteApi.TelefonoDomicilio,
+                    Facultad = estudianteApi.Facultad,
+                    Carrera = estudianteApi.Carrera,
+                    Nivel = estudianteApi.Nivel,
+                    Periodo = estudianteApi.Periodo
+                };
 
+                // Agregar el estudianteViewModel a la lista de estudiantes
+                estudiantesViewModel.Add(estudianteViewModel);
+
+            }
+    
+
+
+
+            ////Obtenemos los datos del usuario
+
+            //List<EstudianteViewModel> estudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodosEnOtraVista(
+            //    m => new EstudianteViewModel
+            //    {
+            //        IdEstudiante = m.IdEstudiante,
+            //        LinkLinkeding = m.LinkLinkeding
+            //    },
+            //    x => x.IdEstudiante > expediente,
+            //    a => a.OrderBy(y => y.Id));
+
+            //return View(estudiante.ToList());
+            return View(estudiantesViewModel);
 
         }
         public IActionResult EstudianteEdit(int id, int expediente)
@@ -162,6 +215,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
             }
             return RedirectToAction(nameof(Index), new { expediente = 1 });
+        }
+
+        public IActionResult MisPostulaciones() 
+        {
+
+
+            return View();
         }
 
         public void Enviar()

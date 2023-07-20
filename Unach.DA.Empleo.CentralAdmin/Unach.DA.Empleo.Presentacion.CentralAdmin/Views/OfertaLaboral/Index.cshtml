@@ -101,7 +101,7 @@
                                                                             @if (item.Plaza > 0)
                                                                             {
                                                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                                                    <li><a asp-action="RegistrarPostulacion" asp-controller="Postulaciones" asp-route-idVacante="@item.IdVacante"  asp-route-idEstudiante=11 data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
+                                                                                    <li><a asp-action="RegistrarPostulacion" asp-controller="Postulaciones" asp-route-idVacante="@item.IdVacante"  asp-route-idEstudiante=@ViewBag.Id data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
                                                                                 </ul>
                                                                             }
                                                                             else

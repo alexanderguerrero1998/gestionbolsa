@@ -32,8 +32,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
 
-        [ForeignKey("Id")]
-        [InverseProperty("AspNetUsers")]
-        public virtual Estudiante IdNavigation { get; set; }
+        [InverseProperty("IdNavigation")]
+        public virtual Estudiante Estudiante { get; set; }
     }
 }

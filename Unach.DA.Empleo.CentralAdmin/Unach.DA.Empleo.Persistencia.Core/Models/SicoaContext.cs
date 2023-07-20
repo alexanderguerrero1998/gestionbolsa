@@ -54,12 +54,6 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                 entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
                     .IsUnique()
                     .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.AspNetUsers)
-                    .HasForeignKey<AspNetUsers>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_AspNetUsers_Estudiante");
             });
 
             modelBuilder.Entity<EstadoPostulacion>(entity =>
@@ -92,6 +86,15 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasConstraintName("FK__EstadoVac__IdVac__2180FB33");
             });
 
+            modelBuilder.Entity<Estudiante>(entity =>
+            {
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Estudiante)
+                    .HasForeignKey<Estudiante>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Estudiante_AspNetUsers");
+            });
+
             modelBuilder.Entity<Modulo>(entity =>
             {
                 entity.HasOne(d => d.IdSistemaNavigation)
@@ -99,6 +102,21 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasForeignKey(d => d.IdSistema)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Modulo_Sistema");
+            });
+
+            modelBuilder.Entity<Postulacion>(entity =>
+            {
+                entity.HasOne(d => d.IdEstudianteNavigation)
+                    .WithMany(p => p.Postulacion)
+                    .HasForeignKey(d => d.IdEstudiante)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Postulacion_Estudiante");
+
+                entity.HasOne(d => d.IdVacanteNavigation)
+                    .WithMany(p => p.Postulacion)
+                    .HasForeignKey(d => d.IdVacante)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Postulacion_Vacante");
             });
 
             modelBuilder.Entity<ResponsableEmpresa>(entity =>

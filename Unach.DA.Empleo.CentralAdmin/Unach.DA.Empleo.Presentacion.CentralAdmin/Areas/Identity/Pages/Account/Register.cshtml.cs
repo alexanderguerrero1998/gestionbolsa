@@ -115,7 +115,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                 bool userExists = await UserExistsInApi(ci);
 
                 if (userExists)
-                {
+                 {
 
                     // Crear el nuevo usuario
                     var user = new IdentityUser { UserName = Input.CI, Email = Input.Email };

@@ -45,7 +45,6 @@ namespace  Unach.DA.Empleo.Presentacion.CentralAdmin.Helpers
         }
 
 
-
         List<MenuItemViewModel> GetChildrenMenu(List<MenuItemViewModel> menuList, int? parentId = null)
         {
             return menuList.Where(x => x.IdPadre == parentId).OrderBy(x => x.Orden).ToList();

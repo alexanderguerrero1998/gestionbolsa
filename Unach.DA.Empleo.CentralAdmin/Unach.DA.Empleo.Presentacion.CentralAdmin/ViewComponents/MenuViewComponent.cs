@@ -21,11 +21,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-
-            //var query = menus.GetAllMenuItems(HttpContext.ServidorAutenticado().IdServidor);//, HttpContext.ServidorAutenticado().Roles);
-
             var query = menus.GetAllMenuItems(HttpContext.ServidorAutenticado().IdServidor, HttpContext.ServidorAutenticado().Roles);
-            //var query = menus.GetAllMenuItems("30b21b27-1757-4113-92fb-3f148f80162e");
+     
             var lista = menus.GetMenu(query, null);
             return View(lista);
 

@@ -94,8 +94,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
-
-
+            builder.Services.AddSession();
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
@@ -118,6 +118,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
 
             app.UseAuthentication(); 
             app.UseAuthorization();
+
+            app.UseSession(); // Add this line to enable session middleware
 
             app.MapRazorPages();    
 
