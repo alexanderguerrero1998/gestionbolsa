@@ -86,9 +86,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
 
             var servidor = JsonConvert.DeserializeObject<ServidorInformacionPersonal>(servidorJson);
 
-
-         
-
             return servidor;
         }
 

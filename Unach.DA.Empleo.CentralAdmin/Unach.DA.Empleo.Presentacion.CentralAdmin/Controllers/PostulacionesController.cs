@@ -141,12 +141,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
 
         }
-      
-        public IActionResult PostulacionesDelete(int id)
+      */
+        public IActionResult PostulacionesDelete(int idPostulacion, string idEstudiante)
         {
             try
             {
-                Postulacion item = entitiesDomain.PostulacionRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
+                
+
+                Postulacion item = entitiesDomain.PostulacionRepositorio.BuscarPor(x => x.Id == idPostulacion && x.IdEstudiante == idEstudiante).FirstOrDefault();
                 return PartialView("~/Views/Postulaciones/_PostulacionesDelete.cshtml", item);
             }
             catch (Exception ex)
@@ -158,7 +160,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         }
 
 
-
+      
         [HttpPost]
         public IActionResult PostulacionesDelete(Postulacion item)
         {
@@ -166,6 +168,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             {
                 if (item != null)
                 {
+                    var estadoPostulacion = entitiesDomain.EstadoPostulacionRepositorio.BuscarPor(x => x.IdPostulacion == item.Id).FirstOrDefault();
+                    entitiesDomain.EstadoPostulacionRepositorio.Eliminar(estadoPostulacion);
+                    entitiesDomain.GuardarTransacciones();
+
+
                     entitiesDomain.PostulacionRepositorio.Eliminar(item);
                     entitiesDomain.GuardarTransacciones();
                     TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información eliminada.");
@@ -176,16 +183,28 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 logger.LogError(ex, "Error");
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
             }
-            return RedirectToAction(nameof(Index), new { expediente = 1 });
+            //return RedirectToAction(nameof(Index), new { expediente = 1 });
+            return RedirectToAction("Mispostulaciones", "Estudiante");
+
         }
-        */
+          
 
         public void RegistrarPostulacion(int idVacante, string idEstudiante)
         {
+           
             var vacante = entitiesDomain.VacanteRepositorio.Buscar(idVacante);
 
             if (vacante != null && vacante.Plaza > 0)
-            { 
+            {
+                //Verifica si el estudiante ya esta postulado
+                bool yaPostulado = VerificarPostulacion(idVacante, idEstudiante);
+                if (yaPostulado) 
+                {
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Informacion, "Ya has postulado a esta vacante.");
+                }
+                else //Si no, asigna la postulacion
+                { 
+                    // Asignamos la postulacion al estudiante
                     var postulacion = new Postulacion();
                     postulacion.IdEstudiante = idEstudiante;
                     postulacion.IdVacante = idVacante;
@@ -193,14 +212,41 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     _mapper.AgregarDatosAuditoria(postulacion, HttpContext);
                     entitiesDomain.PostulacionRepositorio.Insertar(postulacion);
                     entitiesDomain.GuardarTransacciones();
+
+                    // Ponemos la postulacion en estado 'Pendiente'
+                    var estadoPostulacion = new EstadoPostulacion();
+                    estadoPostulacion.IdPostulacion = postulacion.Id;
+                    estadoPostulacion.IdEstadoPostulacion = "1"; // Este es el estado(Pendiente) de la postulacion
+                    _mapper.AgregarDatosAuditoria(estadoPostulacion, HttpContext);
+                    entitiesDomain.EstadoPostulacionRepositorio.Insertar(estadoPostulacion);
+                    entitiesDomain.GuardarTransacciones();
+
                     TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Postulacion Realizada");
+
+
+                }
             }
            // TempData.MostrarAlerta(ViewModel.TipoAlerta.Informacion, "No hay postulaciones! " );
         }
 
+        public bool VerificarPostulacion(int idVacante, string idEstudiante)
+        {// Obtener el repositorio de Postulacion
+            var postulacionRepositorio = entitiesDomain.PostulacionRepositorio;
 
+            // Consultar si el estudiante ya ha postulado a la oferta laboral
+            var postulacionExistente = postulacionRepositorio.BuscarPor(p => p.IdEstudiante == idEstudiante && p.IdVacante == idVacante)
+                                                        .FirstOrDefault();
+            if (postulacionExistente != null)
+            {
+                return true;
+            }
+            else 
+            { 
+                return false; 
+            }  
 
-
+            
+        }
 
 
     }

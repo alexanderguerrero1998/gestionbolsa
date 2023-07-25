@@ -58,6 +58,8 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
             modelBuilder.Entity<EstadoPostulacion>(entity =>
             {
+                entity.Property(e => e.IdEstadoPostulacion).IsFixedLength();
+
                 entity.HasOne(d => d.IdEstadoPostulacionNavigation)
                     .WithMany(p => p.EstadoPostulacion)
                     .HasForeignKey(d => d.IdEstadoPostulacion)
@@ -173,6 +175,11 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasForeignKey(d => d.IdUsuario)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_RolUsuario_AspNetUsers");
+            });
+
+            modelBuilder.Entity<TipoEstadoPostulacion>(entity =>
+            {
+                entity.Property(e => e.Id).IsFixedLength();
             });
 
             modelBuilder.Entity<Transaccion>(entity =>

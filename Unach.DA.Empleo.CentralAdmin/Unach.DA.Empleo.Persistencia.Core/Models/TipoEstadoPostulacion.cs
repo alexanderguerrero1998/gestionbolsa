@@ -16,8 +16,11 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         }
 
         [Key]
-        public int Id { get; set; }
-        public bool Nombre { get; set; }
+        [StringLength(50)]
+        public string Id { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Nombre { get; set; }
 
         [InverseProperty("IdEstadoPostulacionNavigation")]
         public virtual ICollection<EstadoPostulacion> EstadoPostulacion { get; set; }

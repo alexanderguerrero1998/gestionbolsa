@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using Unach.DA.Empleo.Presistencia.Api;
 using System.Text.Json;
 using System.Net.Http.Json;
+using DevExpress.CodeParser;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 {
@@ -88,22 +89,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 estudiantesViewModel.Add(estudianteViewModel);
 
             }
-    
-
-
-
-            ////Obtenemos los datos del usuario
-
-            //List<EstudianteViewModel> estudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodosEnOtraVista(
-            //    m => new EstudianteViewModel
-            //    {
-            //        IdEstudiante = m.IdEstudiante,
-            //        LinkLinkeding = m.LinkLinkeding
-            //    },
-            //    x => x.IdEstudiante > expediente,
-            //    a => a.OrderBy(y => y.Id));
-
-            //return View(estudiante.ToList());
+   
             return View(estudiantesViewModel);
 
         }
@@ -220,8 +206,16 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         public IActionResult MisPostulaciones() 
         {
 
+            var Id = HttpContext.Session.GetString("IdServidor");
+            ViewBag.Id = Id;    
+            List<MisPostulacionesViewModel> misPostulaciones = entitiesDomain.ExecuteStoredProcedure<MisPostulacionesViewModel>("dbo.MisPostulaciones",("ID",Id)).ToList();
 
-            return View();
+            //List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
+
+           // return PartialView("~/Views/Estudiante/_MisPostulaciones.cshtml", misPostulaciones);
+
+
+            return View(misPostulaciones);
         }
 
         public void Enviar()

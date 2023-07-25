@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Ofertas Laborales";
+}
+@model List<MisPostulacionesViewModel>
+
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de Ofertas disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
+
+<div class="content animate-panel">
+
+
+    <div class="row">
+        @await Component.InvokeAsync("MenuPerfilServidor", ViewBag.Expediente)
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+
+                            @*@await Component.InvokeAsync("PerfilServidorEditado", ViewBag.Expediente)*@
+
+
+                            <div class="hpanel hgreen">
+                                <div class="panel-body">
+                                    <p class="small m-t-md" style="text-align: justify">
+                                        <strong>Información.- </strong> La información que consta dentro del sistema, es utilizada con fines académicos y administrativos, por lo tanto es necesario mantenerla siempre actualizada.
+                                        <br>
+                                        <br>
+                                    </p>
+                                </div>
+                                <div class="panel-footer contact-footer">
+                                    <div class="row">
+                                        <div class="col-md-6 border-right">
+                                            <div class="contact-stat"><span>Registros: </span> <strong>Adicionales</strong></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="contact-stat"><span>Total: </span> <strong>@Model?.Count</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-9">
+
+
+                            <div class="row">
+                                <div class="hpanel hgreen">
+                                    <div class="col-lg-12">
+                                        <div class="hpanel">
+                                            <div class="panel-heading hbuilt">
+                                                @ViewData["Title"].ToString()
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a asp-action="_OfertaLaboralEdit" asp-controller="OfertaLaboral" asp-route-id="0" asp-route-expediente="@ViewBag.Expediente" data-toggle="modal" data-target="#modal-action-codesi">Nuevo</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table id="plantillasTable" class="table table-stripped " width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center">Empresa</th>
+                                                            <th>Cargo</th>
+                                                            <th>Modalidad</th>
+                                                            <th>Ubicacion</th>
+                                                            <th>Descripcion</th>
+                                                            <th>Estado</th>
+
+                                                            <th width="10%" class="text-center">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model != null)
+                                                        {
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                <tr>
+                                                                    <td>@item.Empresa</td>
+                                                                    <td>@item.Cargo</td>
+                                                                    <td>@item.Modalidad</td>
+                                                                    <td>@item.Ubicacion</td>
+                                                                    <td>@item.Descripcion</td>
+                                                                    <td>@item.Estado</td>
+
+
+                                                                    <td class="text-center" width="5%" valign="top">
+                                                                        <div class="btn-group">
+                                                                            <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
+                                                                        
+                                                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                                                <li><a asp-action="PostulacionesDelete" asp-controller="Postulaciones" asp-route-idPostulacion="@item.IdPostulacion" asp-route-idEstudiante=@ViewBag.Id data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Eliminar</a></li>
+                                                                                </ul>
+                                                                 
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="panel-footer">
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<partial name="_Modal" model="@(new BootstrapModel { ID = "modal-action-codesi", AreaLabeledId = "modal-action-codesi-label", Size = ModalSize.Medium })" />
+
+
+
+
+
+@section Styles {
+    <environment names="Development,Staging,Production">
+
+        <link rel="stylesheet" href="~/lib/select2-3.5.2/select2.css" />
+        <link rel="stylesheet" href="~/lib/select2-3.5.2/select2-bootstrap.css" />
+
+
+        <link rel="stylesheet" href="~/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+        <link rel="stylesheet" href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+    </environment>
+}
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+
+        <script src="~/lib/select2-3.5.2/select2.min.js"></script>
+
+        <!-- DataTables -->
+        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- Validaciones -->
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation/jquery.validate.unobtrusive.min.js"></script>
+    </environment>
+
+
+    <script src="~/js/modal-refresh.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('#plantillasTable').dataTable();
+        });
+
+
+
+
+        $('#modal-action-codesi').change(
+            function () {
+                $.validator.unobtrusive.parse("#form");
+            });
+    </script>
+
+
+}
+

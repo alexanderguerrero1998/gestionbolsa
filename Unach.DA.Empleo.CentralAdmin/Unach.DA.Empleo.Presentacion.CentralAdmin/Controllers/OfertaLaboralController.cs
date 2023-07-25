@@ -27,6 +27,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         public IActionResult Index()
         {
             List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
+            //Enviamos el Id del usuario autenticado para la postulacion
             ViewBag.Id = HttpContext.Session.GetString("IdServidor");
 
             return View(oferta);
