@@ -122,7 +122,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                     //Obtener solo CI/UserName
                     var ci = userAuth.UserName;
 
-                    // llamamos a la api para obtener los datos en lo Claims
+                    // Contar la cantidad de dígitos en la cédula de identidad 
+                    int cantidadDigitos = ci.Length;
+                    if (cantidadDigitos <= 13) { }
+
+                    // llamamos a la api para obtener los datos en las sessiones
                     ClienteApi clienteapi = new ClienteApi("");
 
                     //Obtenemos los datos del usuario
@@ -143,8 +147,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                            Foto = response.FotoRuta,
                            Email = response.CorreoInstitucional
                         }, x => x.UserName == ci).FirstOrDefault();
-
-
 
                         if (usuario != null)
                         {

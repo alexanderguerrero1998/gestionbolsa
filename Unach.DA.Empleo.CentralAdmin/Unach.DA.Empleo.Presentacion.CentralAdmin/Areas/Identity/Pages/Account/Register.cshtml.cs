@@ -26,6 +26,7 @@ using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
 using Unach.DA.Empleo.Presistencia.Api;
 using AutoMapper;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
+using DevExpress.CodeParser;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 {
@@ -110,86 +111,170 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var ci = Input.CI;
-
-                // Verificar si el Estudiante ya existe en la API
-                bool userExists = await UserExistsInApi(ci);
-
-                if (userExists)
+                // Contar la cantidad de dígitos en la cédula de identidad 
+                int cantidadDigitos = ci.Length;
+                if (cantidadDigitos == 10)
                 {
+                    // Verificar si el Estudiante ya existe en la API
+                    bool userExists = await UserExistsInApi(ci);
 
-                    // Crear el nuevo usuario
-                    var user = new IdentityUser { UserName = Input.CI, Email = Input.Email };
-                    var result = await _userManager.CreateAsync(user, Input.Password);
-
-                    if (result.Succeeded)
+                    if (userExists)
                     {
-                        // Llamamos a la API para obtener  los valores y asignalos en tabla ESTUDIANTE
-                        ClienteApi clienteapi = new ClienteApi("");
-                        var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
-                        
 
-                        Estudiante estudianteNuevo = new Estudiante();
-                        estudianteNuevo.Id = user.Id;
-                        estudianteNuevo.IdEstudiante = response.EstudianteID;
-                        estudianteNuevo.LinkLinkeding = Input.Linkedin;
-                         
-                        // Agregamos datos de adutoria de la tabla Estudiante
-                        var estudiante = _mapper.Map<Estudiante>(estudianteNuevo);
-                        
-                        _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
+                        // Crear el nuevo usuario
+                        var user = new IdentityUser { UserName = Input.CI, Email = Input.Email };
+                        var result = await _userManager.CreateAsync(user, Input.Password);
 
-                        
-                        entitiesDomain.EstudianteRepositorio.Insertar(estudiante);
-                        entitiesDomain.GuardarTransacciones();
-
-                     
-
-                        //Agregamos roles al usuario
-                        RolUsuario rolUsuarioNuevo = new RolUsuario();
-                        rolUsuarioNuevo.IdRol = 5; // Este es el rol de estudiante
-                        rolUsuarioNuevo.IdUsuario = user.Id;
-                        rolUsuarioNuevo.Desde = DateTime.Now;
-                        rolUsuarioNuevo.Hasta=DateTime.Now.AddYears(1);
-
-
-
-                        // Agregamos datos de adutoria de la tabla RolUsuario
-                        var roles = _mapper.Map<RolUsuario>(rolUsuarioNuevo);
-                        _mapper.AgregarDatosAuditoria(roles, HttpContext);
-      
-                        entitiesDomain.RolUsuarioRepositorio.Insertar(roles);
-                        entitiesDomain.GuardarTransacciones();
-
-                        TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
-
-                        _logger.LogInformation("User created a new account with password.");
-                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                        var callbackUrl = Url.Page(
-                            "/Account/ConfirmEmail",
-                            pageHandler: null,
-                            values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                            protocol: Request.Scheme);
-
-                        // Enviamos un correo de confirmacion
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        if (result.Succeeded)
                         {
-                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                            // Llamamos a la API para obtener  los valores y asignalos en tabla ESTUDIANTE
+                            ClienteApi clienteapi = new ClienteApi("");
+                            var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
+
+
+                            Estudiante estudianteNuevo = new Estudiante();
+                            estudianteNuevo.Id = user.Id;
+                            estudianteNuevo.IdEstudiante = response.EstudianteID;
+                            estudianteNuevo.LinkLinkeding = Input.Linkedin;
+
+                            // Agregamos datos de adutoria de la tabla Estudiante
+                            var estudiante = _mapper.Map<Estudiante>(estudianteNuevo);
+
+                            _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
+
+
+                            entitiesDomain.EstudianteRepositorio.Insertar(estudiante);
+                            entitiesDomain.GuardarTransacciones();
+
+
+
+                            ////Agregamos roles al usuario
+                            //RolUsuario rolUsuarioNuevo = new RolUsuario();
+                            //rolUsuarioNuevo.IdRol = 5; // Este es el rol de estudiante
+                            //rolUsuarioNuevo.IdUsuario = user.Id;
+                            //rolUsuarioNuevo.Desde = DateTime.Now;
+                            //rolUsuarioNuevo.Hasta = DateTime.Now.AddYears(1);
+
+
+
+                            //// Agregamos datos de adutoria de la tabla RolUsuario
+                            //var roles = _mapper.Map<RolUsuario>(rolUsuarioNuevo);
+                            //_mapper.AgregarDatosAuditoria(roles, HttpContext);
+
+                            //entitiesDomain.RolUsuarioRepositorio.Insertar(roles);
+                            //entitiesDomain.GuardarTransacciones();
+
+                            TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
+
+                            _logger.LogInformation("User created a new account with password.");
+                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                            var callbackUrl = Url.Page(
+                                "/Account/ConfirmEmail",
+                                pageHandler: null,
+                                values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                                protocol: Request.Scheme);
+
+                            // Enviamos un correo de confirmacion
+                            await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                            if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                            {
+                                return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                            }
+                            else
+                            {
+                                await _signInManager.SignInAsync(user, isPersistent: false);
+                                return LocalRedirect(returnUrl);
+                            }
                         }
-                        else
+                        foreach (var error in result.Errors)
                         {
-                            await _signInManager.SignInAsync(user, isPersistent: false);
-                            return LocalRedirect(returnUrl);
+                            ModelState.AddModelError(string.Empty, error.Description);
                         }
                     }
-                    foreach (var error in result.Errors)
+                } else if (cantidadDigitos == 13)
+                {
+                    // Verificar si el Estudiante ya existe en la API
+                    bool userExists = await UserExistsInApi(ci);
+
+                    if (userExists)
                     {
-                        ModelState.AddModelError(string.Empty, error.Description);
+
+                        // Crear el nuevo usuario
+                        var user = new IdentityUser { UserName = Input.CI, Email = Input.Email };
+                        var result = await _userManager.CreateAsync(user, Input.Password);
+
+                        if (result.Succeeded)
+                        {
+                            // Llamamos a la API para obtener  los valores y asignalos en tabla ESTUDIANTE
+                            ClienteApi clienteapi = new ClienteApi("");
+                            var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
+
+
+                            Estudiante estudianteNuevo = new Estudiante();
+                            estudianteNuevo.Id = user.Id;
+                            estudianteNuevo.IdEstudiante = response.EstudianteID;
+                            estudianteNuevo.LinkLinkeding = Input.Linkedin;
+
+                            // Agregamos datos de adutoria de la tabla Estudiante
+                            var estudiante = _mapper.Map<Estudiante>(estudianteNuevo);
+                            _mapper.AgregarDatosAuditoria(estudiante, HttpContext);
+                            entitiesDomain.EstudianteRepositorio.Insertar(estudiante);
+                            entitiesDomain.GuardarTransacciones();
+
+                            //Agregamos roles al usuario
+                            RolUsuario rolUsuarioNuevo = new RolUsuario();
+                            rolUsuarioNuevo.IdRol = 5; // Este es el rol de estudiante
+                            rolUsuarioNuevo.IdUsuario = user.Id;
+                            rolUsuarioNuevo.Desde = DateTime.Now;
+                            rolUsuarioNuevo.Hasta = DateTime.Now.AddYears(1);
+
+                            // Agregamos datos de adutoria de la tabla RolUsuario
+                            var roles = _mapper.Map<RolUsuario>(rolUsuarioNuevo);
+                            _mapper.AgregarDatosAuditoria(roles, HttpContext);
+
+                            entitiesDomain.RolUsuarioRepositorio.Insertar(roles);
+                            entitiesDomain.GuardarTransacciones();
+
+                            TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
+
+                            _logger.LogInformation("User created a new account with password.");
+                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                            var callbackUrl = Url.Page(
+                                "/Account/ConfirmEmail",
+                                pageHandler: null,
+                                values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                                protocol: Request.Scheme);
+
+                            // Enviamos un correo de confirmacion
+                            await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                            if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                            {
+                                return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                            }
+                            else
+                            {
+                                await _signInManager.SignInAsync(user, isPersistent: false);
+                                return LocalRedirect(returnUrl);
+                            }
+                        }
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
                     }
+
                 }
+                else
+                {
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Advertencia, "Usuario Invalido");
+                }
+                
 
             }
 

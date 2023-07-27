@@ -21,7 +21,10 @@
         <ul class="nav navbar-nav">
         
             <li>
-                <a class=""  asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Logout</a>
+                    @*<a class=""  asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Logout</a>*@
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
+                    </form>
             </li>
              
         </ul>
@@ -111,16 +114,33 @@
                     </table>
                 </div>
             </li>*@
-    
 
 
 
-
+            
             <li class="dropdown">
-                <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">
+                <a class="nav-link text-dark" href="javascript:void(0);" onclick="logout()">
                     <i class="pe-7s-upload pe-rotate-90"></i>
                 </a>
+
             </li>
         </ul>
     </div>
 </nav>
+
+
+<!-- Script JavaScript para manejar el cierre de sesión -->
+<script>
+    function logout() {
+        // Realizar la petición de cierre de sesión con el formulario oculto
+        var form = document.getElementById("logoutForm");
+        form.submit();
+    }
+</script>
+
+<form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" method="post" style="display: none;">
+    @Html.AntiForgeryToken()
+</form>
+
+
+
