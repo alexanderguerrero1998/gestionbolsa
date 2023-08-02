@@ -148,6 +148,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                            Email = response.CorreoInstitucional
                         }, x => x.UserName == ci).FirstOrDefault();
 
+                        
                         if (usuario != null)
                         {
                             usuario.Roles = entitiesDomain.RolUsuarioRepositorio.ObtenerTodosEnOtraVista<RolViewModel>(

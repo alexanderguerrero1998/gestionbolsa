@@ -45,8 +45,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 },
                 x => x.Id > expediente,
                 a => a.OrderBy(y => y.Id));
+
+            
             return View(empresa.ToList());
         }
+
+       
 
         public IActionResult EmpresaEdit(int id, int expediente)
         {

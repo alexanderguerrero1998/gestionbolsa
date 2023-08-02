@@ -1,85 +1,267 @@
 ﻿@page
 @model LoginModel
 
-@{
-    ViewData["Title"] = "Log in";
-}
 
 <h2>@ViewData["Title"]</h2>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Input.CI"></label>
-                    <input asp-for="Input.CI" class="form-control" />
-                    <span asp-validation-for="Input.CI" class="text-danger"></span>
+
+<body>
+    <div class="login-container" style="padding-top: 3% !important;>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center m-b-md">
+                    <h5 class="font-extra-bold text-info">SISTEMA INFORMÁTICO DE BOLSA DE EMPLEO (SICOA)</h5>
+                    <br>
+                    <p class="font-extra-bold">INICIO DE SESIÓN</p>
+                    <p>
+                        <span id="lblMenServicio">Este servicio es de uso exclusivo de los Estudiantes/Egresados de la Universidad Nacional de Chimborazo.</span>
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe">
-                            <input asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
+
+                <div class="hpanel">
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row">
+                                    <span id="uc_Login_lblMensaje" style="color:Black;"></span>
+                                    <div class="col-md-12">
+                                        <form id="account" method="post">
+                                       
+                                            <label class="control-label">
+                                            </label>
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-id-card-o fa-fw"></i>
+                                                </span>
+                                                <input asp-for="Input.CI" class="form-control" placeholder="C.I. de Usuario" />
+                                                <span asp-validation-for="Input.CI" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-unlock-alt fa-fw"></i>
+                                                </span>
+                                                <input asp-for="Input.Password" class="form-control" placeholder="Contraseña de Usuario" />
+                                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-md-12 text-center">
+                                                <input type="submit" name="ctl00$body$ucLogin1$ucLogin_btnLogin" value="Aceptar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$body$ucLogin1$ucLogin_btnLogin&quot;, &quot;&quot;, true, &quot;login&quot;, &quot;&quot;, false, false))" id="ucLogin_btnLogin" tabindex="4" class="btn btn-info btn-sm">
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                 </div>
+
+                            </div>
+                            
+                         </div>
+
                     </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">Log in</button>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to log in.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <span id="BTNR_lblcta_reg">¿Usuario nuevo?</span>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrese aqui</a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a id="forgot-password" asp-page="./ForgotPassword">¿Olvido su contraseña?</a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar correo de confirmacion</a>
+                            </div>
                         </div>
-                    </form>
-                }
-            }
-        </section>
+                    
+                    </div>
+
+                </div>
+
+           @* <div class="col-md-4">
+                    <section>
+                        <form id="account" method="post">
+                           
+                            <hr />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Input.CI"></label>
+                                <input asp-for="Input.CI" class="form-control" />
+                                <span asp-validation-for="Input.CI" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label asp-for="Input.RememberMe">
+                                        <input asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Log in</button>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                                </p>
+                                <p>
+                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                                </p>
+                                <p>
+                                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                                </p>
+                            </div>
+                        </form>
+                    </section>
+            </div>*@
+
+        </div>
+
+        </div>
     </div>
-</div>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+
+
+
+
+
+
+@*
+
+
+
+<div class="login-container" style="padding-top: 3% !important;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <h5 class="font-extra-bold text-info">SISTEMA INFORMÁTICO DE CONTROL ACADÉMICO (SICOA)</h5>
+                <br>
+                <p class="font-extra-bold">INICIO DE SESIÓN</p>
+                <p>
+                    <span id="lblMenServicio">Este servicio es de uso exclusivo de los Estudiantes de la Universidad Nacional de Chimborazo.</span>
+                </p>
+
+
+            </div>
+            <div class="hpanel">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <div class="row">
+                                <span id="uc_Login_lblMensaje" style="color:Black;"></span>
+                                <div class="col-md-12">
+                                    <span id="ucLogin_valUsuario" style="color: red; visibility: visible;">Usuario Requerido</span>
+                                    <label class="control-label">
+                                    </label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-id-card-o fa-fw"></i>
+                                        </span>
+                                        <input name="ctl00$body$ucLogin1$ucLogin_txtUsuario" type="text" id="ucLogin_txtUsuario" tabindex="1" title="Ingrese su Usuario" class="form-control" placeholder="Nombre de Usuario">
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="control-label">
+
+                                    </label>
+                                    <span id="ucLogin_valClave" style="color: red; visibility: visible;">Clave Requerida</span>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-unlock-alt fa-fw"></i>
+                                        </span>
+                                        <input name="ctl00$body$ucLogin1$ucLogin_txtClave" type="password" id="ucLogin_txtClave" tabindex="2" title="Ingrese su Clave" class="form-control" placeholder="Contraseña de Usuario">
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-12 form-group text-center">
+
+
+
+                                    <div class="BDC_CaptchaDiv text-center" id="c_sicoaadministracion_transacciones_login_captchalogin_CaptchaDiv" style="width: 280px !important; height: 50px !important; ">
+                                        <!--
+                                        -->
+                                        <div class="BDC_CaptchaImageDiv" id="c_sicoaadministracion_transacciones_login_captchalogin_CaptchaImageDiv" style="width: 250px !important; height: 50px !important;">
+                                            <!--
+                                            -->
+                                            <div class="BDC_CaptchaImageDiv" style="width:250px; height:40px;"><img id="c_sicoaadministracion_transacciones_login_captchalogin_CaptchaImage" alt="Retype the CAPTCHA code from the image" src="https://sicoaweb2.unach.edu.ec/BotDetectCaptcha.ashx?get=image&amp;c=c_sicoaadministracion_transacciones_login_captchalogin&amp;t=5f20d8249f244bab9aee1b36cef8e51e&amp;d=1690941500858"></div>
+                                            <!--
+                                            -->
+                                            <a href="//captcha.org/captcha.html?asp.net" title="BotDetect CAPTCHA ASP.NET Form Validation" style="display: block !important; height: 10px !important; margin: 0 !important; padding: 0 !important; font-size: 9px !important; line-height: 10px !important; visibility: visible !important; font-family: Verdana, DejaVu Sans, Bitstream Vera Sans, Verdana Ref, sans-serif !important; vertical-align: middle !important; text-align: center !important; text-decoration: none !important; background-color: #f8f8f8 !important; color: #606060 !important;">BotDetect CAPTCHA ASP.NET Form Validation</a>
+                                            <!--
+                                            -->
+                                        </div>
+                                        <!--
+                                        -->
+                                        <div class="BDC_CaptchaIconsDiv" id="c_sicoaadministracion_transacciones_login_captchalogin_CaptchaIconsDiv" style="width: 24px !important;">
+                                            <!--
+                                            -->
+                                            <a class="BDC_ReloadLink" id="c_sicoaadministracion_transacciones_login_captchalogin_ReloadLink" href="#" title="Change the CAPTCHA code" style="display: inline-block !important;"><img class="BDC_ReloadIcon" id="c_sicoaadministracion_transacciones_login_captchalogin_ReloadIcon" src="https://sicoaweb2.unach.edu.ec/BotDetectCaptcha.ashx?get=reload-icon" alt="Change the CAPTCHA code"></a>
+                                            <!--
+                                            -->
+                                        </div>
+                                        <script src="/BotDetectCaptcha.ashx?get=script-include&amp;c=c_sicoaadministracion_transacciones_login_captchalogin&amp;t=5f20d8249f244bab9aee1b36cef8e51e" type="text/javascript"></script>
+                                        <input type="hidden" name="BDC_VCID_c_sicoaadministracion_transacciones_login_captchalogin" id="BDC_VCID_c_sicoaadministracion_transacciones_login_captchalogin" value="5f20d8249f244bab9aee1b36cef8e51e">
+                                        <input type="hidden" name="BDC_BackWorkaround_c_sicoaadministracion_transacciones_login_captchalogin" id="BDC_BackWorkaround_c_sicoaadministracion_transacciones_login_captchalogin" value="1">
+                                    </div>
+
+
+                                    <input name="ctl00$body$ucLogin1$TxtCaptcha" type="text" id="TxtCaptcha" tabindex="3" class="form-control" placeholder="Compruebe que es un humano">
+                                    <label id="lblMessage"></label>
+
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <input type="submit" name="ctl00$body$ucLogin1$ucLogin_btnLogin" value="Aceptar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$body$ucLogin1$ucLogin_btnLogin&quot;, &quot;&quot;, true, &quot;login&quot;, &quot;&quot;, false, false))" id="ucLogin_btnLogin" tabindex="4" class="btn btn-info btn-sm">
+                                </div>
+                            </div>
+                            <span id="ucLogin_lblMensajeError" style="color:Red;"></span>
+                            <input type="hidden" name="ctl00$body$ucLogin1$webPrincipal" id="webPrincipal" value="../../ModuloComun/General/frmPrincipalEstudiante.aspx">
+                            <input type="hidden" name="ctl00$body$ucLogin1$webRegistro" id="webRegistro" value="../../SicoaAdministracion/Transacciones/Registro.aspx">
+                            <input type="hidden" name="ctl00$body$ucLogin1$webEncuesta" id="webEncuesta" value="../../SicoaGraduado/Transacciones/frmVisualizarEncuesta.aspx?EncuestaID=">
+                            <input type="hidden" name="ctl00$body$ucLogin1$WebRecuperacion" id="WebRecuperacion" value="../../SicoaAdministracion/Transacciones/ComprobarUsuario.aspx">
+                            <input type="hidden" name="ctl00$body$ucLogin1$Menu_Logoneo" id="Menu_Logoneo" value="~/ModuloComun/General/frmLogin.aspx">
+
+
+
+                            <span id="lblOlvidado" style="font-size:10px;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <span id="BTNR_lblcta_reg">¿Usuario nuevo?</span>
+
+                            <a id="BTNR_Registro" tabindex="6" class=" text-info" href="javascript:__doPostBack('ctl00$body$BTNR_Registro','')">Regístrese aquí</a>
+                        </div>
+                        <div class="col-md-4 text-center">
+
+                            <a id="BTNR_RecuperarClave" tabindex="7" class="text-info" href="javascript:__doPostBack('ctl00$body$BTNR_RecuperarClave','')">¿Olvidó su contraseña?</a>
+                        </div>
+                        <div class="col-md-4 text-center">
+
+                            <a id="BTNR_Menu" tabindex="8" class="text-info" href="javascript:__doPostBack('ctl00$body$BTNR_Menu','')">Regresar al inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

@@ -205,19 +205,43 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
         public IActionResult MisPostulaciones() 
         {
-
             var Id = HttpContext.Session.GetString("IdServidor");
             ViewBag.Id = Id;    
             List<MisPostulacionesViewModel> misPostulaciones = entitiesDomain.ExecuteStoredProcedure<MisPostulacionesViewModel>("dbo.MisPostulaciones",("ID",Id)).ToList();
-
             //List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
-
            // return PartialView("~/Views/Estudiante/_MisPostulaciones.cshtml", misPostulaciones);
-
-
             return View(misPostulaciones);
         }
 
+        public IActionResult LinkedInProfile()
+        {
+            var Id = HttpContext.Session.GetString("IdServidor");
+            //int Idusuario = int.Parse(Id);
+
+            // Búsqueda del estudiante por su ID
+            var usuario = entitiesDomain.EstudianteRepositorio.ObtenerTodosEnOtraVista<EstudianteViewModel>(
+                      m => new EstudianteViewModel
+                      {
+                          IdEstudiante = m.IdEstudiante,
+                          LinkLinkeding = m.LinkLinkeding,  
+                      }, x => x.Id == Id).FirstOrDefault();
+
+
+            if (usuario != null)
+            {
+                // Obtener la URL del perfil de LinkedIn del usuario
+                string linkedInProfileUrl = usuario.LinkLinkeding;
+
+                if (!string.IsNullOrEmpty(linkedInProfileUrl))
+                {
+                    // Redireccionar al usuario a la página del perfil de LinkedIn
+                    return Redirect(linkedInProfileUrl);
+                }
+            }
+
+            // Si el usuario no se encuentra o no tiene una URL de LinkedIn válida, redireccionar a una página de error o a la página de inicio
+            return RedirectToAction("Index", "Home");
+        }
         public void Enviar()
         {
 
