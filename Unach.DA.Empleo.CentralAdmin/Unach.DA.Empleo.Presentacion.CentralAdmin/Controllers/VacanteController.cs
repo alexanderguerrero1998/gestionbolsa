@@ -157,7 +157,16 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
 
-        
+        public IActionResult CrearVacantePorEmpresa(int id)
+        {
+            VacanteViewModel vacante = new VacanteViewModel();
+            vacante.Empresas = entitiesDomain.EmpresaRepositorio.ObtenerTodos();
+            vacante.Tiposvacante = entitiesDomain.TipoVacanteRepositorio.ObtenerTodos();
+            return View(vacante);
+
+
+        }
+
 
 
 

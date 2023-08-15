@@ -11,6 +11,12 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
     [Index("NormalizedEmail", Name = "EmailIndex")]
     public partial class AspNetUsers
     {
+        public AspNetUsers()
+        {
+            ResponsableEmpresa = new HashSet<ResponsableEmpresa>();
+            RolUsuario = new HashSet<RolUsuario>();
+        }
+
         [Key]
         public string Id { get; set; }
         [StringLength(256)]
@@ -34,5 +40,9 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
         [InverseProperty("IdNavigation")]
         public virtual Estudiante Estudiante { get; set; }
+        [InverseProperty("IdRepresentanteNavigation")]
+        public virtual ICollection<ResponsableEmpresa> ResponsableEmpresa { get; set; }
+        [InverseProperty("IdUsuarioNavigation")]
+        public virtual ICollection<RolUsuario> RolUsuario { get; set; }
     }
 }

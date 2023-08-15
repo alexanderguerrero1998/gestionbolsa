@@ -178,10 +178,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 
                             HttpContext.Session.SetString("AuthenticatedUser", JsonConvert.SerializeObject(usuario));
                             HttpContext.Session.SetString("IdServidor", usuario.IdServidor.ToString());
-                            HttpContext.Session.SetString("Nombres", usuario.Nombres);
-                            HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres));
-                            HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
+                            //HttpContext.Session.SetString("Nombres", usuario.Nombres);
+                           // HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres));
+                            //HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
 
+                   
+                            HttpContext.Session.SetString("Nombres", usuario.Nombres ?? string.Empty);
+                            HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres ?? string.Empty));
+                            HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
 
                             //var claims = new List<Claim>
                             //{
@@ -225,8 +229,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 
                     }
 
-                    // Enviar correo electrónico de verificación de cuenta
-                    var user = await _userManager.FindByNameAsync(Input.CI);
+                   // Enviar correo electrónico de verificación de cuenta
+                   var user = await _userManager.FindByNameAsync(Input.CI);
                     if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
                     {
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -240,7 +244,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                             user.Email,
                             "Verifique su dirección de correo electrónico",
                             $"Por favor, confirme su cuenta haciendo clic <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>aquí</a>."
-                        
+
                             );
 
                         // Mostrar mensaje de éxito o instrucciones al usuario

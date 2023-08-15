@@ -129,6 +129,12 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Responsab__IdEmp__19DFD96B");
 
+                entity.HasOne(d => d.IdRepresentanteNavigation)
+                    .WithMany(p => p.ResponsableEmpresa)
+                    .HasForeignKey(d => d.IdRepresentante)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ResponsableEmpresa_AspNetUsers");
+
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.ResponsableEmpresa)
                     .HasForeignKey(d => d.IdTipoUsuario)
@@ -164,14 +170,16 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
 
             modelBuilder.Entity<RolUsuario>(entity =>
             {
+                entity.HasKey(e => new { e.IdRol, e.IdUsuario });
+
                 entity.HasOne(d => d.IdRolNavigation)
-                    .WithMany()
+                    .WithMany(p => p.RolUsuario)
                     .HasForeignKey(d => d.IdRol)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_RolUsuario_Rol");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany()
+                    .WithMany(p => p.RolUsuario)
                     .HasForeignKey(d => d.IdUsuario)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_RolUsuario_AspNetUsers");

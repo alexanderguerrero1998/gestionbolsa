@@ -39,10 +39,16 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public DateTime FechaTransaccion { get; set; }
         [StringLength(250)]
         public string Nombre { get; set; }
+        [Required]
+        [StringLength(450)]
+        public string IdRepresentante { get; set; }
 
         [ForeignKey("IdEmpresa")]
         [InverseProperty("ResponsableEmpresa")]
         public virtual Empresa IdEmpresaNavigation { get; set; }
+        [ForeignKey("IdRepresentante")]
+        [InverseProperty("ResponsableEmpresa")]
+        public virtual AspNetUsers IdRepresentanteNavigation { get; set; }
         [ForeignKey("IdTipoUsuario")]
         [InverseProperty("ResponsableEmpresa")]
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }

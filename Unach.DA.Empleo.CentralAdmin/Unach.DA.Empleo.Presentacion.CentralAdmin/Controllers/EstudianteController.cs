@@ -49,7 +49,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             var estudiantesViewModel = new List<EstudianteViewModel>();
 
             //Obtenemos los usuarios
-            var dataestudiante  = entitiesDomain.EstudianteRepositorio.ObtenerTodos().ToList();
+            var dataestudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodos().ToList();
 
             //Obtenemos los Id's de los usuarios
             var userIds = dataestudiante.Select(dataestudiante => dataestudiante.IdEstudiante);
@@ -57,15 +57,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             //llamamos a la api 'ApiInfoAcademico'
             ApiInfoAcademico clienteapi = new ApiInfoAcademico("");
 
-         
-      
             //Pasamos los id's  a la 'ApiInformacionAcademica'
-            foreach (var id in userIds) {
+            foreach (var id in userIds) 
+            {
                 // Se deserializa en el modelo de 'ApiInformacionAcademica'
                 var apiUrl = "https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionAcademica/" + id;
                 var estudianteApi = clienteapi.Get<ApiInformacionAcademica>(apiUrl);
 
-            
+
                 // Convertir ApiInformacionAcademica a EstudianteViewModel
                 var estudianteViewModel = new EstudianteViewModel
                 {
@@ -89,7 +88,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 estudiantesViewModel.Add(estudianteViewModel);
 
             }
-   
+
             return View(estudiantesViewModel);
 
         }
@@ -203,13 +202,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
 
-        public IActionResult MisPostulaciones() 
+        public IActionResult MisPostulaciones()
         {
             var Id = HttpContext.Session.GetString("IdServidor");
-            ViewBag.Id = Id;    
-            List<MisPostulacionesViewModel> misPostulaciones = entitiesDomain.ExecuteStoredProcedure<MisPostulacionesViewModel>("dbo.MisPostulaciones",("ID",Id)).ToList();
+            ViewBag.Id = Id;
+            List<MisPostulacionesViewModel> misPostulaciones = entitiesDomain.ExecuteStoredProcedure<MisPostulacionesViewModel>("dbo.MisPostulaciones", ("ID", Id)).ToList();
             //List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
-           // return PartialView("~/Views/Estudiante/_MisPostulaciones.cshtml", misPostulaciones);
+            // return PartialView("~/Views/Estudiante/_MisPostulaciones.cshtml", misPostulaciones);
             return View(misPostulaciones);
         }
 
@@ -223,7 +222,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                       m => new EstudianteViewModel
                       {
                           IdEstudiante = m.IdEstudiante,
-                          LinkLinkeding = m.LinkLinkeding,  
+                          LinkLinkeding = m.LinkLinkeding,
                       }, x => x.Id == Id).FirstOrDefault();
 
 
@@ -241,6 +240,63 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
             // Si el usuario no se encuentra o no tiene una URL de LinkedIn válida, redireccionar a una página de error o a la página de inicio
             return RedirectToAction("Index", "Home");
+        }
+
+
+        public IActionResult EstudianteInformacionPersonal()
+        {
+            var Id = HttpContext.Session.GetString("IdServidor");
+            ViewBag.Id = Id;
+
+            //llamamos a la api 'ApiInfoAcademico'
+            ApiInfoAcademico clienteapi = new ApiInfoAcademico("");
+
+            // Lista para almacenar los datos de los usuarios obtenidos de la API
+            var estudiantesViewModel = new List<EstudianteViewModel>();
+
+            //Obtenemos los usuarios de la tabla 'Estudiante'
+            var dataestudiante = entitiesDomain.EstudianteRepositorio.ObtenerTodos().ToList();
+
+            // Aplicar el filtro utilizando una consulta LINQ con cláusula WHERE
+            var estudiantesFiltrados = dataestudiante
+                .Where(estudiante => estudiante.Id == Id)
+                .Select(estudiante => new
+                {
+                    Id = estudiante.IdEstudiante,
+
+                });
+
+            foreach (var estudiante in estudiantesFiltrados)
+            {
+                int id = estudiante.Id;
+                // Se deserializa en el modelo de 'ApiInformacionAcademica'
+                var apiUrl2 = "https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionAcademica/" + id;
+                var estudianteApiIfoAcademica = clienteapi.Get<ApiInformacionAcademica>(apiUrl2);
+
+                // Convertir ApiInformacionAcademica a EstudianteViewModel
+                var estudianteViewModel = new EstudianteViewModel
+                {
+                    EstudianteID = estudianteApiIfoAcademica.EstudianteID,
+                    DocumentoIdentidad = estudianteApiIfoAcademica.DocumentoIdentidad,
+                    Nombres = estudianteApiIfoAcademica.Nombres,
+                    ApellidoPaterno = estudianteApiIfoAcademica.ApellidoPaterno,
+                    ApellidoMaterno = estudianteApiIfoAcademica.ApellidoMaterno,
+                    Genero = estudianteApiIfoAcademica.Genero,
+                    CorreoInstitucional = estudianteApiIfoAcademica.CorreoInstitucional,
+                    TelefonoCelular = estudianteApiIfoAcademica.TelefonoCelular,
+                    TelefonoDomicilio = estudianteApiIfoAcademica.TelefonoDomicilio,
+                    Facultad = estudianteApiIfoAcademica.Facultad,
+                    Carrera = estudianteApiIfoAcademica.Carrera,
+                    Nivel = estudianteApiIfoAcademica.Nivel,
+                    Periodo = estudianteApiIfoAcademica.Periodo
+                };
+
+                // Agregar el estudianteViewModel a la lista de estudiantes
+                estudiantesViewModel.Add(estudianteViewModel);
+
+            }
+
+            return View(estudiantesViewModel);  
         }
         public void Enviar()
         {

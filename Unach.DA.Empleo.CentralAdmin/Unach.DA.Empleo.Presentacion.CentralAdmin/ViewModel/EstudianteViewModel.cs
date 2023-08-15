@@ -6,7 +6,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
 {
     public class EstudianteViewModel
     {
+        public string Id { get; set; }     
         public int IdEstudiante { get; set; }
+        public int IdPostulacion { get; set; }
 
         public string LinkLinkeding { get; set; }
 

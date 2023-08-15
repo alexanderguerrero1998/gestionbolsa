@@ -89,7 +89,35 @@
                                                                     <td>@item.Modalidad</td>
                                                                     <td>@item.Ubicacion</td>
                                                                     <td>@item.Descripcion</td>
-                                                                    <td>@item.Estado</td>
+                                                                   
+                                                                    <td>
+
+                                                                        @{
+                                                                            string labelClass = string.Empty;
+                                                                            string labelText = item.Estado;
+
+                                                                            if (item.Estado == "Pendiente") // Cambia esto a tu lógica real
+                                                                            {
+                                                                                labelClass = "label label-info pull-right";
+                                                                            }
+                                                                            else if (item.Estado == "Aceptado") // Cambia esto a tu lógica real
+                                                                            {
+                                                                                labelClass = "label label-success pull-right";
+                                                                            }
+                                                                            else if (item.Estado == "Rechazado")
+                                                                            {
+                                                                                labelClass = "label label-danger pull-right";
+                                                                                
+                                                                            }
+                                                                            // Agrega más condiciones según sea necesario para otros valores de estado
+
+                                                                        }
+
+
+                                                                        <span class="@labelClass">@labelText</span>
+                                                                        
+                                                                    
+                                                                    </td>
 
 
                                                                     <td class="text-center" width="5%" valign="top">

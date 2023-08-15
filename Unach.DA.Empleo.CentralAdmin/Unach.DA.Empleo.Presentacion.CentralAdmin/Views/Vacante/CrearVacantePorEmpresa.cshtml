@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Crear Vacante";
+}
+@model VacanteViewModel
+
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de vacantes disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
+
+
+<div class="content animate-panel">
+
+
+    <div class="row">
+        @await Component.InvokeAsync("MenuPerfilServidor", ViewBag.Expediente)
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+
+                            @*@await Component.InvokeAsync("PerfilServidorEditado", ViewBag.Expediente)*@
+
+                            <div class="hpanel hgreen">
+                                <div class="panel-body">
+                                    <p class="small m-t-md" style="text-align: justify">
+                                        <strong>Información.- </strong> La información que consta dentro del sistema, es utilizada con fines académicos y administrativos, por lo tanto es necesario mantenerla siempre actualizada.
+                                        <br>
+                                        <br>
+                                    </p>
+                                </div>
+                                <div class="panel-footer contact-footer">
+                                    <div class="row">
+                                        <div class="col-md-6 border-right">
+                                            <div class="contact-stat"><span>Registros: </span> <strong>Adicionales</strong></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="hpanel hgreen">
+                                    <div class="col-lg-12">
+                                        <div class="hpanel">
+                                            <div class="panel-heading hbuilt">
+                                                @ViewData["Title"].ToString()
+                                                <div class="pull-right">
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                               <form role="form" id="form" method="post" asp-action="VacanteEdit" asp-controller="Vacante">
+                                               
+                                                    <div class="modal-body">
+                                                     <div>
+                                                           <div class="row">
+                                                                <input type="hidden" asp-for="Id" />
+
+                                                            <div class="form-group col-lg-6">
+                                                                    <label asp-for="IdEmpresa"></label>
+                                                                    <span asp-validation-for="IdEmpresa" class="text-danger"></span>
+                                                                    <select asp-for="IdEmpresa" asp-items="@(new SelectList(Model.Empresas,"Id","Nombre"))" class="form-control select2">
+                                                                        <option value="Id">- Seleccionar una opción -</option>
+                                                                    </select>
+                                                            </div>
+
+                                                            <div class="form-group col-lg-6">
+                                                               <label asp-for="IdTipoVacante"></label>
+                                                               <span asp-validation-for="IdTipoVacante" class="text-danger"></span>
+                                                               <select asp-for="IdTipoVacante" asp-items="@(new SelectList(Model.Tiposvacante,"Id","Nombre"))" class="form-control select2" requir>
+                                                                        <option value="-1">- Seleccionar una opción -</option>
+                                                               </select>
+                                                            </div>
+
+                                                                @*Estos son los campos a edita*@
+
+
+                                                                <div class="form-group col-lg-6">
+                                                                    <label asp-for="Cargo"></label>
+                                                                    <span asp-validation-for="Cargo" class="text-danger"></span>
+                                                                    <input asp-for="Cargo" type="text" class="form-control" required="required">
+                                                                   
+                                                                </div>
+
+                                                                <div class="form-group col-lg-6">
+                                                                    <label asp-for="Descripcion"></label>
+                                                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                                                    <input asp-for="Descripcion" type="text" class="form-control" required="required">
+                                                                  
+                                                                </div>
+
+
+                                                                <div class="form-group col-lg-6">
+                                                                    <label asp-for="Plaza"></label>
+                                                                    <span asp-validation-for="Plaza" class="text-danger"></span>
+                                                                    <input asp-for="Plaza" type="text" class="form-control" required="required">
+
+                                                                </div>
+
+                                                        </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <button class="btn btn-primary " type="submit"><i class="fa fa-check"></i> Enviar</button>
+                                                            </div>
+                                                     </div>
+                                                      
+                                                  </div>
+
+                                               
+                                                  
+                                               </form>
+                                              
+
+
+                                            </div>
+                                            <div class="panel-footer">
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

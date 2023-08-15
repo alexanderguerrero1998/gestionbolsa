@@ -30,7 +30,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 ClienteApi clienteapi = new ClienteApi("");
               
                 var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
-                if (response != null)
+                if (response != null && response.ApellidoPaterno!=null && response.EstudianteID != null)
                 {
 
                     return true;
@@ -43,6 +43,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             }
            
         }
+
+
 
 
     }

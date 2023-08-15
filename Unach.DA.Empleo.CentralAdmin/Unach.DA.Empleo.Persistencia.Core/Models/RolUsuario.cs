@@ -8,20 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Unach.DA.Empleo.Persistencia.Core.Models
 {
-    [Keyless]
     [Table("RolUsuario", Schema = "Auth")]
     public partial class RolUsuario
     {
+        [Key]
         public int IdRol { get; set; }
-        [Required]
-        [StringLength(450)]
+        [Key]
         public string IdUsuario { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime Desde { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime Hasta { get; set; }
-        [Required]
-        [StringLength(15)]
+        [StringLength(450)]
         public string IdUsuarioAudd { get; set; }
         [Required]
         public string RolAudd { get; set; }
@@ -33,8 +31,10 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
 
         [ForeignKey("IdRol")]
+        [InverseProperty("RolUsuario")]
         public virtual Rol IdRolNavigation { get; set; }
         [ForeignKey("IdUsuario")]
+        [InverseProperty("RolUsuario")]
         public virtual AspNetUsers IdUsuarioNavigation { get; set; }
     }
 }

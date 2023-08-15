@@ -39,7 +39,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
-                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedAccount = true;  // Cambia de false a true
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<IdentityDbContext>();
