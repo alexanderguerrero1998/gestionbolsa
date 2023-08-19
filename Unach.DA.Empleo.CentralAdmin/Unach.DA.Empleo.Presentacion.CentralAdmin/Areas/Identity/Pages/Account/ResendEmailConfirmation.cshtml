@@ -4,8 +4,8 @@
     ViewData["Title"] = "Resend email confirmation";
 }
 
-<h1>@ViewData["Title"]</h1>
-<h4>Enter your email.</h4>
+
+@*<h4>Enter your email.</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,8 +19,65 @@
             <button type="submit" class="btn btn-primary">Resend</button>
         </form>
     </div>
+</div>*@
+
+
+
+<div class="login-container" style="padding-top: 3% !important" ;>
+    <div class=" row" ="">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                
+                <br>
+                <p class="font-extra-bold">REENVIAR CORREO ELECTRONICO DE CONFIRMACION</p>
+                <p>
+                    <span id="lblMenServicio">Este servicio es de uso exclusivo de los Estudiantes/Egresados de la Universidad Nacional de Chimborazo.</span>
+                </p>
+            </div>
+
+            <div class="hpanel">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <span id="uc_Login_lblMensaje" style="color:Black;"></span>
+                                <div class="col-md-12">
+                                    <p class="font-extra-bold">INGRESA TU CORREO ELECTRONICO</p>
+                                    <form id="account" method="post">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <label class="control-label">
+                                        </label>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input asp-for="Input.Email" class="form-control" placeholder="usuario@unach.edu.ec" />
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Reenviar</button>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+    </div>
+
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+
+

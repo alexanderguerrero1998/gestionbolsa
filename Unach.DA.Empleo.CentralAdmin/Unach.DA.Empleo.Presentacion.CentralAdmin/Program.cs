@@ -121,6 +121,14 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
 
             app.UseSession(); // Add this line to enable session middleware
 
+
+            // Configuración de enrutamiento para la página de cambio de contraseña
+            app.MapControllerRoute(
+                name: "identityChangePassword",
+                pattern: "Identity/Account/ChangePassword",
+                defaults: new { controller = "Account", action = "ChangePassword" }
+            );
+
             app.MapRazorPages();    
 
             app.MapControllerRoute(

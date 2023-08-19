@@ -180,6 +180,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Capacitacion/EstudianteCapacitacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uXEVzdHVkaWFudGVDYXBhY2l0YWNpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Capacitacion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Capacitacion/_CapacitacionDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uXF9DYXBhY2l0YWNpb25EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Capacitacion/_CapacitacionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uXF9DYXBhY2l0YWNpb25FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Empresa/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -230,6 +246,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Idioma/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Logro/EstudianteLogro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9ncm9cRXN0dWRpYW50ZUxvZ3JvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Logro/Index.cshtml]

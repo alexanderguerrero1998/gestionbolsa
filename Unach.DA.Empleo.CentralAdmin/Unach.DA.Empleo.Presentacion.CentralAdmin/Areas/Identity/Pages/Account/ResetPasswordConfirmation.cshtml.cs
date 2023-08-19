@@ -13,6 +13,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
         public void OnGet()
         {
 
+
         }
     }
 }

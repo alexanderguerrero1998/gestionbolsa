@@ -6,6 +6,7 @@ using Unach.DA.Empleo.Persistencia.Core.Models;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
 
+
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 {
     public class LogroController : Controller
@@ -18,30 +19,32 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         {
             _mapper = mapper;
             entitiesDomain = new EntitiesDomain(options);
-            logger = log.CreateLogger(typeof(LogroController));
+            logger = log.CreateLogger(typeof(VacanteController));
         }
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult EstudianteLogro() // Trae los logros segun el estudiante estudiante
+        {
+
             int expediente = 0;
-
             ViewBag.Expediente = expediente;
-
-            List<LogroViewModel> Logro = entitiesDomain.LogroRepositorio.ObtenerTodosEnOtraVista(
+            var idEstudiante = HttpContext.Session.GetString("IdServidor");
+            List<LogroViewModel> logros = entitiesDomain.LogroRepositorio.ObtenerTodosEnOtraVista(
                 m => new LogroViewModel
                 {
                     Id = m.Id,
-                    
                     Descripcion = m.Descripcion,
-                
-                    Institucion = m.Institucion,    
-                   
+                    IdEstudiante = m.IdEstudiante,
+                    IdLogro = m.IdLogro
+
                 },
-                x => x.Id > expediente,
+                x => x.Id > expediente && x.IdEstudiante == idEstudiante,
                 a => a.OrderBy(y => y.Id));
 
-            return View(Logro.ToList());
+                return View(logros);  
         }
-
 
         public IActionResult LogroEdit(int id)
         {
@@ -51,6 +54,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 {
                     LogroViewModel Logro = new LogroViewModel();
                     Logro.Logros = entitiesDomain.TipoLogroRepositorio.ObtenerTodos();
+                    Logro.IdEstudiante = HttpContext.Session.GetString("IdServidor");
                     return PartialView("~/Views/Logro/_LogroEdit.cshtml", Logro);
                 }
                 else
@@ -62,8 +66,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             Id = m.Id,
                             Institucion = m.Institucion,
                             Descripcion = m.Descripcion,
-                           Certificado = m.Certificado,
-                          
+                            Certificado = m.Certificado,
+                            IdLogro = m.IdLogro,
+                            IdEstudiante = m.IdEstudiante,  
+                            FechaTransaccion = m.FechaTransaccion,  
+                            Fecha = m.Fecha
+                       
+
                         },
                         x => x.Id == id).FirstOrDefault();
 
@@ -99,8 +108,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 if (item.Id == 0)
                 {
                     var logro = _mapper.Map<Logro>(item);
-                    logro.Fecha = DateTime.Now; // TOCA QUITAR
-                    //logro.IdEstudiante = 12; // TOCA QUITAR
+                   
+              
                     _mapper.AgregarDatosAuditoria(logro, HttpContext);
                     entitiesDomain.LogroRepositorio.Insertar(logro);
                     entitiesDomain.GuardarTransacciones();
@@ -111,6 +120,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 {
                     var logro = _mapper.Map<Logro>(item);
                     logro.Fecha = DateTime.Now; // TOCA QUITAR
+                    logro.FechaTransaccion = DateTime.Now;
+
                     //logro.IdEstudiante = item.IdLogro[0]; // TOCA QUITAR
                     _mapper.AgregarDatosAuditoria(logro, HttpContext);
                     entitiesDomain.LogroRepositorio.Actualizar(logro);
@@ -124,7 +135,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 logger.LogError(ex, "Error");
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
             }
-            return RedirectToAction(nameof(Index), new { expediente = 1 });
+            // return RedirectToAction(nameof(Index), new { expediente = 1 });
+            return RedirectToAction("EstudianteLogro", "Logro");
         }
 
         public IActionResult LogroDelete(int id)
@@ -161,8 +173,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             }
             return RedirectToAction(nameof(Index), new { expediente = 1 });
         }
-
-
 
     }
 }

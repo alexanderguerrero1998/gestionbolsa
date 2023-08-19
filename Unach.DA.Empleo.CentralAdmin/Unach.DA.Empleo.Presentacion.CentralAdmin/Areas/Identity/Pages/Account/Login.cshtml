@@ -5,7 +5,7 @@
 <h2>@ViewData["Title"]</h2>
 
 <body>
-    <div class="login-container" style="padding-top: 3% !important;>
+    <div class="login-container" style="padding-top: 3% !important";>
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center m-b-md">
@@ -18,22 +18,21 @@
                 </div>
 
                 <div class="hpanel">
-
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-
 
                                 <div class="row">
                                     <span id="uc_Login_lblMensaje" style="color:Black;"></span>
                                     <div class="col-md-12">
                                         <form id="account" method="post">
-                                       
+                                            <div asp-validation-summary="All" class="text-danger"></div>
                                             <label class="control-label">
                                             </label>
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon">
-                                                    <i class="fa fa-id-card-o fa-fw"></i>
+                                                    <i class="fa fa-user"></i>
+
                                                 </span>
                                                 <input asp-for="Input.CI" class="form-control" placeholder="C.I. de Usuario" />
                                                 <span asp-validation-for="Input.CI" class="text-danger"></span>

@@ -12,7 +12,9 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
     {
         [Key]
         public int Id { get; set; }
-        public int IdEstudiante { get; set; }
+        [Required]
+        [StringLength(450)]
+        public string IdEstudiante { get; set; }
         public int IdIdioma { get; set; }
         public int NivelWriting { get; set; }
         public int NivelSpeaking { get; set; }
@@ -32,5 +34,12 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
+
+        [ForeignKey("IdEstudiante")]
+        [InverseProperty("EstudianteIdioma")]
+        public virtual Estudiante IdEstudianteNavigation { get; set; }
+        [ForeignKey("IdIdioma")]
+        [InverseProperty("EstudianteIdioma")]
+        public virtual Idioma IdIdiomaNavigation { get; set; }
     }
 }

@@ -10,43 +10,48 @@
             <div>
                 <div class="row">
                     <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="IdEstudiante" />
+        
 
 
+                    @*En lista elementos de otra tabla*@
                     <div class="form-group col-lg-6">
                         <label asp-for="IdLogro"></label>
                         <span asp-validation-for="IdLogro" class="text-danger"></span>
-                        <select asp-for="IdLogro" asp-items="@(new SelectList(Model.Logros,"Id","Nombre"))" class="form-control select2" >
+                        <select asp-for="IdLogro" asp-items="@(new SelectList(Model.Logros,"Id","Nombre"))" class="form-control select2">
                             <option value="Id">- Seleccionar una opción -</option>
                         </select>
                     </div>
-
                     @*Estos son los campos a edita*@
 
 
                     <div class="form-group col-lg-6">
-                        <label asp-for="IdEstudiante"></label>
-                        <span asp-validation-for="IdEstudiante" class="text-danger"></span>
-                        <input asp-for="IdEstudiante" type="number" class="form-control  input-sm ">
-                    </div>
-
-                    <div class="form-group col-lg-6">
                         <label asp-for="Descripcion"></label>
                         <span asp-validation-for="Descripcion" class="text-danger"></span>
-                        <input asp-for="Descripcion" type="text" class="form-control  input-sm ">
+                        <input asp-for="Descripcion" type="text" class="form-control">
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label asp-for="Institucion"></label>
                         <span asp-validation-for="Institucion" class="text-danger"></span>
-                        <input asp-for="Institucion" type="text" class="form-control  input-sm">
+                        <input asp-for="Institucion" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha">
                     </div>
 
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Fecha"></label>
+                        <span asp-validation-for="Fecha" class="text-danger"></span>
+                        <input asp-for="Fecha" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha">
+                    </div>
 
                     <div class="form-group col-lg-6">
                         <label asp-for="Certificado"></label>
                         <span asp-validation-for="Certificado" class="text-danger"></span>
-                        <input asp-for="Certificado" type="text" class="form-control  input-sm">
+                        <input asp-for="Certificado" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha">
                     </div>
+
+
+               
+          
 
 
                 </div>
@@ -65,40 +70,3 @@
 </form>
 
 
-
-<script type="text/javascript">
-
-    //$('.select2').select2();
-
-</script>
-
-<script>
-    var hablaInput = document.getElementById("hablaInput");
-    var hablaValue = document.getElementById("hablaValue");
-    hablaValue.innerHTML = hablaInput.value;
-
-    hablaInput.oninput = function () {
-        hablaValue.innerHTML = this.value;
-    }
-
-
-
-    var escribeInput = document.getElementById("escribeInput");
-    var escribeValue = document.getElementById("escribeValue");
-    escribeValue.innerHTML = escribeInput.value;
-
-    escribeInput.oninput = function () {
-        escribeValue.innerHTML = this.value;
-    }
-
-
-    var comprendeInput = document.getElementById("comprendeInput");
-    var comprendeValue = document.getElementById("comprendeValue");
-    comprendeValue.innerHTML = comprendeInput.value;
-
-    comprendeInput.oninput = function () {
-        comprendeValue.innerHTML = this.value;
-    }
-
-
-</script>

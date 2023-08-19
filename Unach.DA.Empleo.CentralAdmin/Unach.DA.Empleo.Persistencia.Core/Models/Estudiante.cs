@@ -12,6 +12,11 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
     {
         public Estudiante()
         {
+            Capacitacion = new HashSet<Capacitacion>();
+            EstudianteIdioma = new HashSet<EstudianteIdioma>();
+            ExperienciaLaboral = new HashSet<ExperienciaLaboral>();
+            FormacionAcademica = new HashSet<FormacionAcademica>();
+            Logro = new HashSet<Logro>();
             Postulacion = new HashSet<Postulacion>();
         }
 
@@ -36,6 +41,16 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [ForeignKey("Id")]
         [InverseProperty("Estudiante")]
         public virtual AspNetUsers IdNavigation { get; set; }
+        [InverseProperty("IdEstudianteNavigation")]
+        public virtual ICollection<Capacitacion> Capacitacion { get; set; }
+        [InverseProperty("IdEstudianteNavigation")]
+        public virtual ICollection<EstudianteIdioma> EstudianteIdioma { get; set; }
+        [InverseProperty("IdEstudianteNavigation")]
+        public virtual ICollection<ExperienciaLaboral> ExperienciaLaboral { get; set; }
+        [InverseProperty("IdEstudianteNavigation")]
+        public virtual ICollection<FormacionAcademica> FormacionAcademica { get; set; }
+        [InverseProperty("IdEstudianteNavigation")]
+        public virtual ICollection<Logro> Logro { get; set; }
         [InverseProperty("IdEstudianteNavigation")]
         public virtual ICollection<Postulacion> Postulacion { get; set; }
     }

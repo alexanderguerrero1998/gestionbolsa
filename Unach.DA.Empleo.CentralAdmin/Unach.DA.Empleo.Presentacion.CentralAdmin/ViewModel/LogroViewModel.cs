@@ -9,11 +9,12 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
+        public DateTime FechaTransaccion { get; set; }
 
         [Display(Name = "Logros", Prompt = "Ejm. Concurso")]
         public int IdLogro { get; set; }
-        public int IdEstudiante { get; set; }
+        public string IdEstudiante { get; set; }
         public string Institucion { get; set; }
         [Required(ErrorMessage = "*")]
         public string Certificado { get; set; }

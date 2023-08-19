@@ -58,7 +58,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             ApiInfoAcademico clienteapi = new ApiInfoAcademico("");
 
             //Pasamos los id's  a la 'ApiInformacionAcademica'
-            foreach (var id in userIds) 
+            foreach (var id in userIds)
             {
                 // Se deserializa en el modelo de 'ApiInformacionAcademica'
                 var apiUrl = "https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionAcademica/" + id;
@@ -296,8 +296,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
             }
 
-            return View(estudiantesViewModel);  
+            return View(estudiantesViewModel);
         }
+
+  
         public void Enviar()
         {
 

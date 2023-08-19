@@ -216,6 +216,10 @@
               "target": "Package",
               "version": "[22.2.5, )"
             },
+            "IronPdf": {
+              "target": "Package",
+              "version": "[2023.8.6, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.4, )"
