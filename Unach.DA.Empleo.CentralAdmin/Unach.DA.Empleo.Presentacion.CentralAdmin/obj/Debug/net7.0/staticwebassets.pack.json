@@ -7929,6 +7929,14 @@
       "PackagePath": "staticwebassets\\public\\templates\\RevisarAPTemplate.html"
     },
     {
+      "Id": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\wwwroot\\rotativa\\wkhtmltoimage.exe",
+      "PackagePath": "staticwebassets\\rotativa\\wkhtmltoimage.exe"
+    },
+    {
+      "Id": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\wwwroot\\rotativa\\wkhtmltopdf.exe",
+      "PackagePath": "staticwebassets\\rotativa\\wkhtmltopdf.exe"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Unach.DA.Empleo.Presentacion.CentralAdmin.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

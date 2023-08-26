@@ -35,13 +35,16 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<AuditoriaViewModel, Logro>();
             CreateMap<AuditoriaViewModel, FormacionAcademica>();
             CreateMap<AuditoriaViewModel, Capacitacion>();
+            CreateMap<AuditoriaViewModel, Idioma>();
+            CreateMap<AuditoriaViewModel, ExperienciaLaboral>();
+            CreateMap<AuditoriaViewModel, EstudianteIdioma>();
 
 
             //Tablas del proyecto
             CreateMap<Postulacion, PostulacionesViewModel>();
             CreateMap<PostulacionesViewModel, Postulacion>();
-            CreateMap<Idioma, IdiomaViewModel>();
-            CreateMap<IdiomaViewModel, Idioma>();
+            CreateMap<Idioma, EstudianteIdiomaViewModel>();
+            CreateMap<EstudianteIdiomaViewModel, Idioma>();
             CreateMap<EstudianteViewModel, Estudiante>();
             CreateMap<Estudiante, EstudianteViewModel>();
             CreateMap<EmpresaViewModel, Empresa>();
@@ -54,13 +57,16 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<CapacitacionViewModel, Capacitacion>();
             CreateMap<Capacitacion, CapacitacionViewModel2>();
             CreateMap<CapacitacionViewModel2, Capacitacion>();
-
             CreateMap<Logro, LogroViewModel>();
             CreateMap<LogroViewModel, Logro>();
             CreateMap<FormacionAcademica, FormacionAcademicaViewModel>();
             CreateMap<FormacionAcademicaViewModel, FormacionAcademica>();
             CreateMap<UsuarioAutenticadoViewModel, AspNetUsers>();
             CreateMap<AspNetUsers, UsuarioAutenticadoViewModel>();
+            CreateMap<ExperienciaLaboral, ExperienciaLaboralViewModel>();
+            CreateMap<ExperienciaLaboralViewModel, ExperienciaLaboral>();
+            CreateMap<EstudianteIdioma, EstudianteIdiomaViewModel>();
+            CreateMap<EstudianteIdiomaViewModel, EstudianteIdioma>();
 
             /*
 

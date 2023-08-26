@@ -10,7 +10,8 @@ using Unach.DA.Empleo.Presentacion.CentralAdmin.Data;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
 using Microsoft.Extensions.DependencyInjection;
-
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
+using Rotativa.AspNetCore;
 
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin
@@ -64,10 +65,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
 
-
-
-
-
             });
 
             builder.Services.ConfigureApplicationCookie(options =>
@@ -97,6 +94,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
             builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
 
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+
+          
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -136,6 +137,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
+            //Configuacion rotativa
+            string wwwroot = app.Environment.WebRootPath;
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(wwwroot, "rotativa");
+            
             app.Run();
 
         }

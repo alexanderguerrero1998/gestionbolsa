@@ -31,11 +31,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
             ViewBag.Expediente = expediente;
 
-            List<IdiomaViewModel> Idioma = entitiesDomain.IdiomaRepositorio.ObtenerTodosEnOtraVista(
-                m => new IdiomaViewModel
+            List<EstudianteIdiomaViewModel> Idioma = entitiesDomain.IdiomaRepositorio.ObtenerTodosEnOtraVista(
+                m => new EstudianteIdiomaViewModel
                 {
                     Id = m.Id,
-                    Nombre = m.Nombre,
+                  
                 },
                 x => x.Id > expediente,
                 a => a.OrderBy(y => y.Id));
@@ -44,37 +44,67 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                       
         }
 
-        public IActionResult IdiomasEdit(int id, int expediente)
+        public IActionResult EstudianteIdioma() // Trae los idiomas segun el estudiante 
         {
 
+            int expediente = 0;
+            ViewBag.Expediente = expediente;
+            var idEstudiante = HttpContext.Session.GetString("IdServidor");
+            List<EstudianteIdiomaViewModel> logros = entitiesDomain.EstudianteIdiomaRepositorio.ObtenerTodosEnOtraVista(
+                m => new EstudianteIdiomaViewModel
+                {
+                    Id = m.Id,
+                    IdIdioma = m.IdIdioma,
+                    IdEstudiante = m.IdEstudiante,
+                    NivelListening = m.NivelListening,
+                    NivelSpeaking = m.NivelSpeaking,
+                    NivelWriting = m.NivelWriting,
+                    Certificado = m.Certificado,    
+                   
+                },
+                x => x.Id > expediente && x.IdEstudiante == idEstudiante,
+                a => a.OrderBy(y => y.Id));
+
+            return View(logros);
+        }
+
+        public IActionResult EstudianteIdiomaEdit(int id)
+        {
             try
             {
                 if (id == 0)
                 {
-                    IdiomaViewModel Idioma = new IdiomaViewModel();
-                    Idioma.Id = expediente;
-                    // postulacion.IdEstudiante = entitiesDomain.PostulacionRepositorio.ObtenerTodos().OrderBy(x => x.Nombre).ToList();
-                    Idioma.Id = entitiesDomain.IdiomaRepositorio.ObtenerTodos().Count();
-                    return PartialView("~/Views/Idioma/IdiomasEdit.cshtml", Idioma);
+                    EstudianteIdiomaViewModel Idioma = new EstudianteIdiomaViewModel();
+                    Idioma.tipoIdioma = entitiesDomain.IdiomaRepositorio.ObtenerTodos();
+                    Idioma.IdEstudiante = HttpContext.Session.GetString("IdServidor");
+                    return PartialView("~/Views/Idioma/_EstudianteIdiomaEdit.cshtml", Idioma);
                 }
                 else
                 {
-                    var query = entitiesDomain.IdiomaRepositorio.ObtenerTodosEnOtraVista<IdiomaViewModel>(
+                    var query = entitiesDomain.EstudianteIdiomaRepositorio.ObtenerTodosEnOtraVista<EstudianteIdiomaViewModel>(
 
-                        m => new IdiomaViewModel
+                        m => new EstudianteIdiomaViewModel
                         {
                             Id = m.Id,
-                            Nombre = m.Nombre
+                            IdIdioma = m.IdIdioma,
+                            IdEstudiante = m.IdEstudiante,
+                            NivelListening = m.NivelListening,
+                            NivelSpeaking = m.NivelSpeaking,
+                            NivelWriting = m.NivelWriting,
+                            Certificado = m.Certificado,
+
+
                         },
                         x => x.Id == id).FirstOrDefault();
 
                     if (query != null)
                     {
 
-                        return PartialView("~/Views/Idioma/IdiomaEdit.cshtml", query);
+                        query.tipoIdioma = entitiesDomain.IdiomaRepositorio.ObtenerTodos();
+                        return PartialView("~/Views/Idioma/_EstudianteIdiomaEdit.cshtml", query);
                     }
                     else
-                        return PartialView("~/Views/Idioma/IdiomaEdit.cshtml", new IdiomaViewModel());
+                        return PartialView("~/Views/Idioma/_EstudianteIdiomaEdit.cshtml", new EstudianteIdiomaViewModel());
                 }
 
             }
@@ -82,9 +112,87 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             {
                 logger.LogError(ex, "Error");
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
-                return PartialView("~/Views/Idioma/IdiomaEdit.cshtml", new IdiomaViewModel());
+                return PartialView("~/Views/Idioma/_EstudianteIdiomaEdit.cshtml", new EstudianteIdiomaViewModel());
             }
 
+        }
+
+        [HttpPost]
+        public IActionResult EstudianteIdiomaEdit(EstudianteIdiomaViewModel item)
+        {
+            try
+            {
+                //if (ModelState.IsValid)
+                // {
+                // item.Id = item.Id == -1 ? null : item.Id;
+
+                if (item.Id == 0)
+                {
+                    var idioma = _mapper.Map<EstudianteIdioma>(item);
+                    idioma.FechaTransaccion = DateTime.Now;
+
+                    _mapper.AgregarDatosAuditoria(idioma, HttpContext);
+                    entitiesDomain.EstudianteIdiomaRepositorio.Insertar(idioma);
+                    entitiesDomain.GuardarTransacciones();
+
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información registrada.");
+                }
+                else
+                {
+                    var idioma = _mapper.Map<EstudianteIdioma>(item);
+               
+                    //logro.IdEstudiante = item.IdLogro[0]; // TOCA QUITAR
+                    _mapper.AgregarDatosAuditoria(idioma, HttpContext);
+                    entitiesDomain.EstudianteIdiomaRepositorio.Actualizar(idioma);
+                    entitiesDomain.GuardarTransacciones();
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información actualizada");
+                }
+                //  }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
+
+            }
+            // return RedirectToAction(nameof(Index), new { expediente = 1 });
+            return RedirectToAction("EstudianteIdioma", "Idioma");
+        }
+
+        public IActionResult EstudianteIdiomaDelete(int id)
+        {
+            try
+            {
+                Logro item = entitiesDomain.LogroRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
+                return PartialView("~/Views/Logro/_LogroDelete.cshtml", item);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error!" + ex.Message);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EstudianteIdiomaDelete(Logro item)
+        {
+            try
+            {
+                if (item != null)
+                {
+                    entitiesDomain.LogroRepositorio.Eliminar(item);
+                    entitiesDomain.GuardarTransacciones();
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información eliminada.");
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
+            }
+            //return RedirectToAction(nameof(Index), new { expediente = 1 });
+            return RedirectToAction("EstudianteLogro", "Logro");
         }
 
 

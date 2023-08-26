@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qq728AvlEJP7F0pzeiiLPMDODgaUraRVM1saFrU2JFc=",
+  "Hash": "LVb2YIxEVCFCZ5WA0CfRc8V4880siTncNeH8N/F0MBM=",
   "Source": "Unach.DA.Empleo.Presentacion.CentralAdmin",
   "BasePath": "_content/Unach.DA.Empleo.Presentacion.CentralAdmin",
   "Mode": "Default",
@@ -33726,6 +33726,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\public\\templates\\RevisarAPTemplate.html"
+    },
+    {
+      "Identity": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\wwwroot\\rotativa\\wkhtmltoimage.exe",
+      "SourceId": "Unach.DA.Empleo.Presentacion.CentralAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\wwwroot\\",
+      "BasePath": "_content/Unach.DA.Empleo.Presentacion.CentralAdmin",
+      "RelativePath": "rotativa/wkhtmltoimage.exe",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\rotativa\\wkhtmltoimage.exe"
+    },
+    {
+      "Identity": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\wwwroot\\rotativa\\wkhtmltopdf.exe",
+      "SourceId": "Unach.DA.Empleo.Presentacion.CentralAdmin",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Unach.DA.Empleo.CentralAdmin\\Unach.DA.Empleo.Presentacion.CentralAdmin\\wwwroot\\",
+      "BasePath": "_content/Unach.DA.Empleo.Presentacion.CentralAdmin",
+      "RelativePath": "rotativa/wkhtmltopdf.exe",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\rotativa\\wkhtmltopdf.exe"
     },
     {
       "Identity": "C:\\Users\\alexa\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\staticwebassets\\V5\\css\\site.css",

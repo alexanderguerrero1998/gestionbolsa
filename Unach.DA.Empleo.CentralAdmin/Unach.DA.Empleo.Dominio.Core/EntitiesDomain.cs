@@ -384,6 +384,38 @@ namespace Unach.DA.Empleo.Dominio.Core
             }
         }
 
+        private Repositorio<ExperienciaLaboral> experienciaLaboralRepositorio;
+        public Repositorio<ExperienciaLaboral> ExperienciaLaboralRepositorio
+        {
+            get
+            {
+                if (sistemaRepositorio == null)
+                {
+                    experienciaLaboralRepositorio = new Repositorio<ExperienciaLaboral>(contexto);
+                }
+                return experienciaLaboralRepositorio;
+            }
+        }
+
+
+        private Repositorio<TipoExperiencialaboral> tipoExperienciaLaboralRepositorio;
+        public Repositorio<TipoExperiencialaboral> TipoExperienciaLaboralRepositorio
+        {
+            get
+            {
+                if (sistemaRepositorio == null)
+                {
+                    tipoExperienciaLaboralRepositorio = new Repositorio<TipoExperiencialaboral>(contexto);
+                }
+                return tipoExperienciaLaboralRepositorio;
+            }
+        }
+
+
+
+
+
+
 
 
     }

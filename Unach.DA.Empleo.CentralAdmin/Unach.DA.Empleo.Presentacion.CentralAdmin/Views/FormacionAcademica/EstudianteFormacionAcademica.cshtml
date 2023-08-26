@@ -1,0 +1,356 @@
+﻿
+@{
+    ViewData["Title"] = "Formacion Academica";
+}
+@model List<FormacionAcademicaViewModel>
+
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de capacitaciones disponibles para la gestión de servidores.", Icono="fa fa-book fa-5x text-info" })" />
+
+<div class="content animate-panel">
+
+    <div class="row">
+        @await Component.InvokeAsync("MenuPerfilServidor", ViewBag.Expediente)
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <div class="hpanel hgreen">
+                                <div class="panel-body">
+                                    <p class="small m-t-md" style="text-align: justify">
+                                        <strong>Información.- </strong> La información que consta dentro del sistema, es utilizada con fines académicos y administrativos, por lo tanto es necesario mantenerla siempre actualizada.
+                                        <br>
+                                        <br>
+                                    </p>
+                                </div>
+                                <div class="panel-footer contact-footer">
+                                    <div class="row">
+                                        <div class="col-md-6 border-right">
+                                            <div class="contact-stat"><span>Títulos: </span> <strong>Registrados</strong></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="contact-stat"><span>Total: </span> <strong>@ViewBag.TotalCursos</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="hpanel hgreen">
+                                    <div class="col-lg-12">
+                                        <div class="hpanel">
+                                            <div class="panel-heading hbuilt">
+                                                @ViewData["Title"].ToString() en la Institución
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a asp-action="FormacionAcademicaEdit" asp-controller="FormacionAcademica" asp-route-id="0" asp-route-expediente="@ViewBag.Expediente" data-toggle="modal" data-target="#modal-action-codesi">Nuevo</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table id="internaTable" class="display table " width="100%" data-order='[[ 2, "desc" ]]'>
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th class="text-center">Evento</th>
+                                                            <th>Tipo</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model != null)
+                                                        {
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                <tr>
+                                                                    <td class="details-control" style="width: 15px">
+                                                                        <div hidden="hidden">
+                                                                            <div class="nestedTable">
+                                                                                <div class="nestedTableTitle">
+                                                                                    @item.Descripcion
+                                                                                </div>
+                                                                                <hr class="lineSeparator">
+
+                                                                                <table class="nestedTableInfo">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Tipo Evento:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @item.Descripcion
+                                                                                            </td>
+                                                                                        </tr>
+
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Tipo de Certificación:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @item.Descripcion
+                                                                                            </td>
+                                                                                        </tr>
+
+
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Duración:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @item. (horas)
+
+                                                                                            </td>
+                                                                                        </tr>
+
+
+
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Campo de Conocimiento:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @item.Descripcion
+
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Certificado por:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                Universidad Nacional de Chimborazo
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Fecha de Inicio:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @item.FechaIncio
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <strong>Fecha de finalización:</strong>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @item.FechaFin
+                                                                                            </td>
+                                                                                        </tr>
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>@item.Descripcion</td>
+                                                                    <td>@item.Descripcion</td>
+                                                                    <td class="text-center" width="5%" valign="top">
+                                                                        <div class="btn-group">
+                                                                            <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
+                                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                                <li><a asp-action="FormacionAcademicaEdit" asp-controller="FormacionAcademica" asp-route-id="@item.Id" asp-route-idEstudiante="@item.IdEstudiante" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
+                                                                                <li><a asp-action="FormacionAcademicaDelete" asp-controller="FormacionAcademica" asp-route-id="@item.Id" asp-route-idEstudiante="@item.IdEstudiante" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-trash-o text-danger  icon-space"></i>Eliminar</a></li>
+
+                                                                                @if (item.Certificado != null && item.Certificado.Trim().Length > 0)
+                                                                                {
+                                                                                    <li class="divider"></li>
+                                                                                    <li><a asp-action="DownloadCapacitacion" asp-controller="FormacionAcademica" asp-route-id="@item.Id"><i class="fa fa-download text-success icon-space"></i>Descargar</a></li>
+                                                                                }
+                                                                            </ul>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="panel-footer">
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_Modal" model="@(new BootstrapModel { ID = "modal-action-codesi", AreaLabeledId = "modal-action-codesi-label", Size = ModalSize.Medium })" />
+<partial name="_Modal" model="@(new BootstrapModel { ID = "modal-action-codesi-2", AreaLabeledId = "modal-action-codesi-label", Size = ModalSize.Large })" />
+@section Styles {
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+        <link rel="stylesheet" href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/datepicker/datepicker.css" />
+    </environment>
+}
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <!-- DataTables -->
+        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- Validaciones -->
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation/jquery.validate.unobtrusive.min.js"></script>
+
+        <script src="~/lib/datepicker/datepicker.js"></script>
+    </environment>
+
+    <script src="~/js/modal-refresh.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        function format(d) {
+            return '<div class="m-t-md ">' + d + '</div>';
+        }
+
+        $(function () {
+
+            $("#modal-action-codesi-2").on('loaded.bs.modal', function (e) {
+            }).on('hidden.bs.modal', function (e) {
+                $(this).removeData('bs.modal');
+            });
+
+            var tabla = $('#internaTable').DataTable(
+                {
+                    language:
+                    {
+                        url: '/Configs/es-EC.json'
+                    },
+                    "order": [[4, 'asc']]
+                }
+            );
+
+            // Array to track the ids of the details displayed rows
+            var detailRows = [];
+            $('#internaTable tbody').on('click', 'tr td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = tabla.row(tr);
+                var idx = $.inArray(tr.attr('id'), detailRows);
+
+                if (row.child.isShown()) {
+                    tr.removeClass('details');
+                    row.child.hide();
+                    tr.removeClass('shown');
+                    // Remove from the 'open' array
+                    detailRows.splice(idx, 1);
+                }
+                else {
+                    tr.addClass('details');
+                    var rd = row.data();
+                    var additionalData = rd[0].replace('hidden="hidden"', "");
+                    //row.child( format( row.data() ) ).show();
+                    row.child(format(additionalData)).show();
+                    tr.addClass('shown');
+                    // Add to the 'open' array
+                    if (idx === -1) {
+                        detailRows.push(tr.attr('id'));
+                    }
+                }
+            });
+        });
+
+        $(function () {
+            var tabla = $('#digitalTable').DataTable(
+                {
+                    language:
+                    {
+                        url: '/Configs/es-EC.json'
+                    },
+                    "order": [[4, 'asc']]
+                }
+            );
+
+            // Array to track the ids of the details displayed rows
+            var detailRows = [];
+            $('#digitalTable tbody').on('click', 'tr td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = tabla.row(tr);
+                var idx = $.inArray(tr.attr('id'), detailRows);
+
+                if (row.child.isShown()) {
+                    tr.removeClass('details');
+                    row.child.hide();
+                    tr.removeClass('shown');
+                    // Remove from the 'open' array
+                    detailRows.splice(idx, 1);
+                }
+                else {
+                    tr.addClass('details');
+                    var rd = row.data();
+                    var additionalData = rd[0].replace('hidden="hidden"', "");
+                    //row.child( format( row.data() ) ).show();
+                    row.child(format(additionalData)).show();
+                    tr.addClass('shown');
+                    // Add to the 'open' array
+                    if (idx === -1) {
+                        detailRows.push(tr.attr('id'));
+                    }
+                }
+            });
+
+
+        });
+
+        $(function () {
+            var tabla = $('#externaTable').DataTable(
+                {
+                    language:
+                    {
+                        url: '/Configs/es-EC.json'
+                    },
+                    "order": [[4, 'asc']]
+                }
+            );
+
+            // Array to track the ids of the details displayed rows
+            var detailRows = [];
+            $('#externaTable tbody').on('click', 'tr td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = tabla.row(tr);
+                var idx = $.inArray(tr.attr('id'), detailRows);
+
+                if (row.child.isShown()) {
+                    tr.removeClass('details');
+                    row.child.hide();
+                    tr.removeClass('shown');
+                    // Remove from the 'open' array
+                    detailRows.splice(idx, 1);
+                }
+                else {
+                    tr.addClass('details');
+                    var rd = row.data();
+                    var additionalData = rd[0].replace('hidden="hidden"', "");
+                    //row.child( format( row.data() ) ).show();
+                    row.child(format(additionalData)).show();
+                    tr.addClass('shown');
+                    // Add to the 'open' array
+                    if (idx === -1) {
+                        detailRows.push(tr.attr('id'));
+                    }
+                }
+            });
+
+
+        });
+
+        $('#modal-action-codesi').change(
+            function () {
+                $.validator.unobtrusive.parse("#form");
+            });
+    </script>
+}

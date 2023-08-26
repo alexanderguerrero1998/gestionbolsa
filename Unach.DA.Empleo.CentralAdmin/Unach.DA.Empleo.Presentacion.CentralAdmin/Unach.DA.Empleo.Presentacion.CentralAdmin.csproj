@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="22.2.5" />
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="IronPdf" Version="2023.8.6" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
@@ -20,14 +21,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Unach.DA.Empleo.Dominio.Core\Unach.DA.Empleo.Dominio.Core.csproj" />
     <ProjectReference Include="..\Unach.DA.Empleo.Persistencia.Core\Unach.DA.Empleo.Persistencia.Core.csproj" />
     <ProjectReference Include="..\Unach.DA.Empleo.Presistencia.Api\Unach.DA.Empleo.Presistencia.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\rotativa\" />
   </ItemGroup>
 
 </Project>

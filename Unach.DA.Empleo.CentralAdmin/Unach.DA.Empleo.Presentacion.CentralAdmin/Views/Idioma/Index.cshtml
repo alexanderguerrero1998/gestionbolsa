@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Idioma";
 }
-@model List<IdiomaViewModel>
+@model List<EstudianteIdiomaViewModel>
 
 <partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de idiomas disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
 
@@ -79,7 +79,7 @@
                                                             @foreach (var item in Model)
                                                             {
                                                                 <tr>
-                                                                    <td>@item.Nombre</td>
+                                                                    <td>@item.NivelSpeaking</td>
 
 
                                                                     <td class="text-center" width="5%" valign="top">

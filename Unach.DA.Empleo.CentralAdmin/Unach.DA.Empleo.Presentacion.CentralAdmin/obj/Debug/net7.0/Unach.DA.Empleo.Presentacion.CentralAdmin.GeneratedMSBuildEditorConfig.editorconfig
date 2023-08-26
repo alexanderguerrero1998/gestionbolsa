@@ -196,6 +196,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uXF9DYXBhY2l0YWNpb25FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Cv/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Cv/ViewX.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcVmlld1guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Cv/ViewY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcVmlld1kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Empresa/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -232,6 +244,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxfRXN0dWRpYW50ZUVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ExperienciaLaboral/EstudianteExperienciaLaboral.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpZW5jaWFMYWJvcmFsXEVzdHVkaWFudGVFeHBlcmllbmNpYUxhYm9yYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ExperienciaLaboral/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpZW5jaWFMYWJvcmFsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ExperienciaLaboral/_ExperienciaLaboralDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpZW5jaWFMYWJvcmFsXF9FeHBlcmllbmNpYUxhYm9yYWxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/ExperienciaLaboral/_ExperienciaLaboralEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpZW5jaWFMYWJvcmFsXF9FeHBlcmllbmNpYUxhYm9yYWxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/FormacionAcademica/EstudianteFormacionAcademica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFjaW9uQWNhZGVtaWNhXEVzdHVkaWFudGVGb3JtYWNpb25BY2FkZW1pY2EuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/FormacionAcademica/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFjaW9uQWNhZGVtaWNhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/FormacionAcademica/_FormacionAcademicaDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFjaW9uQWNhZGVtaWNhXF9Gb3JtYWNpb25BY2FkZW1pY2FEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/FormacionAcademica/_FormacionAcademicaEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFjaW9uQWNhZGVtaWNhXF9Gb3JtYWNpb25BY2FkZW1pY2FFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -240,12 +284,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Idioma/IdiomasEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hXElkaW9tYXNFZGl0LmNzaHRtbA==
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Idioma/EstudianteIdioma.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hXEVzdHVkaWFudGVJZGlvbWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Idioma/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Idioma/_EstudianteIdiomaDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hXF9Fc3R1ZGlhbnRlSWRpb21hRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Idioma/_EstudianteIdiomaEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRpb21hXF9Fc3R1ZGlhbnRlSWRpb21hRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Logro/EstudianteLogro.cshtml]
