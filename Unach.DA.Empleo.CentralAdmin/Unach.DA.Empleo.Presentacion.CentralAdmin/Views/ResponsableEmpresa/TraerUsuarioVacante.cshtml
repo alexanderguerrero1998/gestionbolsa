@@ -1,10 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Ofertas Laborales";
+    ViewData["Title"] = "Postulantes";
 }
 @model List<EstudianteViewModel>
 
 
-<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de Ofertas disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de usuarios postulados para la vacante", Icono="fa fa-language fa-5x text-info" })" />
 
 
 <div class="content animate-panel">
@@ -19,14 +19,8 @@
                 <div class="panel-body">
 
                     <div class="row">
-
-
-                        
+         
                         <div class="col-md-3">
-
-
-                          
-
 
                           <div class="hpanel hgreen">
                                 <div class="panel-body">
@@ -99,8 +93,11 @@
 
                                                                             <ul class="dropdown-menu dropdown-menu-right">
                                                                                 <li><a target="_blank" href="@item.LinkLinkeding"><i class="fa fa-edit text-warning  icon-space"></i>Ver Perfil</a></li>
+                                                                                <li class="divider"></li>
                                                                                 <li><a asp-action="ActualizarPostulacion" asp-controller="ResponsableEmpresa" asp-route-idPostulacion="@item.IdPostulacion" asp-route-idEmpresa="@ViewBag.IdEmpresa" asp-route-idEstudiante="@item.Id" asp-route-EstadoValor=2><i class="fa fa-edit text-warning  icon-space"></i>Aceptar</a></li>
                                                                                 <li><a asp-action="ActualizarPostulacion" asp-controller="ResponsableEmpresa" asp-route-idPostulacion="@item.IdPostulacion" asp-route-idEmpresa="@ViewBag.IdEmpresa" asp-route-idEstudiante="@item.Id" asp-route-EstadoValor=3><i class="fa fa-edit text-warning  icon-space"></i>Rechazar</a></li>
+                                                                                <li class="divider"></li>
+                                                                                <li><a asp-action="DownloadCurriculum" asp-controller="Cv" asp-route-id="@item.Id" asp-route-IdEstudiante="@item.Id"><i class="fa fa-download text-success icon-space"></i>Descargar</a></li>
                                                                             </ul>
 
                                                                         </div>

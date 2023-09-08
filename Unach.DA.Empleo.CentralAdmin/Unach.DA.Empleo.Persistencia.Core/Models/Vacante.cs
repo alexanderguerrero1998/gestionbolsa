@@ -38,6 +38,34 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string Descripcion { get; set; }
         [StringLength(250)]
         public string Cargo { get; set; }
+        [StringLength(250)]
+        public string Cuidad { get; set; }
+        [StringLength(250)]
+        public string Sector { get; set; }
+        [StringLength(250)]
+        public string Contacto { get; set; }
+        [StringLength(250)]
+        public string TipoContrato { get; set; }
+        [StringLength(250)]
+        public string Parroquia { get; set; }
+        [StringLength(250)]
+        public string Telefono { get; set; }
+        [StringLength(250)]
+        public string CorreoElectronico { get; set; }
+        [StringLength(250)]
+        public string Instruccion { get; set; }
+        public int IdTipoCarrera { get; set; }
+        public string ConocimientosPrevios { get; set; }
+        [StringLength(50)]
+        public string Remuneracion { get; set; }
+        public string Experiencia { get; set; }
+        public string Actividades { get; set; }
+        [StringLength(250)]
+        public string Jornada { get; set; }
+        [StringLength(250)]
+        public string AreaExperiencia { get; set; }
+        [StringLength(250)]
+        public string AreaCapacitacion { get; set; }
 
         [ForeignKey("IdEmpresa")]
         [InverseProperty("Vacante")]

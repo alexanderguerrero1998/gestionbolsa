@@ -40,7 +40,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     IdEstudiante = m.IdEstudiante,
                     FechaIncio = m.FechaIncio,
                     FechaFin = m.FechaFin,
-                    Certificado = m.Certificado,    
+                    Certificado = m.Certificado,
+                    TipoFormacionAcademica = m.IdFormacionAcademicaNavigation.Nombre
 
                 },
                 x => x.Id > expediente && x.IdEstudiante == idEstudiante,
@@ -72,6 +73,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             FechaIncio = m.FechaIncio,
                             FechaFin = m.FechaFin,
                             Certificado = m.Certificado,
+                            Empresa = m.Empresa,
+                          
 
                         },
                         x => x.Id == id).FirstOrDefault();

@@ -20,7 +20,7 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [StringLength(50)]
         public string NombreEmpresa { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(250)]
         public string Descripcion { get; set; }
         [Required]
         [StringLength(50)]

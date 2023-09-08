@@ -12,8 +12,10 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string IdEstudiante { get; set; }
         public string Descripcion { get; set; }
         public DateTime FechaIncio { get; set; }
-        public DateTime? FechaFin { get; set; }
+        public DateTime FechaFin { get; set; }
         public string Certificado { get; set; }
+        public string Empresa { get; set; }
+        public string TipoFormacionAcademica { get; set; }
         public List<TipoFormacionAcademica> tipoFormacionAcademica { get; set; }
 
     }

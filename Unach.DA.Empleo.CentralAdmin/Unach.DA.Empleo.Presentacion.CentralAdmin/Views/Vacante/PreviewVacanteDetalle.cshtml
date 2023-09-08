@@ -1,0 +1,321 @@
+﻿@model List<VacanteViewModel>
+@{
+    ViewData["Title"] = "Requerimientos";
+}
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de requerimientos para la aplicacion de una oferta laboral", Icono="fa fa-book fa-5x text-info" })" />
+
+<div class="content animate-panel">
+
+
+    <div class="row">
+        <style type="text/css">
+
+
+
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            #headerNavegador {
+                margin: auto;
+                /*        width: 500px;
+                    font-family: Arial, Helvetica, sans-serif;*/
+            }
+
+            ul, ol {
+                list-style: none;
+            }
+
+            .submenu-servidor {
+                /*position: absolute;*/
+                /*top: 100%;*/
+                /*left: 0;*/
+                z-index: 1000;
+                /*display: none;*/
+                /*float: left;*/
+                min-width: 160px;
+                padding: 5px 0;
+                margin: 1px 0 0;
+                text-align: left;
+                list-style: none;
+                background-color: #fff;
+                -webkit-background-clip: padding-box;
+                background-clip: padding-box;
+                border: 1px solid #ccc;
+                border: 1px solid rgba(0, 0, 0, .15);
+                border-radius: 4px;
+                -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            }
+
+            .navegador > li {
+                float: left;
+            }
+
+            .navegador li a {
+                background-color: #FFF;
+                text-decoration: none;
+                padding: 10px 12px;
+                display: block;
+                z-index: 999999;
+            }
+
+                .navegador li a:hover {
+                    /*background-color: #9de2f8;*/
+                    border-bottom: 1px solid rgba(0, 0, 0, .175);
+                }
+
+            .navegador li ul {
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+
+            .navegador li:hover > ul {
+                display: block;
+                z-index: 999999;
+            }
+
+            .navegador li ul li {
+                position: relative;
+            }
+
+                .navegador li ul li ul {
+                    right: -140px;
+                    top: 0px;
+                }
+        </style>
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12" style="">
+            <div class="hpanel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3" style="">
+
+                            <div class="hpanel hgreen">
+                                <div class="panel-body">
+                                    <p class="small m-t-md" style="text-align: justify">
+                                        <strong>Información.- </strong> La información que consta dentro del sistema, es utilizada con fines académicos y administrativos, por lo tanto es necesario mantenerla siempre actualizada.
+                                        <br>
+                                        <br>
+                                    </p>
+                                </div>
+                                <div class="panel-footer contact-footer">
+                                    <div class="row">
+                                        <div class="col-md-6 border-right" style="">
+                                            <div class="contact-stat"><span>Registros: </span> <strong>Adicionales</strong></div>
+                                        </div>
+                                        <div class="col-md-6" style="">
+                                            <div class="contact-stat"><span>Total: </span> <strong>17</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-9" style="">
+                            <div class="row">
+                                <div class="hpanel hgreen" style="">
+                                    <div class="col-lg-12">
+                                        <div class="hpanel">
+                                            <div class="panel-heading hbuilt">
+                                                Detalle hoja de requerimientos
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a data-toggle="modal" data-target="#modal-action-codesi" href="/Vacante/VacanteEdit/0?idEmpresa=1">Nuevo</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id="plantillasTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                    <div class="row"><div class="col-sm-6"><div class="dataTables_length" id="plantillasTable_length"><label>Show <select name="plantillasTable_length" aria-controls="plantillasTable" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="plantillasTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="plantillasTable"></label></div></div></div><div class="row">
+                                                        <div class="col-sm-12">
+
+                                                            <div class="hpanel">
+                                                                <div class="panel-heading">
+                                                                    <div class="panel-tools">
+                                                                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                                        <a class="closebox"><i class="fa fa-times"></i></a>
+                                                                    </div>
+                                                                    OFERTA LABORAL
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="table-responsive">
+                                                                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>*Cargo Solicitado</th>
+                                                                                    <th>*Cuidad</th>
+                                                                                    <th>*Sector</th>
+                                                                                    <th>*Contacto</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    @foreach(var item in Model)
+                                                                                    {
+                                                                                        <td>@item.Cargo</td>
+                                                                                        <td>@item.Cuidad</td>
+                                                                                        <td>@item.Sector</td>
+                                                                                        <td>@item.Contacto</td>
+                                                                                    }
+                                                                                </tr>
+                                                                               
+                                                                            </tbody>
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>*Tipo Contrato</th>
+                                                                                    <th>*Parroquia</th>
+                                                                                    <th>*Telefono</th>
+                                                                                    <th>*Correo Electronico</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    @foreach (var item in Model)
+                                                                                    {
+                                                                                        <td>@item.TipoContrato</td>
+                                                                                        <td>@item.Parroquia</td>
+                                                                                        <td>@item.Telefono</td>
+                                                                                        <td>@item.CorreoElectronico</td>
+                                                                                    }
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+                                                               
+                                                            </div>
+
+                                                            <div class="hpanel">
+                                                                <div class="panel-heading">
+                                                                    <div class="panel-tools">
+                                                                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                                        <a class="closebox"><i class="fa fa-times"></i></a>
+                                                                    </div>
+                                                                    PERFIL DEL CARGO
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="table-responsive">
+                                                                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>*Instruccion</th>
+                                                                                    <th>*Area de estudios</th>
+                                                                                    <th>*Conocimientos del cargo</th>
+                                                                                    <th>*Remuneracion</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    @foreach (var item in Model)
+                                                                                    {
+                                                                                        <td>@item.Instruccion</td>
+                                                                                        <td>@item.AreaDeEstudios</td>
+                                                                                        <td>@item.ConocimientosPrevios</td>
+                                                                                        <td>@item.Remuneracion</td>
+                                                                                    }
+
+
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>*Experiencia</th>
+                                                                                    <th>*Actividades a Desempeñar</th>
+                                                                                    <th>*Jornada de Trabajo</th>
+                                                                                   
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    @foreach (var item in Model)
+                                                                                    {
+                                                                                        <td>@item.Experiencia</td>
+                                                                                        <td>@item.Actividades</td>
+                                                                                        <td>@item.Jornada</td>
+                                                                                    }
+                                                                          
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+                                                                
+                                                            </div>
+
+                                                            <div class="hpanel">
+                                                                <div class="panel-heading">
+                                                                    <div class="panel-tools">
+                                                                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                                        <a class="closebox"><i class="fa fa-times"></i></a>
+                                                                    </div>
+                                                                    EXPERIENCIA Y CAPACITACION
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="table-responsive">
+                                                                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>*Area de Capacitacion</th>
+                                                                                    <th>*Area de Experiencia</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    @foreach (var item in Model)
+                                                                                    {
+                                                                                        <td>@item.AreaCapacitacion</td>
+                                                                                        <td>@item.AreaExperiencia</td>
+                                                                                    }
+                                                                     
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+                                                             
+                                                            </div>
+
+
+                                                        </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

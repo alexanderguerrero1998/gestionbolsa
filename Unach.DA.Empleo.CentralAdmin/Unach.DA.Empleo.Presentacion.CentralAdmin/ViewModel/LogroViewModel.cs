@@ -9,7 +9,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }
-        public DateTime? Fecha { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
         public DateTime FechaTransaccion { get; set; }
 
         [Display(Name = "Logros", Prompt = "Ejm. Concurso")]
@@ -19,7 +20,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         [Required(ErrorMessage = "*")]
         public string Certificado { get; set; }
         public string NombreLogro { get; set; }
-
+        public string TipoLogro { get; set; }
         public string NombreEstudiante { get; set; } // Este campo se puede borrar par ala vista de estudiante y agregar en la del administrador
         public List<TipoLogro> Logros { get; set; }
        

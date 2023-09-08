@@ -12,8 +12,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
 
         public string LinkLinkeding { get; set; }
 
-
-
         public int EstudianteID { get; set; }
         public string DocumentoIdentidad { get; set; }
         public string Nombres { get; set; }
@@ -21,6 +19,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string ApellidoMaterno { get; set; }
         public string Genero { get; set; }
         public string CorreoInstitucional { get; set; }
+        public string CorreoPersonal { get; set; }
         public string TelefonoCelular { get; set; }
         public string TelefonoDomicilio { get; set; }
         public string Facultad { get; set; }

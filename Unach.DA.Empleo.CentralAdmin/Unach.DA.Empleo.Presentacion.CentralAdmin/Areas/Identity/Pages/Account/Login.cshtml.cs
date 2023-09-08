@@ -187,6 +187,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                             HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres ?? string.Empty));
                             HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
 
+
+                            #region
                             //var claims = new List<Claim>
                             //{
                             //           // new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
@@ -196,7 +198,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                             //            new Claim("NombresApellidos", string.Format("{0}", usuario.Nombres)),
                             //            new Claim("Foto", usuario.Foto??string.Empty),
                             // };
-
+                            #endregion
 
                             if (usuario.Roles != null && usuario.Roles.Count() > 0)
                             {

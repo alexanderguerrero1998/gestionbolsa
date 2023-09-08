@@ -24,30 +24,36 @@
                     </div>
                     @*Estos son los campos a edita*@
 
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Empresa"></label>
+                        <span asp-validation-for="Empresa" class="text-danger"></span>
+                        <input asp-for="Empresa" type="text" class="form-control" required="required">
+                    </div>
 
                     <div class="form-group col-lg-6">
                         <label asp-for="Descripcion"></label>
                         <span asp-validation-for="Descripcion" class="text-danger"></span>
-                        <input asp-for="Descripcion" type="text" class="form-control">
+                        <textarea asp-for="Descripcion" class="form-control input-sm" rows="4" minlength="130" maxlength="200" placeholder="Describe en un minimo de 130 caracteres" required="required"></textarea>
+
                     </div>
 
 
                     <div class="form-group col-lg-6">
                         <label asp-for="FechaIncio"></label>
                         <span asp-validation-for="FechaIncio" class="text-danger"></span>
-                        <input asp-for="FechaIncio" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha">
+                        <input asp-for="FechaIncio" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label asp-for="FechaFin"></label>
                         <span asp-validation-for="FechaFin" class="text-danger"></span>
-                        <input asp-for="FechaFin" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha">
+                        <input asp-for="FechaFin" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label asp-for="Certificado"></label>
                         <span asp-validation-for="Certificado" class="text-danger"></span>
-                        <input asp-for="Certificado" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha">
+                        <input asp-for="Certificado" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
                     </div>
 
 

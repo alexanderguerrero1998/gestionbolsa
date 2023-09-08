@@ -1,8 +1,8 @@
-﻿@model Logro
+﻿@model EstudianteIdioma
 
-<form role="form" id="form" method="post" asp-action="LogroDelete" asp-controller="Logro">
+<form role="form" id="form" method="post" asp-action="EstudianteIdiomaDelete" asp-controller="Idioma">
 
-    <partial name="_ModalHeader" model="@(new  ModalHeader{ Heading = "Eliminar Capacitacion" })" />
+    <partial name="_ModalHeader" model="@(new  ModalHeader{ Heading = "Eliminar Idioma" })" />
 
 
     <div class="modal-body form-horizontal">
@@ -17,7 +17,7 @@
         }
         else
         {*@
-            <text>Está seguro de eliminar la plantilla: <strong>@Model?.Descripcion</strong>?</text>
+            <text>Está seguro de eliminar la plantilla: <strong>@Model?.IdIdioma</strong>?</text>
             //}
         }
         else

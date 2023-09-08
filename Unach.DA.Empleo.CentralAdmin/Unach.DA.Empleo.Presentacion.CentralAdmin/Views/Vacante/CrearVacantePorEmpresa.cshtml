@@ -1,10 +1,9 @@
 ﻿@{
-    ViewData["Title"] = "Crear Vacante";
+    ViewData["Title"] = "Ofertas Laborales";
 }
-@model VacanteViewModel
+@model List<VacanteViewModel>
 
-<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de vacantes disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
-
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de Ofertas disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
 
 <div class="content animate-panel">
 
@@ -24,6 +23,7 @@
 
                             @*@await Component.InvokeAsync("PerfilServidorEditado", ViewBag.Expediente)*@
 
+
                             <div class="hpanel hgreen">
                                 <div class="panel-body">
                                     <p class="small m-t-md" style="text-align: justify">
@@ -38,7 +38,7 @@
                                             <div class="contact-stat"><span>Registros: </span> <strong>Adicionales</strong></div>
                                         </div>
                                         <div class="col-md-6">
-                                           
+                                            <div class="contact-stat"><span>Total: </span> <strong>@Model?.Count</strong></div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,6 +47,8 @@
 
 
                         <div class="col-md-9">
+
+
                             <div class="row">
                                 <div class="hpanel hgreen">
                                     <div class="col-lg-12">
@@ -54,71 +56,56 @@
                                             <div class="panel-heading hbuilt">
                                                 @ViewData["Title"].ToString()
                                                 <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a asp-action="VacanteEdit" asp-controller="Vacante" asp-route-id="0" asp-route-idEmpresa="@ViewBag.IdEmpresa" asp-route-expediente="@ViewBag.Expediente" data-toggle="modal" data-target="#modal-action-codesi">Nuevo</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-                                               <form role="form" id="form" method="post" asp-action="VacanteEdit" asp-controller="Vacante">
-                                               
-                                                    <div class="modal-body">
-                                                     <div>
-                                                           <div class="row">
-                                                                <input type="hidden" asp-for="Id" />
+                                                <table id="plantillasTable" class="table table-stripped " width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center">Cargo</th>
+                                                            <th>Remuneracion</th>
+                                                            <th>Cuidad</th>
+                                                            <th>Sector</th>
 
-                                                            <div class="form-group col-lg-6">
-                                                                    <label asp-for="IdEmpresa"></label>
-                                                                    <span asp-validation-for="IdEmpresa" class="text-danger"></span>
-                                                                    <select asp-for="IdEmpresa" asp-items="@(new SelectList(Model.Empresas,"Id","Nombre"))" class="form-control select2">
-                                                                        <option value="Id">- Seleccionar una opción -</option>
-                                                                    </select>
-                                                            </div>
+                                                            <th width="10%" class="text-center">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model != null)
+                                                        {
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                <tr>
 
-                                                            <div class="form-group col-lg-6">
-                                                               <label asp-for="IdTipoVacante"></label>
-                                                               <span asp-validation-for="IdTipoVacante" class="text-danger"></span>
-                                                               <select asp-for="IdTipoVacante" asp-items="@(new SelectList(Model.Tiposvacante,"Id","Nombre"))" class="form-control select2" requir>
-                                                                        <option value="-1">- Seleccionar una opción -</option>
-                                                               </select>
-                                                            </div>
+                                                                    <td>@item.Cargo</td>
 
-                                                                @*Estos son los campos a edita*@
+                                                                    <td>@item.Remuneracion</td>
+                                                                    <td>@item.Cuidad</td>
+                                                                    <td>@item.Sector</td>
 
+                                                                    <td class="text-center" width="5%" valign="top">
+                                                                        <div class="btn-group">
+                                                                            <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
+                                                                           
+                                                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                                                    <li><a asp-action="PreviewVacanteDetalle" asp-controller="Vacante" asp-route-idVacante="@item.Id" asp-route-idEstudiante=@ViewBag.Id ><i class="fa fa-edit text-warning  icon-space"></i>Vista Previa</a></li>
+                                                                                    <li><a asp-action="VacanteEdit" asp-controller="Vacante" asp-route-id="@item.Id" asp-route-idEstudiante="" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
+                                                                                    <li><a asp-action="VacanteDelete" asp-controller="Vacante" asp-route-id="@item.Id" asp-route-idEstudiante="" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-trash-o text-danger  icon-space"></i>Eliminar</a></li>
 
-                                                                <div class="form-group col-lg-6">
-                                                                    <label asp-for="Cargo"></label>
-                                                                    <span asp-validation-for="Cargo" class="text-danger"></span>
-                                                                    <input asp-for="Cargo" type="text" class="form-control" required="required">
-                                                                   
-                                                                </div>
-
-                                                                <div class="form-group col-lg-6">
-                                                                    <label asp-for="Descripcion"></label>
-                                                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
-                                                                    <input asp-for="Descripcion" type="text" class="form-control" required="required">
-                                                                  
-                                                                </div>
-
-
-                                                                <div class="form-group col-lg-6">
-                                                                    <label asp-for="Plaza"></label>
-                                                                    <span asp-validation-for="Plaza" class="text-danger"></span>
-                                                                    <input asp-for="Plaza" type="text" class="form-control" required="required">
-
-                                                                </div>
-
-                                                        </div>
-                                                            <div class="form-group col-lg-6">
-                                                                <button class="btn btn-primary " type="submit"><i class="fa fa-check"></i> Enviar</button>
-                                                            </div>
-                                                     </div>
-                                                      
-                                                  </div>
-
-                                               
-                                                  
-                                               </form>
-                                              
-
-
+                                                                                </ul>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
                                             </div>
                                             <div class="panel-footer">
                                                 &nbsp;
@@ -128,9 +115,8 @@
                                 </div>
                             </div>
 
+
                         </div>
-
-
 
                     </div>
                 </div>
@@ -139,3 +125,55 @@
         </div>
     </div>
 </div>
+<partial name="_Modal" model="@(new BootstrapModel { ID = "modal-action-codesi", AreaLabeledId = "modal-action-codesi-label", Size = ModalSize.Medium })" />
+
+
+
+
+
+@section Styles {
+    <environment names="Development,Staging,Production">
+
+        <link rel="stylesheet" href="~/lib/select2-3.5.2/select2.css" />
+        <link rel="stylesheet" href="~/lib/select2-3.5.2/select2-bootstrap.css" />
+
+
+        <link rel="stylesheet" href="~/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+        <link rel="stylesheet" href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+    </environment>
+}
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+
+        <script src="~/lib/select2-3.5.2/select2.min.js"></script>
+
+        <!-- DataTables -->
+        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- Validaciones -->
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation/jquery.validate.unobtrusive.min.js"></script>
+    </environment>
+
+
+    <script src="~/js/modal-refresh.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('#plantillasTable').dataTable();
+        });
+
+
+
+
+        $('#modal-action-codesi').change(
+            function () {
+                $.validator.unobtrusive.parse("#form");
+            });
+    </script>
+
+
+}
+

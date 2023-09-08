@@ -59,8 +59,8 @@
                                                     <thead>
                                                         <tr>
                                                             <th></th>
-                                                            <th class="text-center">Evento</th>
-                                                            <th>Tipo</th>
+                                                            <th class="text-center">Logro</th>
+                                                            <th>Descripcion</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -74,7 +74,7 @@
                                                                         <div hidden="hidden">
                                                                             <div class="nestedTable">
                                                                                 <div class="nestedTableTitle">
-                                                                                    @item.Descripcion
+                                                                                    @item.TipoLogro
                                                                                 </div>
                                                                                 <hr class="lineSeparator">
 
@@ -85,35 +85,13 @@
                                                                                                 <strong>Tipo Evento:</strong>
                                                                                             </td>
                                                                                             <td>
-                                                                                                @item.Descripcion
+                                                                                                @item.TipoLogro
                                                                                             </td>
                                                                                         </tr>
 
                                                                                         <tr>
                                                                                             <td>
-                                                                                                <strong>Tipo de Certificación:</strong>
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                @item.Descripcion
-                                                                                            </td>
-                                                                                        </tr>
-
-
-                                                                                        <tr>
-                                                                                            <td>
-                                                                                                <strong>Duración:</strong>
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                @item. (horas)
-
-                                                                                            </td>
-                                                                                        </tr>
-
-
-
-                                                                                        <tr>
-                                                                                            <td>
-                                                                                                <strong>Campo de Conocimiento:</strong>
+                                                                                                <strong>Descipcion:</strong>
                                                                                             </td>
                                                                                             <td>
                                                                                                 @item.Descripcion
@@ -125,7 +103,7 @@
                                                                                                 <strong>Certificado por:</strong>
                                                                                             </td>
                                                                                             <td>
-                                                                                                Universidad Nacional de Chimborazo
+                                                                                                @item.Institucion
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
@@ -133,7 +111,7 @@
                                                                                                 <strong>Fecha de Inicio:</strong>
                                                                                             </td>
                                                                                             <td>
-                                                                                                @item.Fecha
+                                                                                                @item.FechaInicio
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
@@ -141,7 +119,7 @@
                                                                                                 <strong>Fecha de finalización:</strong>
                                                                                             </td>
                                                                                             <td>
-                                                                                                @item.Fecha
+                                                                                                @item.FechaFin
                                                                                             </td>
                                                                                         </tr>
 
@@ -151,7 +129,7 @@
 
                                                                         </div>
                                                                     </td>
-                                                                    <td>@item.Descripcion</td>
+                                                                    <td>@item.TipoLogro</td>
                                                                     <td>@item.Descripcion</td>
                                                                     <td class="text-center" width="5%" valign="top">
                                                                         <div class="btn-group">

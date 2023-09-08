@@ -10,6 +10,9 @@
             <div>
                 <div class="row">
                     <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="IdEmpresa" />
+                    <input type="hidden" asp-for="IdTipoUsuario" />
+                    <input type="hidden" asp-for="IdRepresentante" />
 
 
                     @* <div class="form-group ">
@@ -22,7 +25,7 @@
 
                     @*Estos son los campos a edita*@
 
-                    <div class="form-group col-lg-8">
+           @*         <div class="form-group col-lg-8">
                         <label asp-for="IdEmpresa"></label>
                         <span asp-validation-for="IdEmpresa" class="text-danger"></span>
                         <input asp-for="IdEmpresa" type="text" class="form-control  input-sm">
@@ -33,7 +36,7 @@
                         <span asp-validation-for="IdTipoUsuario" class="text-danger"></span>
                         <input asp-for="IdTipoUsuario" type="text" class="form-control  input-sm">
                     </div>
-
+*@
 
                     <div class="form-group col-lg-8">
                         <label asp-for="Nombre"></label>
@@ -68,12 +71,7 @@
                         <input asp-for="Direccion" type="text" class="form-control  input-sm">
                     </div>
 
-                    <div class="form-group col-lg-8">
-                        <label asp-for="Fecha"></label>
-                        <span asp-validation-for="Fecha" class="text-danger"></span>
-                        <input asp-for="Fecha" type="text" class="form-control  input-sm">
-                    </div>
-
+                   
 
                 </div>
             </div>

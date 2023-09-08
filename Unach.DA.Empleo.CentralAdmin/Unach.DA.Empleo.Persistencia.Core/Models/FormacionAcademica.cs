@@ -17,12 +17,12 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [StringLength(450)]
         public string IdEstudiante { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(250)]
         public string Descripcion { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaIncio { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? FechaFin { get; set; }
+        public DateTime FechaFin { get; set; }
         [Required]
         public string Certificado { get; set; }
         [Required]
@@ -38,9 +38,15 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
+        [Required]
+        [StringLength(250)]
+        public string Empresa { get; set; }
 
         [ForeignKey("IdEstudiante")]
         [InverseProperty("FormacionAcademica")]
         public virtual Estudiante IdEstudianteNavigation { get; set; }
+        [ForeignKey("IdFormacionAcademica")]
+        [InverseProperty("FormacionAcademica")]
+        public virtual TipoFormacionAcademica IdFormacionAcademicaNavigation { get; set; }
     }
 }

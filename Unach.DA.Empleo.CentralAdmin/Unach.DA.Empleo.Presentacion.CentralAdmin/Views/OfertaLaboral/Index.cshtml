@@ -57,10 +57,10 @@
                                                 @ViewData["Title"].ToString()
                                                 <div class="pull-right">
                                                     <div class="btn-group">
-                                                        <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
+                                                  @*      <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
                                                         <ul class="dropdown-menu dropdown-menu-right">
                                                             <li><a asp-action="_OfertaLaboralEdit" asp-controller="OfertaLaboral" asp-route-id="0" asp-route-expediente="@ViewBag.Expediente" data-toggle="modal" data-target="#modal-action-codesi">Nuevo</a></li>
-                                                        </ul>
+                                                        </ul>*@
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,8 +93,7 @@
                                                                     <td>@item.Modalidad</td>
                                                                     <td>@item.Ubicacion</td>
                                                                     <td>@item.Descripcion</td>
-                                                              
-
+  
                                                                     <td class="text-center" width="5%" valign="top">
                                                                         <div class="btn-group">
                                                                             <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle" aria-expanded="true"><span class="fa fa-ellipsis-h"></span></button>
@@ -102,6 +101,7 @@
                                                                             {
                                                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                                                     <li><a asp-action="RegistrarPostulacion" asp-controller="Postulaciones" asp-route-idVacante="@item.IdVacante"  asp-route-idEstudiante=@ViewBag.Id data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Postular</a></li>
+                                                                                    <li><a asp-action="PreviewVacanteDetalle" asp-controller="Vacante" asp-route-idVacante="@item.IdVacante" asp-route-idEstudiante=@ViewBag.Id><i class="fa fa-edit text-warning  icon-space"></i>Ver Detalle</a></li>
                                                                                 </ul>
                                                                             }
                                                                             else
@@ -124,8 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
 
 
                         </div>

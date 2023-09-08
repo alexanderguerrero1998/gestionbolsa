@@ -13,10 +13,10 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(250)]
         public string Descripcion { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? Fecha { get; set; }
+        public DateTime FechaInicio { get; set; }
         public int IdLogro { get; set; }
         [Required]
         [StringLength(450)]
@@ -39,6 +39,8 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
         public string SistemaAudd { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime FechaTransaccion { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime FechaFin { get; set; }
 
         [ForeignKey("IdEstudiante")]
         [InverseProperty("Logro")]

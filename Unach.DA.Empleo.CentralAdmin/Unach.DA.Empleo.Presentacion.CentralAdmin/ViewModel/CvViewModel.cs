@@ -10,11 +10,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string Telefono { get; set; }
         public string Email { get; set; }
         public string Carrera { get; set; }
-        public List<FormacionAcademica> FromacionAcademica { get; set; }
-        public List<ExperienciaLaboral> ExperienciaLaboral { get; set; }
-        public List<Logro> Logros { get; set; }
-        public List<EstudianteIdioma> Idiomas { get; set; }
-        public List<Capacitacion> Capacitaciones { get; set; }
+        public List<CvFormacionAcademicaViewModel> FormacionAcademica { get; set; }
+        public List<CvExperienciaLaboralViewModel> ExperienciaLaboral { get; set; }
+        public List<CvLogroViewModel> Logros { get; set; }
+        public List<CvNombreIdiomaViewModel> Idiomas { get; set; }
+        public List<CvCapacitacionesViewModel> Capacitaciones { get; set; }
 
     }
 }

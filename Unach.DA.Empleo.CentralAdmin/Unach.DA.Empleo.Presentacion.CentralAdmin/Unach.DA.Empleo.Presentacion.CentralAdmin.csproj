@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\ResponsableEmpresa\VerDatosEmpresa.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="22.2.5" />
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
@@ -34,6 +38,18 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\rotativa\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ResponsableEmpresa\VerDatosEmpresa.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\ResponsableEmpresa\VerDatosEmpresa.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\ResponsableEmpresa\VerDatosEmpresa.cshtml" />
   </ItemGroup>
 
 </Project>

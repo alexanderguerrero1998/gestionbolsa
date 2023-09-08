@@ -42,7 +42,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     FechaIncio = m.FechaIncio,
                     FechaFin = m.FechaFin,
                     Certificado = m.Certificado,
-                    NombreEmpresa = m.NombreEmpresa,    
+                    NombreEmpresa = m.NombreEmpresa,   
+                    TipoExperienciaLaboral = m.IdExperienciaLaboralNavigation.Nombre
 
                 },
                 x => x.Id > expediente && x.IdEstudiante == idEstudiante,

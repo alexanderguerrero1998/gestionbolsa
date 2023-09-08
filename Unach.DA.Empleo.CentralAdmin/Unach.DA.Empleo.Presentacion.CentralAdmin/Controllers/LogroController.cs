@@ -34,10 +34,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             List<LogroViewModel> logros = entitiesDomain.LogroRepositorio.ObtenerTodosEnOtraVista(
                 m => new LogroViewModel
                 {
+
                     Id = m.Id,
                     Descripcion = m.Descripcion,
                     IdEstudiante = m.IdEstudiante,
-                    IdLogro = m.IdLogro
+                    IdLogro = m.IdLogro,
+                    TipoLogro = m.IdLogroNavigation.Nombre,
+                    Institucion = m.Institucion
 
                 },
                 x => x.Id > expediente && x.IdEstudiante == idEstudiante,
@@ -70,8 +73,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             IdLogro = m.IdLogro,
                             IdEstudiante = m.IdEstudiante,  
                             FechaTransaccion = m.FechaTransaccion,  
-                            Fecha = m.Fecha
-                       
+                            FechaInicio = m.FechaInicio,
+                            FechaFin = m.FechaFin,  
 
                         },
                         x => x.Id == id).FirstOrDefault();
@@ -119,7 +122,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 else
                 {
                     var logro = _mapper.Map<Logro>(item);
-                    logro.Fecha = DateTime.Now; // TOCA QUITAR
+                    logro.FechaInicio = DateTime.Now; // TOCA QUITAR
+                    logro.FechaFin = DateTime.Now; // TOCA QUITAR
                     logro.FechaTransaccion = DateTime.Now;
 
                     //logro.IdEstudiante = item.IdLogro[0]; // TOCA QUITAR

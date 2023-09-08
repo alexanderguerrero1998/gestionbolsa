@@ -12,6 +12,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public DateTime FechaFin { get; set; }
         public string Certificado { get; set; }
         public string Nombre { get; set; }
+        public string Empresa { get; set; }
+        public string TipoCapacitacion { get; set; }
 
         public List<TipoCapacitacion> TiposCapacitacion { get; set; }
     }

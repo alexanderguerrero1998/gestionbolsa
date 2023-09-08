@@ -50,8 +50,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             return View(empresa.ToList());
         }
 
-       
-
         public IActionResult EmpresaEdit(int id, int expediente)
         {
             try
@@ -79,11 +77,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             Email = m.Email,
                             Telefono = m.Telefono,
                         }
-
                         ,
                         x => x.Id == id).FirstOrDefault();
-
-
 
                     if (query != null)
                     {
@@ -102,7 +97,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 return PartialView("~/Views/Empresa/_EmpresaEdit.cshtml", new EmpresaViewModel());
             }
         }
-
 
 
         [HttpPost]

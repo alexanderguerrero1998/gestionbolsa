@@ -163,8 +163,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         {
             try
             {
-                Logro item = entitiesDomain.LogroRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
-                return PartialView("~/Views/Logro/_LogroDelete.cshtml", item);
+                EstudianteIdioma item = entitiesDomain.EstudianteIdiomaRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
+                return PartialView("~/Views/Idioma/_EstudianteIdiomaDelete.cshtml", item);
             }
             catch (Exception ex)
             {
@@ -175,13 +175,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         }
 
         [HttpPost]
-        public IActionResult EstudianteIdiomaDelete(Logro item)
+        public IActionResult EstudianteIdiomaDelete(EstudianteIdioma item)
         {
             try
             {
                 if (item != null)
                 {
-                    entitiesDomain.LogroRepositorio.Eliminar(item);
+                    entitiesDomain.EstudianteIdiomaRepositorio.Eliminar(item);
                     entitiesDomain.GuardarTransacciones();
                     TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información eliminada.");
                 }
@@ -192,7 +192,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
             }
             //return RedirectToAction(nameof(Index), new { expediente = 1 });
-            return RedirectToAction("EstudianteLogro", "Logro");
+            return RedirectToAction("EstudianteIdioma", "Idioma");
         }
 
 

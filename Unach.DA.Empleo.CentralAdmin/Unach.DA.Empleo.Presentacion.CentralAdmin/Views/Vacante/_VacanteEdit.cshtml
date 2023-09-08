@@ -8,17 +8,10 @@
     {
         <div class="modal-body">
             <div>
-                <div class="row">
+                <div class="row" >
                     <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="IdEmpresa"/>
 
-
-                    <div class="form-group col-lg-6">
-                        <label asp-for="IdEmpresa"></label>
-                                <span asp-validation-for="IdEmpresa" class="text-danger"></span>
-                                <select asp-for="IdEmpresa" asp-items="@(new SelectList(Model.Empresas,"Id","Nombre"))" class="form-control select2">
-                        <option value="Id">- Seleccionar una opción -</option>
-                        </select>
-                      </div>
 
                     <div class="form-group col-lg-6">
                         <label asp-for="IdTipoVacante"></label>
@@ -27,33 +20,143 @@
                             <option value="-1">- Seleccionar una opción -</option>
                         </select>
                     </div>
-                    @*Estos son los campos a edita*@
-                    
 
+           
                     <div class="form-group col-lg-6">
                         <label asp-for="Cargo"></label>
                         <span asp-validation-for="Cargo" class="text-danger"></span>
-                        <input asp-for="Cargo" type="text" class="form-control  input-sm ">
+                        <input asp-for="Cargo" type="text" class="form-control  input-sm " required="required">
                     </div>
-
                     <div class="form-group col-lg-6">
                         <label asp-for="Descripcion"></label>
                         <span asp-validation-for="Descripcion" class="text-danger"></span>
-                        <input asp-for="Descripcion" type="text" class="form-control  input-sm">
+                        <input asp-for="Descripcion" type="text" class="form-control  input-sm " required="required">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Plaza"></label>
+                        <span asp-validation-for="Plaza" class="text-danger"></span>
+                        <input asp-for="Plaza" type="number" class="form-control  input-sm " required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="TipoContrato"></label>
+                        <span asp-validation-for="TipoContrato" class="text-danger"></span>
+                        <input asp-for="TipoContrato" type="text" class="form-control  input-sm " required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Cuidad"></label>
+                        <span asp-validation-for="Cuidad" class="text-danger"></span>
+                        <input asp-for="Cuidad" type="text" class="form-control  input-sm " required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Parroquia"></label>
+                        <span asp-validation-for="Parroquia" class="text-danger"></span>
+                        <input asp-for="Parroquia" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Sector"></label>
+                        <span asp-validation-for="Sector" class="text-danger"></span>
+                        <input asp-for="Sector" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Contacto"></label>
+                        <span asp-validation-for="Contacto" class="text-danger"></span>
+                        <input asp-for="Contacto" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="CorreoElectronico"></label>
+                        <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+                        <input asp-for="CorreoElectronico" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Telefono"></label>
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                        <input asp-for="Telefono" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                </div>
+              
+               
+@*------------------------------------------------------*@
+                <div class="row" @*style="border-top: 3px solid #f4f4f4;"*@>
+                     <br/>
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Instruccion"></label>
+                        <span asp-validation-for="Instruccion" class="text-danger"></span>
+                        <input asp-for="Instruccion" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+   
+                    <div class="form-group col-lg-6">
+                        <label asp-for="IdTipoCarrera"></label>
+                        <span asp-validation-for="IdTipoCarrera" class="text-danger"></span>
+                        <select asp-for="IdTipoCarrera" asp-items="@(new SelectList(Model.Carreras, "IdCarrera", "Nombre"))" class="form-control select2">
+                            <option value="-1">- Seleccionar una opción -</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="ConocimientosPrevios"></label>
+                        <span asp-validation-for="ConocimientosPrevios" class="text-danger"></span>
+                        <input asp-for="ConocimientosPrevios" type="text" class="form-control  input-sm fecha" required="required">
                     </div>
 
 
                     <div class="form-group col-lg-6">
-                        <label asp-for="Plaza"></label>
-                        <span asp-validation-for="Plaza" class="text-danger"></span>
-                        <input asp-for="Plaza" type="text" class="form-control  input-sm">
+                        <label asp-for="Remuneracion"></label>
+                        <span asp-validation-for="Remuneracion" class="text-danger"></span>
+                        <input asp-for="Remuneracion" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
 
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Experiencia"></label>
+                        <span asp-validation-for="Experiencia" class="text-danger"></span>
+                        <input asp-for="Experiencia" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+                    
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Actividades"></label>
+                        <span asp-validation-for="Actividades" class="text-danger"></span>
+                        <input asp-for="Actividades" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Jornada"></label>
+                        <span asp-validation-for="Jornada" class="text-danger"></span>
+                        <input asp-for="Jornada" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                </div>
+@*------------------------------------------------------*@
+                <div class="row" @*style="border-top: 3px solid #f4f4f4;"*@>
+                    <br/>
+                    <div class="form-group col-lg-6">
+                        <label asp-for="AreaCapacitacion"></label>
+                        <span asp-validation-for="AreaCapacitacion" class="text-danger"></span>
+                        <input asp-for="AreaCapacitacion" type="text" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="AreaExperiencia"></label>
+                        <span asp-validation-for="AreaExperiencia" class="text-danger"></span>
+                        <input asp-for="AreaExperiencia" type="text" class="form-control  input-sm fecha" required="required">
                     </div>
 
 
                 </div>
             </div>
         </div>
+
+
+     
     }
     else
     {
@@ -104,3 +207,28 @@
 
 
 </script>
+
+
+
+
+
+    <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="color-line"></div>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal title</h4>
+                                    <small class="font-bold">Lorem Ipsum is simply dummy text.</small>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                        printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                        remaining essentially unchanged.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

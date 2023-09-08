@@ -273,6 +273,15 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 var apiUrl2 = "https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionAcademica/" + id;
                 var estudianteApiIfoAcademica = clienteapi.Get<ApiInformacionAcademica>(apiUrl2);
 
+                var estudianteQuery = entitiesDomain.AspNetUsersRepositorio.ObtenerTodos();
+                var estudiantee = estudianteQuery.FirstOrDefault(e => e.Id == Id);
+
+                string phonenumber = null;
+                if (estudiantee != null)
+                {
+                    phonenumber = estudiantee.PhoneNumber;
+                }
+
                 // Convertir ApiInformacionAcademica a EstudianteViewModel
                 var estudianteViewModel = new EstudianteViewModel
                 {
@@ -283,7 +292,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                     ApellidoMaterno = estudianteApiIfoAcademica.ApellidoMaterno,
                     Genero = estudianteApiIfoAcademica.Genero,
                     CorreoInstitucional = estudianteApiIfoAcademica.CorreoInstitucional,
-                    TelefonoCelular = estudianteApiIfoAcademica.TelefonoCelular,
+                    TelefonoCelular = phonenumber,
                     TelefonoDomicilio = estudianteApiIfoAcademica.TelefonoDomicilio,
                     Facultad = estudianteApiIfoAcademica.Facultad,
                     Carrera = estudianteApiIfoAcademica.Carrera,

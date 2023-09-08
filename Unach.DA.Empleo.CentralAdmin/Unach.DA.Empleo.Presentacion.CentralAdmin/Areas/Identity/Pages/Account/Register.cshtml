@@ -63,6 +63,20 @@
                                                     <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                     <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                 </div>
+
+
+                                                <div class="form-group col-md-6">
+                                                    <label>
+                                                    <span id="lbltelefono"> Numero Telefono</span>
+                                                    </label>
+
+                                                <input asp-for="Input.PhoneNumber" class="form-control"  maxlength="10" placeholder="Ej. 123-456-7890" type="tel" />
+                                                    <span id="LabelCedulaError" style="color:Red;"></span>
+                                                    <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
+                                                    <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
+                                                </div>
+
+
                                                 <div class="form-group col-md-6">
                                                     <label>
                                                         <span id="lbllinkedin"> Linkedin:</span>
@@ -115,40 +129,6 @@
                 </div>
             </div>
 
-           @* <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-              
-                <div asp-validation-summary="All" class="text-danger"></div>
-
-                <div class="form-group">
-                    <label asp-for="Input.CI"></label>
-                    <input asp-for="Input.CI" class="form-control" />
-                    <span asp-validation-for="Input.CI" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Input.Linkedin"></label>
-                    <input asp-for="Input.Linkedin" class="form-control" />
-                    <span asp-validation-for="Input.Linkedin" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.ConfirmPassword"></label>
-                    <input asp-for="Input.ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
-                <button type="submit" class="btn btn-default">Register</button>
-            </form>*@
         </div>
     </div>
 </div>
@@ -156,5 +136,7 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+
 
 

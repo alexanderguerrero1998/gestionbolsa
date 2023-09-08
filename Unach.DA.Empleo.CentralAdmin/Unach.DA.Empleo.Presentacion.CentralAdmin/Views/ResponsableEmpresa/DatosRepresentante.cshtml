@@ -1,0 +1,229 @@
+﻿@{
+    ViewData["Title"] = "Responsable";
+}
+@model List<ResponsableEmpresaViewModel>
+
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de Responsables disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
+
+<div class="content animate-panel">
+
+    <div class="row">
+        @await Component.InvokeAsync("MenuPerfilServidor", ViewBag.Expediente)
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+
+                            @*@await Component.InvokeAsync("PerfilServidorEditado", ViewBag.Expediente)*@
+
+
+                            <div class="hpanel hgreen">
+                                <div class="panel-body">
+                                    <p class="small m-t-md" style="text-align: justify">
+                                        <strong>Información.- </strong> La información que consta dentro del sistema, es utilizada con fines académicos y administrativos, por lo tanto es necesario mantenerla siempre actualizada.
+                                        <br>
+                                        <br>
+                                    </p>
+                                </div>
+                                <div class="panel-footer contact-footer">
+                                    <div class="row">
+                                        <div class="col-md-6 border-right">
+                                            <div class="contact-stat"><span>Registros: </span> <strong>Adicionales</strong></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="contact-stat"><span>Total: </span> <strong>@Model?.Count</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-9">
+                            <div class="hpanel">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#tab-2"> <i class="fa fa-laptop"></i></a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-4"> <i class="fa fa-laptop"></i></a></li>
+                                </ul>
+                                <div class="tab-content">
+
+
+                                    <div id="tab-2" class="tab-pane active">
+                                        <div class="panel-body">
+                                            <div class="pull-right">
+                                                <div class="btn-group">
+                                                    <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li><a asp-action="ResponsableEmpresaEdit" asp-controller="ResponsableEmpresa"  asp-route-idEstudiante="@ViewBag.idUsuario" data-toggle="modal" data-target="#modal-action-codesi"><i class="fa fa-edit text-warning  icon-space"></i>Editar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <strong>Informacion Personal</strong>
+                                            <p>Informacion sobre ti y la seguridad de tu cuenta en los servicios de Bolsa Empleo</p> <br />
+
+                                            <div class="col-lg-6">
+                                                <div class="hpanel">
+
+
+                                                    <div class="panel-heading hbuilt">
+                                                        <div class="panel-tools">
+                                                            <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                            <a class="closebox"><i class="fa fa-times"></i></a>
+                                                        </div>
+                                                        <strong>Informacion Basica</strong>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-9">
+                                                                @foreach (var item in Model)
+                                                                {
+                                                                    <p> <strong>Nombre </strong>@item.Nombre  <lable class="infont col-md-2 "><a href="#"><i class="fa fa-caret-right"></i> </a></lable> </p>
+                                                                    <p> <strong>Apellido:</strong> @item.Apellido  <lable class="infont col-md-2"><a href="#"><i class="fa fa-caret-right"></i> </a></lable> </p>
+
+                                                                }
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        This is standard panel footer
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="hpanel">
+                                                    <div class="panel-heading hbuilt">
+                                                        <div class="panel-tools">
+                                                            <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                            <a class="closebox"><i class="fa fa-times"></i></a>
+                                                        </div>
+                                                        <strong>Informacion de Contacto</strong>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-9">
+                                                                @foreach (var item in Model)
+                                                                {
+                                                                    <p><strong>Direccion:</strong>  @item.Direccion  <lable class="infont col-md-2"><a href="#"><i class="fa fa-caret-right"></i></a></lable> </p>
+                                                                    <p><strong>Telefono:</strong>  @item.Telefono  <lable class="infont col-md-2"><a href="#"><i class="fa fa-caret-right"></i></a></lable> </p>
+
+                                                                }
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        This is standard panel footer
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div id="tab-4" class="tab-pane">
+                                        <div class="panel-body">
+                                            <strong>Configuracion de cuenta</strong>
+
+                                            <p>
+                                                Opciones y recomendaciones que te ayudan a proteger tu cuenta
+                                            </p>
+                                            <div class="col-lg-6">
+                                                <div class="hpanel">
+                                                    <div class="panel-heading hbuilt">
+                                                        <div class="panel-tools">
+                                                            <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                            <a class="closebox"><i class="fa fa-times"></i></a>
+                                                        </div>
+                                                        <strong>Seguridad</strong>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-9">
+
+                                                                <form method="post" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" class="form-inline">
+                                                                    <button type="submit" class="btn btn-primary btn-xs"><i class="fa fa-cogs"></i> Configurar</button>
+                                                                </form>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        This is standard panel footer
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<partial name="_Modal" model="@(new BootstrapModel { ID = "modal-action-codesi", AreaLabeledId = "modal-action-codesi-label", Size = ModalSize.Medium })" />
+
+
+@section Styles {
+    <environment names="Development,Staging,Production">
+
+        <link rel="stylesheet" href="~/lib/select2-3.5.2/select2.css" />
+        <link rel="stylesheet" href="~/lib/select2-3.5.2/select2-bootstrap.css" />
+
+
+        <link rel="stylesheet" href="~/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+        <link rel="stylesheet" href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+    </environment>
+}
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+
+        <script src="~/lib/select2-3.5.2/select2.min.js"></script>
+
+        <!-- DataTables -->
+        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- Validaciones -->
+        <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation/jquery.validate.unobtrusive.min.js"></script>
+    </environment>
+
+
+    <script src="~/js/modal-refresh.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('#plantillasTable').dataTable();
+        });
+
+        $('#modal-action-codesi').change(
+            function () {
+                $.validator.unobtrusive.parse("#form");
+            });
+    </script>
+
+
+}
+

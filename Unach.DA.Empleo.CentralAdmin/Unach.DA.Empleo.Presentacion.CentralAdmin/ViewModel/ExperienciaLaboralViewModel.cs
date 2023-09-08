@@ -13,6 +13,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string NombreEmpresa { get; set; }
         public string Descripcion { get; set; }
         public string Tecnologia { get; set; }
+        public string TipoExperienciaLaboral { get; set; }
         public DateTime FechaIncio { get; set; }
         public DateTime FechaFin  { get; set; }
         public string Certificado { get; set; }

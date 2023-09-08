@@ -149,6 +149,12 @@ namespace Unach.DA.Empleo.Persistencia.Core.Models
                     .HasForeignKey(d => d.IdEstudiante)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_FormacionAcademica_Estudiante");
+
+                entity.HasOne(d => d.IdFormacionAcademicaNavigation)
+                    .WithMany(p => p.FormacionAcademica)
+                    .HasForeignKey(d => d.IdFormacionAcademica)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_FormacionAcademica_TipoFormacionAcademica");
             });
 
             modelBuilder.Entity<Logro>(entity =>

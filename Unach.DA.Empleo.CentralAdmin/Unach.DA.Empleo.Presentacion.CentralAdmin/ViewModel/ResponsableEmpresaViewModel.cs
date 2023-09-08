@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Unach.DA.Empleo.Persistencia.Core.Models;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
 {
@@ -15,5 +16,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string Email { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
+        public string IdRepresentante { get; set; }
     }
 }

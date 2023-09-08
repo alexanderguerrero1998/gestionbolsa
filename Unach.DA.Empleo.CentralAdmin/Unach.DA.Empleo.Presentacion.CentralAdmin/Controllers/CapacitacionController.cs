@@ -29,8 +29,26 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         public IActionResult EstudianteCapacitacion() // Trae la capacitacion correspondiente a cada estudiante
         {
 
-            var IdEstudiante = HttpContext.Session.GetString("IdServidor");
-            List<CapacitacionViewModel> capacitaciones = entitiesDomain.ExecuteStoredProcedure<CapacitacionViewModel>("dbo.ObtenerCapacitacionEstudiante", ("@IdEstudiante", IdEstudiante)).ToList();
+            var idEstudiante = HttpContext.Session.GetString("IdServidor");
+            int expediente = 0;
+            ViewBag.Expediente = expediente;
+
+            List<CapacitacionViewModel> capacitaciones = entitiesDomain.CapacitacionRepositorio.ObtenerTodosEnOtraVista(
+                m => new CapacitacionViewModel
+                {
+                    Id = m.Id,
+                    IdEstudiante = m.IdEstudiante,
+                    Descripcion = m.Descripcion,
+                    FechaIncio = m.FechaIncio,
+                    FechaFin = m.FechaFin,
+                    Certificado = m.Certificado,
+                   TipoCapacitacion = m.IdCapacitacionNavigation.Nombre
+
+                },
+                x => x.Id > expediente && x.IdEstudiante == idEstudiante,
+                a => a.OrderBy(y => y.Id));
+
+     
 
             return View(capacitaciones);
         }
@@ -41,7 +59,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
             {
                 if (id == 0)
                 {
-                    CapacitacionViewModel2 capacitacion = new CapacitacionViewModel2();
+                    CapacitacionViewModel capacitacion = new CapacitacionViewModel();
                     capacitacion.Id = expediente;
                     capacitacion.IdEstudiante = HttpContext.Session.GetString("IdServidor"); // Aqui le pesamos el Id para que viaje por el ViewModel
                     // Le pasamos todos lo tipos de capacitacion
@@ -52,12 +70,13 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 else
                 {
 
-                    var query = entitiesDomain.CapacitacionRepositorio.ObtenerTodosEnOtraVista<CapacitacionViewModel2>(
+                    var query = entitiesDomain.CapacitacionRepositorio.ObtenerTodosEnOtraVista<CapacitacionViewModel>(
 
-                        m => new CapacitacionViewModel2
+                        m => new CapacitacionViewModel
                         {
                             Id = m.Id,
                             Nombre = m.IdCapacitacionNavigation.Nombre,
+                            Empresa = m.Empresa,
                             Descripcion= m.Descripcion,
                             FechaFin = m.FechaFin,  
                             FechaIncio = m.FechaIncio,
@@ -86,7 +105,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
         }
 
         [HttpPost]
-        public IActionResult CapacitacionEdit(CapacitacionViewModel2 item) 
+        public IActionResult CapacitacionEdit(CapacitacionViewModel item) 
         {
             try
             {
@@ -108,6 +127,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                         var capacitacion = _mapper.Map<Capacitacion>(item);
                         capacitacion.FechaIncio = DateTime.Now;// TOCA QUITAR
                         capacitacion.FechaFin = DateTime.Now;// TOCA QUITAR
+                        capacitacion.FechaTransaccion = DateTime.Now;   //TOCA QUITAR
 
                     _mapper.AgregarDatosAuditoria(capacitacion, HttpContext);
                         entitiesDomain.CapacitacionRepositorio.Actualizar(capacitacion);
