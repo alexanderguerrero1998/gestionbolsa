@@ -122,6 +122,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
                 {
 
                     var ci = Input.CI;
+              
                     // Contar la cantidad de dígitos en la cédula de identidad 
                     int cantidadDigitos = ci.Length;
                     if (cantidadDigitos == 10)

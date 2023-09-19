@@ -26,6 +26,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
         public IActionResult Index()
         {
+            int expediente = 1;
+            ViewBag.Expediente = expediente;
             List<OfertasLaboralesViewModel> oferta = entitiesDomain.ExecuteStoredProcedure<OfertasLaboralesViewModel>("dbo.ObtenerOfertasLaborales").ToList();
             //Enviamos el Id del usuario autenticado para la postulacion
             ViewBag.Id = HttpContext.Session.GetString("IdServidor");

@@ -92,14 +92,11 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                             NivelSpeaking = m.NivelSpeaking,
                             NivelWriting = m.NivelWriting,
                             Certificado = m.Certificado,
-
-
                         },
                         x => x.Id == id).FirstOrDefault();
 
                     if (query != null)
                     {
-
                         query.tipoIdioma = entitiesDomain.IdiomaRepositorio.ObtenerTodos();
                         return PartialView("~/Views/Idioma/_EstudianteIdiomaEdit.cshtml", query);
                     }

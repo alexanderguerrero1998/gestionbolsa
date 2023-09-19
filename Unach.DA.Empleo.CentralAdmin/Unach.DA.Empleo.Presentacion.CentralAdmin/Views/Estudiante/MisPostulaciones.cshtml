@@ -1,15 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Ofertas Laborales";
+    ViewData["Title"] = "Postulaciones";
 }
 @model List<MisPostulacionesViewModel>
 
-<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de Ofertas disponibles para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
+<partial name="_HeaderNombreVista" model="@(new HeaderViewModel() {Titulo= ViewData["Title"].ToString(), Subtitulo="Lista de postulaciones para la gestión de servidores.", Icono="fa fa-language fa-5x text-info" })" />
 
 <div class="content animate-panel">
 
 
     <div class="row">
-        @await Component.InvokeAsync("MenuPerfilServidor", ViewBag.Expediente)
+        @await Component.InvokeAsync("MenuUsuario", ViewBag.Expediente)
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -55,14 +55,14 @@
                                         <div class="hpanel">
                                             <div class="panel-heading hbuilt">
                                                 @ViewData["Title"].ToString()
-                                                <div class="pull-right">
+                                               @* <div class="pull-right">
                                                     <div class="btn-group">
                                                         <button data-toggle="dropdown" class="btn btn-clear btn-xs dropdown-toggle " aria-expanded="false"><span class="fa fa-ellipsis-h"></span></button>
                                                         <ul class="dropdown-menu dropdown-menu-right">
                                                             <li><a asp-action="_OfertaLaboralEdit" asp-controller="OfertaLaboral" asp-route-id="0" asp-route-expediente="@ViewBag.Expediente" data-toggle="modal" data-target="#modal-action-codesi">Nuevo</a></li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div>*@
                                             </div>
                                             <div class="panel-body">
                                                 <table id="plantillasTable" class="table table-stripped " width="100%">

@@ -48,8 +48,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
                 x => x.Id > expediente && x.IdEstudiante == idEstudiante,
                 a => a.OrderBy(y => y.Id));
 
-     
-
             return View(capacitaciones);
         }
 

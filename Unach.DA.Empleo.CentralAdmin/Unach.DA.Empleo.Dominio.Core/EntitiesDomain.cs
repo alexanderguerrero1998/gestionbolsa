@@ -318,17 +318,17 @@ namespace Unach.DA.Empleo.Dominio.Core
             }
         }
 
-        private Repositorio<Transaccion> trasaccionRepositorio;
+        private Repositorio<Transaccion> transaccionRepositorio;
 
-        public Repositorio<Transaccion> TrasaccionRepositorio
+        public Repositorio<Transaccion> TransaccionRepositorio
         {
             get
             {
-                if (trasaccionRepositorio == null)
+                if (transaccionRepositorio == null)
                 {
-                    trasaccionRepositorio = new Repositorio<Transaccion>(contexto);
+                    transaccionRepositorio = new Repositorio<Transaccion>(contexto);
                 }
-                return trasaccionRepositorio;
+                return transaccionRepositorio;
             }
         }
 

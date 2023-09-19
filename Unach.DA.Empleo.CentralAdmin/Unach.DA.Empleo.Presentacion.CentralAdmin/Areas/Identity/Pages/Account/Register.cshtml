@@ -21,7 +21,7 @@
                         <table cellspacing="0" cellpadding="0" id="WizardRegistro" style="border-collapse:collapse;">
                             <tbody>
                                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
                                     <tr style="height:100%;">
                                         <td>
                                             <div class="row">
@@ -48,7 +48,7 @@
                                                     <label>
                                                         <span id="lblcedula"> Número de identificación:</span>
                                                     </label>
-                                                    <input asp-for="Input.CI" class="form-control" maxlength="15"  placeholder="Ej. 0603685278" type="text" />
+                                                    <input asp-for="Input.CI" class="form-control" maxlength="10"  placeholder="Ej. 0603685278" type="text" required="required" />
                                                     <span id="LabelCedulaError" style="color:Red;"></span>
                                                     <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                     <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
@@ -57,8 +57,8 @@
                                                     <label>
                                                         <span id="lblcorreo"> Correo Electronico:</span>
                                                     </label>
-                                              
-                                                    <input asp-for="Input.Email" class="form-control" maxlength="50" placeholder="Ej. usuario@dominio.com" type="email" />
+
+                                                <input asp-for="Input.Email" class="form-control" maxlength="50" placeholder="Ej. usuario@dominio.com" type="email" required="required" />
                                                     <span id="LabelCedulaError" style="color:Red;"></span>
                                                     <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                     <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
@@ -70,7 +70,7 @@
                                                     <span id="lbltelefono"> Numero Telefono</span>
                                                     </label>
 
-                                                <input asp-for="Input.PhoneNumber" class="form-control"  maxlength="10" placeholder="Ej. 123-456-7890" type="tel" />
+                                                <input asp-for="Input.PhoneNumber" class="form-control" maxlength="10" placeholder="Ej. 123-456-7890" type="tel" required="required" />
                                                     <span id="LabelCedulaError" style="color:Red;"></span>
                                                     <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                     <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
@@ -81,7 +81,7 @@
                                                     <label>
                                                         <span id="lbllinkedin"> Linkedin:</span>
                                                     </label>
-                                                    <input asp-for="Input.Linkedin" class="form-control"  placeholder="Ej. https://www.linkedin.com/in/alexander-guerrero-dutan-262479170"  type="text" />
+                                                <input asp-for="Input.Linkedin" class="form-control" placeholder="Ej. https://www.linkedin.com/in/alexander-guerrero-dutan-262479170" type="text" required="required" />
                                                     <span id="LabelCedulaError" style="color:Red;"></span>
                                                     <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                     <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
@@ -99,7 +99,7 @@
                                                     <label>
                                                         <span id="lblconfirmarcontraseña"> Confirmar contraseña:</span>
                                                     </label>
-                                                    <input asp-for="Input.ConfirmPassword" class="form-control" class="form-control input-sm" type="password" />
+                                                <input asp-for="Input.ConfirmPassword" class="form-control" class="form-control input-sm" type="password" required="required" />
                                                     <span id="LabelCedulaError" style="color:Red;"></span>
                                                     <span id="RequiredFieldValidator1" class="failureNotification" style="color:Red;visibility:hidden;">*</span>
                                                     <span id="RegularExpressionValidator3" class="failureNotification" style="color:Red;visibility:hidden;">*</span>

@@ -1,0 +1,65 @@
+﻿@model EstudianteViewModel
+<body>
+    <div class="login-container" style="padding-top: 3% !important" ;>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center m-b-md">
+                    <h5 class="font-extra-bold text-info">SISTEMA INFORMÁTICO DE BOLSA DE EMPLEO (SICOA)</h5>
+                    <br>
+                    <p class="font-extra-bold">VERIFIQUE SU IDENTIDAD</p>
+                    <p>
+                        <span id="lblMenServicio">Este servicio es de uso exclusivo de los Estudiantes/Egresados de la Universidad Nacional de Chimborazo.</span>
+                    </p>
+                </div>
+
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="row">
+                                    <span id="uc_Login_lblMensaje" style="color:Black;"></span>
+                                    <div class="col-md-12">
+                                        <form id="account" method="post" asp-action="VerificarDatosUsuario" asp-controller="PreRegistro">
+                                            
+                                            <label class="control-label">
+                                            </label>
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+
+                                                </span>
+                                                <input asp-for="DocumentoIdentidad" class="form-control" placeholder="C.I. de Usuario"  />
+                                                <span asp-validation-for="DocumentoIdentidad" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="col-md-12 text-center">
+                                                <input type="submit" name="ctl00$body$ucLogin1$ucLogin_btnLogin" value="Aceptar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$body$ucLogin1$ucLogin_btnLogin&quot;, &quot;&quot;, true, &quot;login&quot;, &quot;&quot;, false, false))" id="ucLogin_btnLogin" tabindex="4" class="btn btn-info btn-sm">
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

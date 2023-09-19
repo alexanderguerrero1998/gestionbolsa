@@ -13,6 +13,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public string LinkLinkeding { get; set; }
 
         public int EstudianteID { get; set; }
+        [Required]
         public string DocumentoIdentidad { get; set; }
         public string Nombres { get; set; }
         public string ApellidoPaterno { get; set; }

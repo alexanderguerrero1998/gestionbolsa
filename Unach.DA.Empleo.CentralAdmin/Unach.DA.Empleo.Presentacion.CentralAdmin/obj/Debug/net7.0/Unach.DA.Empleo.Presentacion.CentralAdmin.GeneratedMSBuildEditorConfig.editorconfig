@@ -176,6 +176,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/Modulos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxNb2R1bG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/Roles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxSb2xlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/Transacciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxUcmFuc2FjY2lvbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_ModuloDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfTW9kdWxvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_ModuloEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfTW9kdWxvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_RolDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfUm9sRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_RolEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfUm9sRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_TransaccionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfVHJhbnNhY2Npb25FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Api/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -352,6 +384,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHVsYWNpb25lc1xfUG9zdHVsYWNpb25lc0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/PreRegistro/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlUmVnaXN0cm9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/PreRegistro/VerificarDatosUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlUmVnaXN0cm9cVmVyaWZpY2FyRGF0b3NVc3VhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/PruebasViews/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJ1ZWJhc1ZpZXdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -392,8 +432,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVFbXByZXNhXF9SZXNwb25zYWJsZUVtcHJlc2FFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Shared/Components/MenuEscritorioUsuario/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudUVzY3JpdG9yaW9Vc3VhcmlvXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Shared/Components/MenuPerfilServidor/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudVBlcmZpbFNlcnZpZG9yXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Shared/Components/MenuUsuario/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudVVzdWFyaW9cRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Shared/Components/Menu/Default.cshtml]

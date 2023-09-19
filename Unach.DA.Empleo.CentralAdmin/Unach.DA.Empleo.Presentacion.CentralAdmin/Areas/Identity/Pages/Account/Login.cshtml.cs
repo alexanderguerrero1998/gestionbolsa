@@ -103,176 +103,163 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
-
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        
-            if (ModelState.IsValid)
+            try 
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.CI, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                returnUrl ??= Url.Content("~/");
+
+                ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+                if (ModelState.IsValid)
                 {
-                    _logger.LogInformation("User logged in.");
-
-                    // Obtener el usuario autenticado
-                    var userAuth = await _userManager.FindByNameAsync(Input.CI);
-
-                    //Obtener solo CI/UserName
-                    var ci = userAuth.UserName;
-
-                    // Contar la cantidad de dígitos en la cédula de identidad 
-                    int cantidadDigitos = ci.Length;
-                    if (cantidadDigitos <= 13) { }
-
-                    // llamamos a la api para obtener los datos en las sessiones
-                    ClienteApi clienteapi = new ClienteApi("");
-
-                    //Obtenemos los datos del usuario
-                    var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
-
-                    if (userAuth != null)
+                    // This doesn't count login failures towards account lockout
+                    // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                    var result = await _signInManager.PasswordSignInAsync(Input.CI, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                    if (result.Succeeded)
                     {
+                        _logger.LogInformation("User logged in.");
 
-                        var usuario = entitiesDomain.AspNetUsersRepositorio.ObtenerTodosEnOtraVista<UsuarioAutenticadoViewModel>(
-                        m => new UsuarioAutenticadoViewModel
+                        // Obtener el usuario autenticado
+                        var userAuth = await _userManager.FindByNameAsync(Input.CI);
+
+                        //Obtener solo CI/UserName
+                        var ci = userAuth.UserName;
+
+                        // Contar la cantidad de dígitos en la cédula de identidad 
+                        int cantidadDigitos = ci.Length;
+                        if (cantidadDigitos <= 13) { }
+
+                        // llamamos a la api para obtener los datos en las sessiones
+                        ClienteApi clienteapi = new ClienteApi("");
+
+                        //Obtenemos los datos del usuario
+                        var response = clienteapi.Get<Api>("https://pruebas.unach.edu.ec:4431/api/Estudiante/InformacionBasicaPorCriterio/" + ci);
+
+                        if (userAuth != null)
                         {
-                           IdServidor = userAuth.Id,
-                           Nombres = response.Nombres,
-                           //NombresCompletos = response.NombresCompletos,
-                           Identificacion = response.DocumentoIdentidad,
-                           //Dependencia=m.
-                           //Cargo=m.c
-                           Foto = response.FotoRuta,
-                           Email = response.CorreoInstitucional
-                        }, x => x.UserName == ci).FirstOrDefault();
 
-                        
-                        if (usuario != null)
-                        {
-                            usuario.Roles = entitiesDomain.RolUsuarioRepositorio.ObtenerTodosEnOtraVista<RolViewModel>(
-                               m => new RolViewModel
-                               {
-                                   Id = m.IdRol,
-                                   Nombre = m.IdRolNavigation.Nombre,
-                                   Descripcion = m.IdRolNavigation.Descripcion,
-                               },
-                               x => x.IdUsuario == usuario.IdServidor &&
-                                    DateTime.Now >= x.Desde && DateTime.Now <= x.Hasta
-                           );
-
-
-                            if (usuario.Roles.Count == 1 && usuario.Roles.Where(x => x.Nombre.ToUpper() == "FUNCIONARIO") != null)
+                            var usuario = entitiesDomain.AspNetUsersRepositorio.ObtenerTodosEnOtraVista<UsuarioAutenticadoViewModel>(
+                            m => new UsuarioAutenticadoViewModel
                             {
-                                usuario.EsSoloFuncionario = 1;
-                            }
+                                IdServidor = userAuth.Id,
+                                Nombres = response.Nombres,
+                                Identificacion = response.DocumentoIdentidad,
+                                Foto = response.FotoRuta,
+                                Email = response.CorreoInstitucional
+                            }, x => x.UserName == ci).FirstOrDefault();
 
 
-                            if (usuario.Roles.Count > 1)
+                            if (usuario != null)
                             {
-                                usuario.EsSoloFuncionario = 0;
-                            }
+                                usuario.Roles = entitiesDomain.RolUsuarioRepositorio.ObtenerTodosEnOtraVista<RolViewModel>(
+                                   m => new RolViewModel
+                                   {
+                                       Id = m.IdRol,
+                                       Nombre = m.IdRolNavigation.Nombre,
+                                       Descripcion = m.IdRolNavigation.Descripcion,
+                                   },
+                                   x => x.IdUsuario == usuario.IdServidor &&
+                                        DateTime.Now >= x.Desde && DateTime.Now <= x.Hasta
+                               );
 
 
+                                if (usuario.Roles.Count == 1 && usuario.Roles.Where(x => x.Nombre.ToUpper() == "FUNCIONARIO") != null)
+                                {
+                                    usuario.EsSoloFuncionario = 1;
 
-                            HttpContext.Session.SetString("AuthenticatedUser", JsonConvert.SerializeObject(usuario));
-                            HttpContext.Session.SetString("IdServidor", usuario.IdServidor.ToString());
-                            //HttpContext.Session.SetString("Nombres", usuario.Nombres);
-                           // HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres));
-                            //HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
+                                    //Sacamos el id del Rol a la que fue asignado el autenticado
+                                    var id = usuario.Roles.FirstOrDefault()?.Id;
 
-                   
-                            HttpContext.Session.SetString("Nombres", usuario.Nombres ?? string.Empty);
-                            HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres ?? string.Empty));
-                            HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
+                                    if (id == 5) // Si tiene el rol de estudiante se asigna 
+                                    {
+                                        usuario.EsSoloUsuario = 1;
+                                    }
+                                    if (id == 7)
+                                    {
+
+                                    }
 
 
-                            #region
-                            //var claims = new List<Claim>
-                            //{
-                            //           // new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
-                            //            new Claim("AuthenticatedUser",JsonConvert.SerializeObject(usuario)),
-                            //            new Claim("IdServidor", usuario.IdServidor.ToString()),
-                            //            new Claim("Nombres", usuario.Nombres),
-                            //            new Claim("NombresApellidos", string.Format("{0}", usuario.Nombres)),
-                            //            new Claim("Foto", usuario.Foto??string.Empty),
-                            // };
-                            #endregion
+                                }
 
-                            if (usuario.Roles != null && usuario.Roles.Count() > 0)
-                            {
-                                //foreach (var item in usuario.Roles)
-                                //    claims.Add(new Claim(ClaimTypes.Role, item.Nombre));
+                                if (usuario.Roles.Count > 1)
+                                {
+                                    usuario.EsSoloFuncionario = 0;
+                                }
 
-                                // Create a list to store the roles temporarily
-                                var userRoles = usuario.Roles.Select(role => role.Nombre).ToList();
+                                HttpContext.Session.SetString("AuthenticatedUser", JsonConvert.SerializeObject(usuario));
+                                HttpContext.Session.SetString("IdServidor", usuario.IdServidor.ToString());
+                                HttpContext.Session.SetString("Nombres", usuario.Nombres ?? string.Empty);
+                                HttpContext.Session.SetString("NombresApellidos", string.Format("{0}", usuario.Nombres ?? string.Empty));
+                                HttpContext.Session.SetString("Foto", usuario.Foto ?? string.Empty);
 
-                                // Store the user roles in the session
-                                HttpContext.Session.SetString("Roles", JsonConvert.SerializeObject(userRoles));
+                                if (usuario.Roles != null && usuario.Roles.Count() > 0)
+                                {
+                                    // Create a list to store the roles temporarily
+                                    var userRoles = usuario.Roles.Select(role => role.Nombre).ToList();
+
+                                    // Store the user roles in the session
+                                    HttpContext.Session.SetString("Roles", JsonConvert.SerializeObject(userRoles));
+
+                                }
 
                             }
-
-                            //var appIdentity=new ClaimsIdentity(claims);
-
-                            //ClaimsPrincipal principal = HttpContext.User;
-
-                            //if (principal.Identity is ClaimsIdentity identity)
-
-                            //{
-                            //   hcontext.User.AddIdentity(appIdentity);
-                            //    //identity.AddClaims(claims);
-
-                            //}
 
 
                         }
-                       
 
+                        #region Enviar Correo Para Crear Cuenta
+
+                        // Enviar correo electrónico de verificación de cuenta
+                        var user = await _userManager.FindByNameAsync(Input.CI);
+                        if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
+                        {
+                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            var callbackUrl = Url.Page(
+                                "/Account/ConfirmEmail",
+                                pageHandler: null,
+                                values: new { userId = user.Id, code = code },
+                                protocol: Request.Scheme);
+
+                            await _emailSender.SendEmailAsync(
+                                user.Email,
+                                "Verifique su dirección de correo electrónico",
+                                $"Por favor, confirme su cuenta haciendo clic <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>aquí</a>."
+
+                                );
+
+                            // Mostrar mensaje de éxito o instrucciones al usuario
+                            // (por ejemplo, "Se ha enviado un correo electrónico de verificación a su dirección de correo electrónico.")
+                        }
+
+                        return LocalRedirect(returnUrl);
                     }
-
-                   // Enviar correo electrónico de verificación de cuenta
-                   var user = await _userManager.FindByNameAsync(Input.CI);
-                    if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
+                    if (result.RequiresTwoFactor)
                     {
-                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                        var callbackUrl = Url.Page(
-                            "/Account/ConfirmEmail",
-                            pageHandler: null,
-                            values: new { userId = user.Id, code = code },
-                            protocol: Request.Scheme);
-
-                        await _emailSender.SendEmailAsync(
-                            user.Email,
-                            "Verifique su dirección de correo electrónico",
-                            $"Por favor, confirme su cuenta haciendo clic <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>aquí</a>."
-
-                            );
-
-                        // Mostrar mensaje de éxito o instrucciones al usuario
-                        // (por ejemplo, "Se ha enviado un correo electrónico de verificación a su dirección de correo electrónico.")
+                        return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                     }
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToPage("./Lockout");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        return Page();
+                    }
+                }
+                #endregion
 
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
+                // If we got this far, something failed, redisplay form
+                return Page();
+
+
             }
-
-            // If we got this far, something failed, redisplay form
-            return Page();
+            catch(Exception e) 
+            {
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Error" + e);
+                return Page();
+            }
         }
 
 

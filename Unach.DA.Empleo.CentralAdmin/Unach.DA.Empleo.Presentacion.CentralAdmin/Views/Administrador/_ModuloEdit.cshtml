@@ -1,0 +1,47 @@
+﻿@model ModuloViewModel
+
+<form role="form" id="form" method="post" asp-action="ModuloEdit" asp-controller="Administrador">
+
+    <partial name="_ModalHeader" model="@(new ModalHeader { Heading = "Editar Modulo" })" />
+
+    @if (Model != null)
+    {
+        <div class="modal-body">
+            <div>
+                <div class="row">
+                    <input type="hidden" asp-for="Id" />
+                    <input asp-for="IdSistema" type="hidden" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required" value="1">
+
+                  
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Nombre"></label>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                        <input asp-for="Nombre" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Descripcion"></label>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                      
+                        <textarea asp-for="Descripcion" class="form-control input-sm" rows="4" minlength="5"  placeholder="Describe en un minimo de 130 caracteres" required="required"></textarea>
+                    
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <text>No existe información asociada.</text>
+    }
+
+
+    <partial name="_ModalFooter" model="@(new ModalFooter { SubmitButtonText = "Actualizar", OnlyCancelButton = false, CancelButtonText = "Cancelar" })" />
+
+
+</form>
+
+

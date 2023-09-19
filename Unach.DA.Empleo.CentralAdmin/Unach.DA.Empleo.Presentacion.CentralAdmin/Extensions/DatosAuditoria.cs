@@ -17,7 +17,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions
         {
             mapper.Map<AuditoriaViewModel, TDestination>(new AuditoriaViewModel()
             {
-                IdUsuarioAudd = "context.ServidorAutenticado().IdServidor.ToString()",
+                IdUsuarioAudd = "IdServidor",
                 RolAudd = string.Join(",", "context.ServidorAutenticado().Roles.Select(x => x.Nombre)"),
                 DireccionIpAudd = context.Connection.RemoteIpAddress.ToString(),
                 SistemaAudd = "DA-CentralAdmin",

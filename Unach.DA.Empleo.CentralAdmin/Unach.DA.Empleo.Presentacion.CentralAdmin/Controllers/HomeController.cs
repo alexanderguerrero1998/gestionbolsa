@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.Extensions;
 using Unach.DA.Empleo.Presentacion.CentralAdmin.Models;
+using Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel;
 
 namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 {
@@ -15,6 +17,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
         public IActionResult Index()
         {
+            
+            ViewBag.EsUsuario = HttpContext.ServidorAutenticado().EsSoloUsuario;
             return View();
         }
 

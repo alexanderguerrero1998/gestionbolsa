@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
 <div class="normalheader transition animated fadeIn">
     <div class="hpanel">
 
@@ -19,10 +20,22 @@
                     </p>
                 </h1>
             </div>
-@*            <div class="panel-footer">
-                This is standard panel footer
-            </div>*@
         </div>
+
+        
+        @if (ViewBag.EsUsuario != null && ViewBag.EsUsuario != 0)
+        {
+            if (ViewBag.EsUsuario == 1)
+            {
+                <div class="row">
+                    @await Component.InvokeAsync("MenuEscritorioUsuario", ViewBag.Expediente)
+
+                </div>
+            }
+
+        }
+
+
     </div>
 </div>
 @*

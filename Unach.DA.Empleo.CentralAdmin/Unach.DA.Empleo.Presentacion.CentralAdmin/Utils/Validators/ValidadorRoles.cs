@@ -29,7 +29,6 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Utils.Validators
         }
 
 
-
         private readonly IEnumerable<string> roles;
 
         //public ValidadorRoles(params string[] roles) => this.roles = roles;
@@ -43,7 +42,8 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Utils.Validators
             entitiesDomain = new EntitiesDomain(options);
             //logger = log.CreateLogger(typeof(ValidadorRoles));
 
-            if (context.HttpContext.User.Claims == null || context.HttpContext.User.Claims?.Count() <= 0)
+            //if (context.HttpContext.User.Claims == null || context.HttpContext.User.Claims?.Count() <= 0)
+            if (context.HttpContext.Session.GetString("AuthenticatedUser") == null || context.HttpContext.Session.GetString("AuthenticatedUser")?.Count() <= 0)
             {
                 context.Result = new UnauthorizedResult();
                 return;

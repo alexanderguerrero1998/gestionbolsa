@@ -1,0 +1,250 @@
+﻿@model PerfilUsuarioEditadoViewModel
+<style type="text/css">
+
+
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #headerNavegador {
+        margin: auto;
+        /*        width: 500px;
+        font-family: Arial, Helvetica, sans-serif;*/
+    }
+
+    ul, ol {
+        list-style: none;
+    }
+
+    .submenu-servidor {
+        /*position: absolute;*/
+        /*top: 100%;*/
+        /*left: 0;*/
+        z-index: 1000;
+        /*display: none;*/
+        /*float: left;*/
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 1px 0 0;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, .15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }
+
+    .navegador > li {
+        float: left;
+    }
+
+    .navegador li a {
+        background-color: #FFF;
+        text-decoration: none;
+        padding: 10px 12px;
+        display: block;
+        z-index: 999999;
+    }
+
+        .navegador li a:hover {
+            /*background-color: #9de2f8;*/
+            border-bottom: 1px solid rgba(0, 0, 0, .175);
+        }
+
+    .navegador li ul {
+        display: none;
+        position: absolute;
+        min-width: 140px;
+    }
+
+    .navegador li:hover > ul {
+        display: block;
+        z-index: 999999;
+    }
+
+    .navegador li ul li {
+        position: relative;
+    }
+
+        .navegador li ul li ul {
+            right: -140px;
+            top: 0px;
+        }
+</style>
+
+@if (ViewBag.EsUsuario == 1)
+{
+    <div class="col-lg-12">
+        <div id="headerNavegador">
+
+   
+
+                \<div class="content animated-panel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row animated-panel setEffect" data-effects="fadeInRight" data-child="hpanel">
+                            <div class="col-md-4">
+                                <div class="hpanel animated-panel fadeInRight" style="animation-delay: 0.1s">
+                                    <div class="panel-heading text-center">
+                                        <div class="panel-tools">
+                                            <a class="showhide">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                        Gestión Docentes
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class="mailbox-list">
+                                            <li>
+                                                <a asp-action="EstudianteInformacionPersonal" asp-controller="Estudiante" class="btn btn-default">
+                                                    <i class="fa fa-user text-success"></i>
+                                                    <span>Perfil</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="Curriculum" asp-controller="Cv" class="btn btn-default">
+                                                    <i class="fa fa-file-pdf-o text-danger"></i>
+                                                    <span>Cv</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hpanel animated-panel fadeInRight" style="animation-delay: 0.1s">
+                                    <div class="panel-heading text-center">
+                                        <div class="panel-tools">
+                                            <a class="showhide">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                        Academía
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class="mailbox-list">
+
+                                            <li>
+                                                <a asp-action="EstudianteCapacitacion" asp-controller="Capacitacion" class="btn btn-default">
+                                                    <i class="fa fa-book text-warning"></i>
+                                                    <span>Capacitación</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="EstudianteIdioma" asp-controller="Idioma" class="btn btn-default">
+                                                    <i class="fa fa-language text-primary-2">&nbsp;&nbsp;</i>
+                                                    <span>Capacitación</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="EstudianteExperienciaLaboral" asp-controller="ExperienciaLaboral" class="btn btn-default">
+                                                    <i class="fa fa-folder-open-o text-warning"> </i>
+                                                    <span>Experiencia</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a asp-action="EstudianteFormacionAcademica" asp-controller="FormacionAcademica" class="btn btn-default">
+                                                    <i class="fa fa-mortar-board text-primary"></i>
+                                                    <span>Estudios</span>
+                                                </a>
+                                            </li>
+
+
+                                            <li>
+                                                <a asp-action="EstudianteLogro" asp-controller="Logro" class="btn btn-default">
+                                                    <i class="fa fa-rocket text-success"></i>
+                                                    <span>Logros</span>
+                                                </a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                            <div class="hpanel animated-panel fadeInRight" style="animation-delay: 0.1s">
+                                <div class="panel-heading text-center">
+                                    <div class="panel-tools">
+                                        <a class="showhide">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                    Matrículas e Inscripciones
+                                </div>
+                                <div class="panel-body">
+                                    <ul class="mailbox-list">
+                                            <li>
+                                                <a asp-action="Index" asp-controller="OfertaLaboral" class="btn btn-default">
+                                                    <i class="fa fa-folder-open  text-warning"></i>
+                                                    <span>Ofertas Laborales</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a asp-action="MisPostulaciones" asp-controller="Estudiante" class="btn btn-default">
+                                                    <i class="fa fa-briefcase text-primary-2"></i>
+                                                    <span>Postulacion</span>
+                                                </a>
+                                            </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                      
+
+                       
+                    </div>
+
+
+
+
+                    <div class="col-md-4" style="display: none">
+                        <div class="hpanel animated-panel fadeInRight" style="animation-delay: 0.1s">
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
