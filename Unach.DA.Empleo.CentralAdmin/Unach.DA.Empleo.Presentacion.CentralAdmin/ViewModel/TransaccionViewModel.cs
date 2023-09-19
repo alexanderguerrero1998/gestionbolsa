@@ -26,7 +26,7 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.ViewModel
         public int Orden { get; set; }
         public bool Estado { get; set; }
         public bool Visible { get; set; }
-        public bool? Activo { get; set; }
+        public bool? Activo { get; set; } = true;
         public List<Modulo> ListaModulos { get; set; }
 }
 }

@@ -184,6 +184,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxSb2xlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/RolUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxSb2xVc3VhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/Transacciones.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxUcmFuc2FjY2lvbmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -202,6 +206,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_RolEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfUm9sRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_TransaccionDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxfVHJhbnNhY2Npb25EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Unach.DA.Empleo.CentralAdmin/Unach.DA.Empleo.Presentacion.CentralAdmin/Views/Administrador/_TransaccionEdit.cshtml]

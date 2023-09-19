@@ -21,7 +21,7 @@
                     <div class="form-group col-lg-6">
                         <label asp-for="IdPadre"></label>
                         <span asp-validation-for="IdPadre" class="text-danger"></span>
-                        <input asp-for="IdPadre" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
+                        <input asp-for="IdPadre" type="text" class="form-control  input-sm fecha" placeholder="Si es un menu hijo, poner valor (123..)">
                     </div>   
 
                     <div class="form-group col-lg-6">
@@ -50,21 +50,9 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                        <label asp-for="Visible"></label>
-                        <span asp-validation-for="Visible" class="text-danger"></span>
-                        <input asp-for="Visible" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
-                    </div>
-
-                    <div class="form-group col-lg-6">
                         <label asp-for="Orden"></label>
                         <span asp-validation-for="Orden" class="text-danger"></span>
-                        <input asp-for="Orden" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
-                    </div>
-
-                    <div class="form-group col-lg-6">
-                        <label asp-for="Estado"></label>
-                        <span asp-validation-for="Estado" class="text-danger"></span>
-                        <input asp-for="Estado" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
+                        <input asp-for="Orden" type="number"  class="form-control  input-sm fecha" required="required">
                     </div>
 
                     <div class="form-group col-lg-6">
@@ -72,11 +60,26 @@
                         <span asp-validation-for="IconClass" class="text-danger"></span>
                         <input asp-for="IconClass" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label asp-for="Activo"></label>
-                        <span asp-validation-for="Activo" class="text-danger"></span>
-                        <input asp-for="Activo" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control  input-sm fecha" required="required">
+
+                <div class="form-group col-lg-6">
+                        <label asp-for="Visible"></label>
+                        <span asp-validation-for="Visible" class="text-danger"></span>
+                        <div class="form-check">
+                            <input asp-for="Visible" class="form-check-input" type="checkbox" name="Visible">
+                        </div>
                     </div>
+    
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Estado"></label>
+                        <span asp-validation-for="Estado" class="text-danger"></span>
+                        <div class="form-check">
+                            <input asp-for="Estado" class="form-check-input" type="checkbox" name="Estado">
+                        </div>
+                    </div>
+           
+
+
+             
 
 
                 </div>

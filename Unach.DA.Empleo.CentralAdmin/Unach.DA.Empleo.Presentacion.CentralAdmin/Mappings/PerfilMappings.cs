@@ -45,6 +45,9 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Mappings
             CreateMap<RolViewModel, Rol>();
             CreateMap<Modulo, ModuloViewModel>();
             CreateMap<ModuloViewModel, Modulo>();
+            CreateMap<Transaccion, TransaccionViewModel>();
+            CreateMap<TransaccionViewModel, Transaccion>();
+
 
             CreateMap<Postulacion, PostulacionesViewModel>();
             CreateMap<PostulacionesViewModel, Postulacion>();

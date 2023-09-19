@@ -442,7 +442,69 @@ namespace Unach.DA.Empleo.Presentacion.CentralAdmin.Controllers
 
             return RedirectToAction("Transacciones", "Administrador");
         }
+        public IActionResult TransaccionDelete(int id)
+        {
+            try
+            {
+                Transaccion item = entitiesDomain.TransaccionRepositorio.BuscarPor(x => x.Id == id).FirstOrDefault();
+                return PartialView("~/Views/Administrador/_TransaccionDelete.cshtml", item);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error!" + ex.Message);
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult TransaccionDelete(Transaccion item)
+        {
+            try
+            {
+                if (item != null)
+                {
+                    entitiesDomain.TransaccionRepositorio.Eliminar(item);
+                    entitiesDomain.GuardarTransacciones();
+                    TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Información eliminada.");
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error");
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Error, "Error! " + ex.Message);
+            }
+            //return RedirectToAction(nameof(Index), new { expediente = 1 });
+            return RedirectToAction("Transacciones", "Administrador");
+        }
+        public IActionResult RolUsuario()
+        {
+            try
+            {
+                int expediente = 0;
+                ViewBag.Expediente = expediente;
 
+                List<RolUsuarioViewModel> roles = entitiesDomain.RolUsuarioRepositorio.ObtenerTodosEnOtraVista(
+                    m => new RolUsuarioViewModel
+                    {
+                     IdRol = m.IdRol,   
+                     IdUsuario = m.IdUsuario,   
+                     Desde = m.Desde,
+                     Hasta = m.Hasta,
+                    },
+                    x => x.IdRol > expediente,
+                    a => a.OrderBy(y => y.IdRol));
+
+                return View(roles.ToList());
+
+            }
+            catch (Exception e)
+            {
+                TempData.MostrarAlerta(ViewModel.TipoAlerta.Exitosa, "Error" + e);
+                return View("Index");
+
+            }
+
+        }
 
 
     }
